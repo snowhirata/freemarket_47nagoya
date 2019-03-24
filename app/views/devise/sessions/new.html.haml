@@ -1,0 +1,30 @@
+.login
+  = link_to image_tag("logo.svg",size: "200x100"),"#"
+  .login__panel
+    .login__panel__top
+      %p をお持ちでない方はこちら
+      = link_to "新規会員登録","#"
+    .login__panel__body
+      = link_to "#",class: "f-log" do
+        %i.fa.fa-facebook
+        Facebookでログイン
+      = link_to "#",class: "g-log" do
+        %i.fa.fa-google
+        Googleでログイン
+      .form
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form__group
+            = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス"
+          .form__group
+            = f.password_field :password, autocomplete: "current-password",placeholder: "パスワード"
+      .recapcha
+      = link_to"ログイン","#",class: "login-button"
+      .forget-password
+        = link_to"パスワードをお忘れの方","#"
+  .login-footer
+    %ul.login-footer__list
+      %li= link_to "プライバシーポリシー","#"
+      %li= link_to "メルカリ利用規約","#"
+      %li= link_to "特定商取引に関する表記","#"
+    = image_tag "logo-gray.svg",size: "80x65"
+    %i.login-footer__copyright @2019Mercari
