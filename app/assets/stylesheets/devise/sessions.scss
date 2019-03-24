@@ -1,0 +1,112 @@
+.login{
+  text-align: center;
+  background-color: #f5f5f5;
+  &__panel{
+    margin:0 auto;
+    max-width: 456px;
+    background-color: #fff;
+    &__top{
+      padding: 24px 32px;
+      border-bottom: solid 1px #f5f5f5;
+      p{
+        font-size: 14px;
+        margin: 0px;
+      }
+      a{
+        display: block;
+        text-decoration: none;
+        background-color: #0099e8;
+        color:#fff;
+        margin: 8px 0px 0px;
+        line-height: 50px;
+      }
+    }
+    &__body{
+      padding: 24px 32px;
+      .f-log{
+        display: block;
+        text-decoration: none;
+        background-color: #385185;
+        color: #fff;
+        margin-bottom: 10px;
+        line-height: 50px;
+        position: relative;
+        i{
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      .g-log{
+        display: block;
+        text-decoration: none;
+        background-color: #fff;
+        color: black;
+        border: solid 1px #f5f5f5;
+        line-height: 50px;
+        margin-bottom: 40px;
+        position: relative;
+        i{
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      .form{
+        &__group{
+          input{
+            width: calc(100% - 6px);
+            line-height: 40px;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .login-button{
+        display: block;
+        background-color: #ea352d;
+        color: #fff;
+        line-height: 50px;
+      }
+      .forget-password{
+        margin-top: 50px;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+  }
+  .login-footer{
+    padding: 40px 0;
+    &__list{
+      padding: 0px;
+      list-style: none;
+      li{
+        margin: 16px 0 0;
+        a{
+          display: block;
+          color: #333;
+          text-decoration: none;
+          font-size: 12px;
+        }
+      }
+    }
+    &__copyright{
+        display: block;
+        margin-top: 10px;
+        font-size: 10px;
+    }
+  }
+}
+
+@media(min-width: 768px){
+  .login-footer{
+    &__list{
+      li{
+        display: inline-block;
+        margin: 0 0 0 10px !important; 
+      }
+    }
+  }
+}
+
