@@ -1,5 +1,120 @@
 # README
 
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|default:“”,null: false|
+|email|string|default: “”, null: false|
+|encrypted-password|string|default: “”, null: false|
+|confirm-password|string|default:“”,null: false|
+|first-name|string|default:“”, null: false|
+|last-name|string|default:“”, null: false|
+|first-name-kata|string|default:“”, null: false|
+|last-name-kata|string|default:“”, null: false|
+|year|integer|default:“”, null: false|
+|month|integer|default:“”, null: false|
+|day|integer|default:“”, null: false|
+|postal-code|integer|default:“”, null: false|
+|prefectutre|string|default:“”, null: false|
+|city|string|default:“”, null: false|
+|block|string|default:“”, null: false|
+|building|string|default:“”, null: false|
+|phone-number|integer|default:“”, null: false|
+
+### Assosiation
+-has_many :items
+-has_many :rates
+-has_many :comments
+-has_many :likes
+
+## items
+
+|Colum|Type|Options|
+|-----|----|-------|
+|name|string|null: false, index: true|
+|image|string||
+|description|text||
+|brand|text||
+|state|text|null: false|
+|ship-charge|text|null: false|
+|ship-method|text|null: false|
+|ship-date|text|null: false|
+|price|integer|null:false|
+|sellar_id|integer|null: false|
+|buyer_id|integer|null: false|
+
+### Assosiation
+-has_many :messages
+-has_many :categories, through: :category_items
+-has_many :category_items
+-has_many :comments
+-has_many :likes
+
+-has_one :rates
+-belongs_to :user
+
+## messagesテーブル
+| Column| Type | Options |
+|-------|------|---------|
+| item_id| references| null: false, foreign_key: true |
+| content| text||
+### Association
+- belongs_to :item
+
+## ratesテーブル
+| Column| Type| Options|
+|-------|-----|--------|
+| user_id| references| null: false, foreign_key: true |
+| item_id| references| null: false, foreign_key: true |
+| buyer_comment  | text        ||
+| seller_comment | text        ||
+| buyer_rate     | integer     | null: false                    |
+| seller_rate    | integer     | null: false                    |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## commentsテーブル
+| Column        | Type       | Options                      |
+|---------------|------------|------------------------------|
+| user_id      |references      | null: false, foreign_key: true |
+| item_id      |references   | null: false, foreign_key: true |
+| content|text||
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## likesテーブル
+| Column        | Type       | Options                      |
+|---------------|------------|------------------------------|
+| user_id          |references     | null: false, foreign_key: true |
+| item_id           |references  | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## categoriesテーブル
+| Column        | Type       | Options                      |
+|---------------|------------|------------------------------|
+| name           | string      | null: false                    |
+
+### Association
+- has_many   :category_items
+- has_many   :items, through: :category_items
+
+## category_itemsテーブル
+| Column        | Type       | Options                      |
+|---------------|------------|------------------------------|
+| category_id       | references   | null: false, foreign_key: true |
+| item_id           | references   | null: false, foreign_key: true |
+
+### Association
+- belongs_to :category
+- belongs_to :item
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
