@@ -45,7 +45,7 @@
 
 ### Assosiation
 -has_many :messages
--has_many :categories, through: :category_item
+-has_many :categories, through: :category_items
 -has_many :category_items
 -has_many :comments
 -has_many :likes
