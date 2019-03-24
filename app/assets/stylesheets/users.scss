@@ -1,31 +1,22 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.contents{
-  width: 100vw;
-  background-color: #f5f5f5;
-  padding: 50px 100px;
-  .sidebar{
-    width: 280px;
-    .sidebar__list{
-      height: 48px;
-      line-height: 48px;
-      text-align: center;
-      list-style: none;
-      background-color: #fff;
-      a{
-        color: #000;
-      }
+
+.container{
+  .mypage{
+    &__user-icon{
+
+    }
+    &__tab-container-notification-todo{
+
+    }
+    &__tab-container{
+      
     }
   }
-}
+  .sidebar{
+    &__list{
+      &__element{
 
+      }
+    }
 
-
-
-
-
-
-@media(max-width: 1068px){
-
+  }
 }
