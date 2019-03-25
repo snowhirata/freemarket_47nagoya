@@ -72,3 +72,11 @@ group :production do
 end
 
 gem 'dotenv-rails' #環境変数の設定
+
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end
