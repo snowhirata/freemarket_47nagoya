@@ -1,10 +1,51 @@
-.container
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+.container.clearfix
   .mypage
     .mypage__user-icon
+      =link_to "#" do
+        %figure
+          =image_tag('member_photo_noimage_thumb.png',width:60,height:60)
+        %h2.bold snow
+        .mypage-number
+          .mypage-number__rate 評価 0
+          .mypage-number__listings 出品数 0
     .mypage__tab-container-notification-todo
+      %ul.mypage-tabs
+        %li.active お知らせ
+        %li やることリスト
+      .tab-content
+        %ul#mypage-tab-notification.dumy.active
+          %li
+          %li
+          %li
+          %li.mypage-go-list
+            =link_to "一覧を見る","#"
+        %ul#mypage-tab-todo.dumy
+          %li
+          %li
+          %li
+          %li.mypage-go-list
     .mypage__tab-container
+      %h2.mypage-tab-head 購入した商品
+      %ul.mypage-tabs
+        %li.active 取引中
+        %li 過去の取引
+      .tab-content
+        %ul#mypage-tab-transaction-now.dumy.active
+          %li
+          %li
+          %li
+          %li.mypage-go-list
+            =link_to "一覧を見る","#"
+        %ul#mypage-tab-transaction-old.dumy
+          %li
+          %li
+          %li
+          %li.mypage-go-list
   .sidebar
     %ul.sidebar__list
+      %li.sidebar__list__element
+        = link_to "マイページ","#"
       %li.sidebar__list__element
         = link_to "お知らせ","#"
       %li.sidebar__list__element
@@ -31,3 +72,42 @@
         = link_to "ガイド","#"
       %li.sidebar__list__element
         = link_to "お問い合わせ","#"
+    %h3.sidebar__head メルペイ
+    %ul.sidebar__list
+      %li.sidebar__list__element
+        = link_to "売上・振込申請","#"
+      %li.sidebar__list__element
+        = link_to "ポイント","#"
+    %h3.sidebar__head 設定
+    %ul.sidebar__list
+      %li.sidebar__list__element
+        = link_to "プロフィール","#"
+      %li.sidebar__list__element
+        = link_to "発送元・お届け住所変更","#"
+      %li.sidebar__list__element
+        = link_to "支払い方法","#"
+      %li.sidebar__list__element
+        = link_to "メール/パスワード","#"
+      %li.sidebar__list__element
+        = link_to "本人情報","#"
+      %li.sidebar__list__element
+        = link_to "電話番号の確認","#"
+      %li.sidebar__list__element
+        = link_to "ログアウト","#"
+
+
+
+
+
+
+
+  :javascript
+    $(function(){
+      $('.mypage-tabs li').click(function(){
+        $('.mypage-tabs li').removeClass('active');
+        $(this).addClass('active');
+        $('.tab-content ul').each(function(){
+          $(this).attr('class').indexOf(tabclass)
+        });
+      });
+    });
