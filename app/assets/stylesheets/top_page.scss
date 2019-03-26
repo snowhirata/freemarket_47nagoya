@@ -1,0 +1,200 @@
+.main{
+  background-color: #fff;
+  .top-main-visual{
+    display: block;
+    background-image: url("https://www.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg");
+    background-size: cover;
+    // height:290px;
+    // position: relative;
+    // margin: 0 auto;
+    &-pc{
+      display: block;
+      overflow: hidden;
+      width: 860px;
+      height: 390px;
+      position: relative;
+      margin: 0 auto;
+      &-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        h2 {
+          font-weight: bold;
+          display: inline-block;
+          font-size: 60px;
+          // line-height: 1.2;
+          // margin: 0;
+          // padding: 0;
+        }
+        p {
+          margin: 16px 0 0;
+          font-size: 18px;
+          // line-height: 1.77778;
+        }
+      // }
+        &-store {
+          margin: 24px 0 0;
+          line-height: 0;
+          // a {
+          //   display: inline-block;
+          //   height: 50px;
+          //   width: 170px;
+          // }
+        }
+      }
+      img.right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+
+  .pickup-container {
+      margin: auto;
+      padding-top: 40px 0;
+      background-color: #f5f5f5;
+    }
+
+    .pickup-head {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .items-box-container{
+      width: 700px;
+      margin: 0 auto;
+    }
+
+    .text-center {
+      color: #0099e8;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 22px;
+      margin: 26px 11px;
+    }
+
+    .items-box-content {
+     display: flex;
+     color: #333;
+     // height: 330px;
+     width: auto;
+     margin: 0 auto;
+     a:link {
+       color: #333;
+     }
+     a:visited {
+       color: #333;
+     }
+     a:hover {
+       color: #333;
+       text-decoration: none;
+     }
+   }
+
+   .items-box {
+    position: relative;
+    text-align: center;
+    width: 213px;
+    margin: 0 0 0 20px;
+    float: left;
+    background: #fff;
+    &-photo {
+      width: 213px;
+      height: 220px;
+    }
+    &-body {
+      height: 110px;
+      padding: 16px;
+    }
+    &-name {
+      overflow: hidden;
+      font-weight: 400;
+      height: 3em;
+      line-height: 1.5;
+      word-break: break-word;
+      white-space: normal;
+      text-align: left;
+      font-size: 16px;
+    }
+    &-num {
+      margin: 8px 0 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    &-price {
+      float: left;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    &-likes {
+      float: right;
+      font-size: 16px;
+      font-weight: 400;
+      margin-left: auto;
+    }
+    &-tax {
+      font-size: 10px;
+      clear: both;
+      text-align: left;
+      font-weight: 400;
+    }
+  }
+
+  .view-all {
+    a:visited {
+      text-decoration: none;
+      color:  #0099e8;
+    }
+    width: 99.5%;
+    padding: 20px 0 30px;
+    text-align: right;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+
+  .footer-sell-btn {
+    position: fixed;
+    bottom: -14px;
+    right: -14px;
+    z-index: 1000;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: #ea352d;
+    color: #fff;
+    text-align: center;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-size: 23px;
+    &__wrapper {
+      margin-top: 40px;
+    }
+    a:link {
+      color: #fff;
+      text-decoration: none;
+    }
+    a:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  .fa {
+    &-camera {
+      font-size: 60px;
+    }
+    &-heart {
+      color: lightgray;
+    }
+  }
+}
