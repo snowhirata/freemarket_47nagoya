@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     :passwords => 'users/passwords'
   }
   resources :users, :only => [:index, :show]
+  get 'mypage/identification' => 'users#identification'
   resources :items  do
     resources :sold, only: [:index, :show]
   end
