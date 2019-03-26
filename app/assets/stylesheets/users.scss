@@ -23,8 +23,64 @@ a{
   clear: both;
 }
 
+//ユーザーマイページmixin
+@mixin mypage-tabs{
+  background-color: #eee;
+  font-size: 0;
+  li{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 74px;
+  }
+  li.active{
+    background-color: #fff;
+  }
+}
 
-//ユーザーマイページCSS
+@mixin tab-content-left{
+  display: none;
+  li{
+    height: 80px;
+    background-color: #fff;
+    border-bottom: solid 1px #eee;
+  }
+  .mypage-go-list{
+    height: 56px;
+    padding: 16px;
+    background-color: #fff;
+    a{
+      display: block;
+      line-height: 56px;
+      text-align: center;
+      background-color: #eee;
+      color: #333;
+    }
+  }
+}
+
+@mixin tab-content-right{
+  display: none;
+  li{
+    height: 80px;
+    background-color: #fff;
+    border-bottom: solid 1px #eee;
+  }
+  .mypage-go-list{
+    height: 56px;
+    padding: 16px;
+    background-color: #fff;
+    a{
+      display: block;
+      line-height: 56px;
+      text-align: center;
+      background-color: #eee;
+      color: #333;
+    }
+  }
+}
+//ユーザーマイページcss
 .container{
   width: 1020px;
   margin: 40px auto;
@@ -73,59 +129,14 @@ a{
     }
     &__tab-container-notification-todo{
       ul.mypage-tabs{
-        background-color: #eee;
-        font-size: 0;
-        li{
-          width: 50%;
-          display: inline-block;
-          text-align: center;
-          font-size: 1.4rem;
-          line-height: 74px;
-        }
-        li.active{
-          background-color: #fff;
-        }
+        @include mypage-tabs
       }
       .tab-content{
         ul#mypage-tab-notification{
-          display: none;
-          li{
-            height: 80px;
-            background-color: #fff;
-            border-bottom: solid 1px #eee;
-          }
-          .mypage-go-list{
-            height: 56px;
-            padding: 16px;
-            background-color: #fff;
-            a{
-              display: block;
-              line-height: 56px;
-              text-align: center;
-              background-color: #eee;
-              color: #333;
-            }
-          }
+          @include tab-content-left
         }
         ul#mypage-tab-todo{
-          display: none;
-          li{
-            height: 80px;
-            background-color: #fff;
-            border-bottom: solid 1px #eee;
-          }
-          .mypage-go-list{
-            height: 56px;
-            padding: 16px;
-            background-color: #fff;
-            a{
-              display: block;
-              line-height: 56px;
-              text-align: center;
-              background-color: #eee;
-              color: #333;
-            }
-          }
+          @include tab-content-right
         }
         ul#mypage-tab-notification.active{
           display: block;
@@ -144,61 +155,14 @@ a{
         line-height: 72px;
       }
       ul.transaction-mypage-tabs{
-        background-color: #eee;
-        font-size: 0;
-        li{
-          width: 50%;
-          display: inline-block;
-          text-align: center;
-          font-size: 1.4rem;
-          line-height: 74px;
-        }
-        li.active{
-          background-color: #fff;
-        }
+        @include mypage-tabs
       }
       .transaction-tab-content{
         ul#mypage-tab-transaction-now{
-          display: none;
-          li{
-            height: 80px;
-            background-color: #fff;
-            border-bottom: solid 1px #eee;
-          }
-          .mypage-go-list{
-            height: 56px;
-            padding: 16px;
-            background-color: #fff;
-            a{
-              display: block;
-              line-height: 56px;
-              text-align: center;
-              background-color: #eee;
-              color: #333;
-
-            }
-          }
+          @include tab-content-left
         }
         ul#mypage-tab-transaction-old{
-          display: none;
-          li{
-            height: 80px;
-            background-color: #fff;
-            border-bottom: solid 1px #eee;
-          }
-          .mypage-go-list{
-            height: 56px;
-            padding: 16px;
-            background-color: #fff;
-            a{
-              display: block;
-              line-height: 56px;
-              text-align: center;
-              background-color: #eee;
-              color: #333;
-
-            }
-          }
+          @include tab-content-right
         }
         ul#mypage-tab-transaction-now.active{
           display: block;
