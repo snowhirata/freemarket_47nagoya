@@ -1,3 +1,4 @@
+//--------------------全ページ共通設定--------------------//
 *{
   margin: 0px;
   padding: 0px;
@@ -24,7 +25,8 @@ a{
   clear: both;
 }
 
-//ユーザーマイページmixin
+//----------------------------------------mixinここから----------------------------------------//
+//--------------------マイページのmixin--------------------//
 @mixin mypage-tabs{
   background-color: #eee;
   font-size: 0;
@@ -81,7 +83,66 @@ a{
     }
   }
 }
-//ユーザーマイページcss
+//--------------------本人情報登録ページmixin--------------------//
+@mixin form-arbitrary{
+  background-color: #ccc;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+@mixin input-default{
+  width: 100%;
+  height: 50px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 1.6rem;
+  box-sizing: border-box;
+}
+@mixin select-default{
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+@mixin select-wrap{
+  position: relative;
+  i{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    z-index: 2;
+    color: #888;
+    font-size: 8px;
+    transform: translate(0, -50%);
+  }
+}
+@mixin submit_button{
+  width: 100%;
+  display: block;
+  line-height: 48px;
+  font-size: 1.4rem;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+}
+//----------------------------------------mixinここまで----------------------------------------//
+
+
+
+//--------------------マイページ--------------------//
 .container{
   width: 1020px;
   margin: 40px auto;
@@ -174,7 +235,6 @@ a{
       }
     }
   }
-
   .sidebar{
     float: left;
     width: 280px;
@@ -212,7 +272,7 @@ a{
   }
 }
 
-//本人情報の登録ページ
+//--------------------本人情報登録ページ--------------------//
 .identification{
   width: 700px;
   float: right;
@@ -240,58 +300,94 @@ a{
         -webkit-appearance: none;
       }
       .form-arbitrary{
-        background-color: #ccc;
-        margin: 0 0 0 8px;
-        padding: 2px 4px;
-        border-radius: 2px;
-        color: #fff;
-        font-size: 12px;
-        vertical-align: top;
+        @include form-arbitrary
       }
       .input-default{
-        width: 100%;
-        height: 50px;
-        padding: 10px 16px 8px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: #fff;
-        line-height: 1.5;
-        font-size: 1.6rem;
-        box-sizing: border-box;
+        @include input-default
       }
       .select-default{
-        width: 100%;
-        position: relative;
-        z-index: 2;
-        height: 48px;
-        padding: 0 16px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        background: 0;
-        font-size: 16px;
-        line-height: 1.5;
-        cursor: pointer;
+        @include select-default
       }
       .select-wrap{
-        position: relative;
-        i{
-          position: absolute;
-          right: 16px;
-          top: 50%;
-          z-index: 2;
-          color: #888;
-          font-size: 8px;
-          transform: translate(0, -50%);
-        }
+        @include select-wrap
       }
       .submit_button{
-        width: 100%;
-        display: block;
-        line-height: 48px;
-        font-size: 1.4rem;
-        background: #ea352d;
-        border: 1px solid #ea352d;
-        color: #fff;
+        @include submit_button
+      }
+    }
+  }
+}
+//--------------------カード登録ページ--------------------//
+.card-container{
+  width: 700px;
+  float: right;
+  background-color: #fff;
+  &__head{
+    font-size: 2.4rem;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  form{
+    padding: 64px;
+    .l-single-content{
+      max-width: 320px;
+      margin: 0 auto;
+      .form-group{
+        &:first-child{
+          margin: 0px;
+        }
+        margin-top: 40px;
+        label{
+          font-weight: 600;
+        }
+        select{
+          -webkit-appearance: none;
+        }
+        input{
+          -webkit-appearance: none;
+        }
+        .form-arbitrary{
+          @include form-arbitrary
+        }
+        .signup-card-list{
+          margin-top: 5px;
+          li{
+            &:first-child{
+              margin: 0;
+            }
+            display: inline-block;
+            margin-left: 8px;
+          }
+        }
+        .input-default{
+          @include input-default
+        }
+        .select-default{
+          @include select-default
+        }
+        .select-wrap{
+          width: 35%;
+          margin-bottom: 5px;
+          @include select-wrap
+        }
+        .submit_button{
+          @include submit_button
+        }
+      }
+      .text-right{
+        text-align: right;
+        .form-question{
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #0099e8;
+          color: #fff;
+          line-height: 14px;
+          font-size: 12px;
+          text-align: center;
+        }
       }
     }
   }
