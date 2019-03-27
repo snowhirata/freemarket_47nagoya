@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
   resources :users, :only => [:index, :show]
   get 'mypage/identification' => 'users#identification'
+  get 'mypage/card/create' => 'users#card'
   resources :items  do
     resources :sold, only: [:index, :show]
   end
