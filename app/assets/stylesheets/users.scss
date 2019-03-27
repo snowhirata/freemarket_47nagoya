@@ -31,6 +31,7 @@ a{
   width: 700px;
   float: right;
   background-color: #fff;
+  box-sizing: border-box;
 }
 
 @mixin mypage-tabs{
@@ -449,5 +450,14 @@ a{
         @include submit-button;
       }
     }
+  }
+}
+//--------------------ログアウトページ--------------------//
+.logout-container{
+  @include right-container;
+  padding: 64px;
+  a{
+    @include submit-button;
+    text-align: center;
   }
 }
