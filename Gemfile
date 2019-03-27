@@ -82,4 +82,5 @@ group :development, :test do
 end
 
 gem 'jquery-rails'
-gem 'active_hash'
+gem 'active_hash'　//セレクトボックスで使用
+
