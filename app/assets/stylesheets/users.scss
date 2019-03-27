@@ -433,9 +433,9 @@ a{
       }
       input{
         @include input-default;
-        -webkit-appearance: none;
         width: 220px;
         margin: 0 0 0 8px;
+        vertical-align: middle;
       }
     }
     .setting-profile-content{
