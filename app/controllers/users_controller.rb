@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :identification, :register_card, :profile]
+  before_action :set_user, only: [:show, :identification, :register_card, :profile, :logout]
   def index
     @user = User.all
   end
@@ -14,6 +14,9 @@ class UsersController < ApplicationController
   end
 
   def profile
+  end
+
+  def logout
   end
 
   private
