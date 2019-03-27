@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :passwords => 'users/passwords'
   }
-  resources :users, :only => [:index, :show] do
+  resources :users, only:[:index, :show] do
     member do
       get 'identification'
     end
