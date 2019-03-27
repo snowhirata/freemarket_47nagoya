@@ -46,11 +46,7 @@
     .view-all
       =link_to "すべての商品を見る"
 
-  .footer-sell-btn
-    .footer-sell-btn__wrapper.sell-btn
-      = link_to "" do
-        %div 出品
-        %i.fa.fa-camera
 
+  = render 'sell-btn'
   = render 'app-banner'
   = render 'footer'
