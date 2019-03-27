@@ -12,7 +12,8 @@ Rails.application.routes.draw do
       get 'identification'
       get 'register_card'
     end
-
+  end
+  
   resources :items  do
     resources :sold, only: [:index, :show]
   end
