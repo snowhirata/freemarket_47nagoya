@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:index, :show] do
     member do
       get 'identification'
-      get 'card'
+      get 'register_card'
     end
 
   resources :items  do
