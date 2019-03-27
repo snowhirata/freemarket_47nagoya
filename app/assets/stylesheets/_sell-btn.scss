@@ -1,0 +1,35 @@
+.footer-sell-btn {
+  position: fixed;
+  bottom: -14px;
+  right: -14px;
+  z-index: 1000;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #ea352d;
+  color: #fff;
+  text-align: center;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  font-size: 23px;
+  &__wrapper {
+    margin-top: 40px;
+  }
+  a:link {
+    color: #fff;
+    text-decoration: none;
+  }
+  a:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+.fa {
+  &-camera {
+    font-size: 60px;
+  }
+}
