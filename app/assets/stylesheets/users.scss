@@ -27,6 +27,12 @@ a{
 
 //----------------------------------------mixinここから----------------------------------------//
 //--------------------マイページのmixin--------------------//
+@mixin right-container{
+  width: 700px;
+  float: right;
+  background-color: #fff;
+}
+
 @mixin mypage-tabs{
   background-color: #eee;
   font-size: 0;
@@ -137,6 +143,19 @@ a{
   background: #ea352d;
   border: 1px solid #ea352d;
   color: #fff;
+}
+
+@mixin textarea-default{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
 }
 //----------------------------------------mixinここまで----------------------------------------//
 
@@ -274,9 +293,7 @@ a{
 
 //--------------------本人情報登録ページ--------------------//
 .identification{
-  width: 700px;
-  float: right;
-  background: #fff;
+  @include right-container;
   h2.identification-head{
     font-size: 2.4rem;
     padding: 8px 24px;
@@ -319,9 +336,7 @@ a{
 }
 //--------------------カード登録ページ--------------------//
 .card-container{
-  width: 700px;
-  float: right;
-  background-color: #fff;
+  @include right-container;
   &__head{
     font-size: 2.4rem;
     padding: 8px 24px;
@@ -388,6 +403,50 @@ a{
           font-size: 12px;
           text-align: center;
         }
+      }
+    }
+  }
+}
+//--------------------プロフィール編集ページ--------------------//
+.profile-container{
+  @include right-container;
+  .profile-container__head{
+    font-size: 2.4rem;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  form{
+    .setting-profile-icon{
+      padding: 72px 16px 24px;
+      background: url("user-bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      img{
+        display: inline-block;
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      input{
+        @include input-default;
+        -webkit-appearance: none;
+        width: 220px;
+        margin: 0 0 0 8px;
+      }
+    }
+    .setting-profile-content{
+      padding: 40px 16px;
+      textarea{
+        @include textarea-default;
+        min-height: 216px;
+      }
+      input{
+        margin-top: 40px;
+        @include submit-button;
       }
     }
   }
