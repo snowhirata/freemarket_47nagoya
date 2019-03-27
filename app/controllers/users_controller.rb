@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_new_user, only: [:identification]
+  before_action :set_new_user, only: [:identification, :card]
   layout 'user'
   def index
     @user = User.all
@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   end
 
   def identification
+  end
+
+  def card
   end
 
   private
