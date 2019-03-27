@@ -7,7 +7,7 @@
         %p.text-right 
           =link_to '#' do
             本人確認書類のアップロードについて
-            %i.fa.fa-chevron-right
+            =fa_icon "chevron-right"
       .form-group
         =f.label :お名前
         %p へのへの　もへじ
@@ -28,7 +28,7 @@
           任意
         .select-wrap
           =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {},class: 'select-default'
-          %i.fa.fa-chevron-down
+          =fa_icon "chevron-down"
       .form-group
         =f.label :市区町村
         %span.form-arbitrary
@@ -50,6 +50,6 @@
         %p
           =link_to '#' do
             本人情報の登録について
-            %i.fa.fa-chevron-right
+            =fa_icon "chevron-right"
   = render partial:'sidebar'
 
