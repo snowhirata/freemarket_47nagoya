@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_new_user, only: [:identification, :card]
-  layout 'user'
+  before_action :set_user, only: [:show, :identification, :card]
   def index
     @user = User.all
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def identification
@@ -19,10 +17,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def set_new_user
-    @user = User.new
   end
 
 end
