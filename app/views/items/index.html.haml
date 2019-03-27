@@ -1,1 +1,52 @@
-%p Hello
+.main
+
+  = render 'header'
+
+  .top-main-visual
+    .top-main-visual-pc
+      .top-main-visual-pc-content
+        %h2
+          スマホでかんたん<br>フリマアプリ
+        %p
+          メルカリはスマホカメラからすぐに出品できる
+          <br>
+          購入時も安心な独自システムのアプリです
+        .top-main-visual-store-clearfix
+          =link_to "" do
+            =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3112359103")
+          =link_to "" do
+            =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3112359103")
+      %img.right{src: "https://www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3112359103"}
+
+  .pickup-container
+    %h2.pickup-head
+      ピックアップ商品
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "新着アイテム"
+      .items-box-content.clearfix
+        %section.items-box
+          = link_to ""
+          .figure.items-box-photo
+            =image_tag("https://static.mercdn.net/thumb/photos/m36779249979_1.jpg?1553412832", height: "220px", width: "213px")
+          .items-box-body
+            %h3.items-box-name.font-2
+              ブルゾン
+            .items-box-num.clearfix
+              .items-box-price.font-5
+                ¥888
+                %p.items-box-tax
+                  (税込)
+              .items-box-likes.font-2
+                %i.fa.fa-heart
+                %span
+                  8
+
+
+    .view-all
+      =link_to "すべての商品を見る"
+
+
+  = render 'sell-btn'
+  = render 'app-banner'
+  = render 'footer'

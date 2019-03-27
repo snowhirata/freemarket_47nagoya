@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       get 'identification'
       get 'card'
     end
+
+  resources :items  do
+    resources :sold, only: [:index, :show]
   end
 
 end
