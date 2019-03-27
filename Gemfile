@@ -82,5 +82,6 @@ group :development, :test do
 end
 
 gem 'jquery-rails'
-gem 'active_hash'　//セレクトボックスで使用
+gem 'active_hash'
+gem 'font-awesome-rails'
 

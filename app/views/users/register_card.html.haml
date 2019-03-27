@@ -29,7 +29,7 @@
             必須
           .select-wrap
             =f.select :exp_month, options_for_select(User.exp_months),{},class: "select-default"
-            %i.fa.fa-chevron-down
+            =fa_icon "chevron-down"
           .select-wrap
             =f.select :exp_year, options_for_select(User.exp_years),{},class: "select-default"
             %i.fa.fa-chevron-down
