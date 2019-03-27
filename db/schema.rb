@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_071616) do
+ActiveRecord::Schema.define(version: 2019_03_27_001300) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_071616) do
     t.integer "birth_month"
     t.integer "birth_day"
     t.integer "postal_code"
-    t.string "prefecture"
+    t.string "prefecture_id"
     t.string "city"
     t.string "block"
     t.string "building"
