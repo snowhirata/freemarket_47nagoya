@@ -6,8 +6,12 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :passwords => 'users/passwords'
   }
-  resources :users, :only => [:index, :show]
-  get 'mypage/identification' => 'users#identification'
+  resources :users, :only => [:index, :show] do
+    member do
+      get 'identification'
+    end
+  end
+
   resources :items  do
     resources :sold, only: [:index, :show]
   end
