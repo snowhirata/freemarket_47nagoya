@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:shoe, :identification]
-  layout 'user'
+  before_action :set_user, only: [:show, :identification]
   def index
     @user = User.all
   end
