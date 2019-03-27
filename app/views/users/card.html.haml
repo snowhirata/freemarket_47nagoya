@@ -1,0 +1,47 @@
+.card
+  %h2.identification-head クレジットカード情報入力
+  =form_for @user do |f|
+    .l-single-content
+      .form-group
+        =f.label :カード番号
+        %span.form-arbitrary
+          必須
+        =f.text_field :postal_code,class: 'input-default', placeholder: '例)1234567'
+        %ul.signup-card-list
+          %li
+            =image_tag('visa.svg', width:49, height:20)
+          %li
+            =image_tag('master-card.svg', width:34, height:20)
+          %li
+            =image_tag('saison-card.svg', width:30, height:20)
+          %li
+            =image_tag('jcb.svg', width:32, height:20)
+          %li
+            =image_tag('dinersclub.svg', width:21, height:20)
+          %li
+            =image_tag('discover.svg', width:32, height:20)
+          %li
+            =image_tag('american_express.svg', width:32, height:20)
+      .form-group
+        =f.label :有効期限
+        %span.form-arbitrary
+          必須
+        .select-wrap
+          =f.select :exp_month, options_for_select(User.exp_months),{},class: "select-default"
+          %i.fa.fa-chevron-down
+        .select-wrap
+          =f.select :exp_year, options_for_select(User.exp_years),{},class: "select-default"
+          %i.fa.fa-chevron-down
+      .form-group
+        =f.label :セキュリティコード
+        %span.form-arbitrary
+          必須
+        =f.text_field :city,class: 'input-default', placeholder: '例)横浜市緑区'
+      .text-right
+        %span.form-question
+          ?
+        =link_to '#' do
+          カード裏面の番号とは？
+      .form-group
+        =f.submit :登録する,class: 'submit_button'
+    
