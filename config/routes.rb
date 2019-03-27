@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get 'identification'
       get 'register_card'
+      get 'profile'
     end
   end
 
