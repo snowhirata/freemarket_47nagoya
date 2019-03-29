@@ -22,7 +22,8 @@
 |phone-number|integer|default:“”, null: false|
 
 ### Assosiation
--has_many :items
+- has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
+- has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
 -has_many :rates
 -has_many :comments
 -has_many :likes
@@ -32,26 +33,28 @@
 |Colum|Type|Options|
 |-----|----|-------|
 |name|string|null: false, index: true|
-|image|string||
+|image|string|null: false|
 |description|text||
-|brand|text||
-|state|text|null: false|
-|ship-charge|text|null: false|
-|ship-method|text|null: false|
+|brand|string||
+|state|string|null: false|
+|ship_region|string||
+|ship-charge|string|null: false|
+|ship-method|string|null: false|
 |ship-date|text|null: false|
 |price|integer|null:false|
-|sellar_id|integer|null: false|
-|buyer_id|integer|null: false|
+|sellar_id|references|null: false, foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true|
 
 ### Assosiation
--has_many :messages
--has_many :categories, through: :category_items
--has_many :category_items
--has_many :comments
--has_many :likes
+- has_many :messages
+- has_many :categories, through: :category_items
+- has_many :category_items
+- has_many :comments
+- has_many :likes
 
--has_one :rates
--belongs_to :user
+- has_one :rates
+- belongs_to :seller, class_name: 'User'
+- belongs_to :buyer, class_name: 'User'
 
 ## messagesテーブル
 | Column| Type | Options |

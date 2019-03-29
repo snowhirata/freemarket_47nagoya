@@ -3,9 +3,12 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    10.times { @item.pictures.build }
   end
 
   def create
+    @item = Item.create(item_params)
   end
 
   def show
@@ -18,5 +21,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def item_params
   end
 end
