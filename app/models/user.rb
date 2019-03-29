@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-  
+
   enum exp_month:{"01":1, "02":2, "03":3, "04":4, "05":5,"06":6, "07":7, "08":8, "09":9, "10":10, "11":11, "12":12}
   enum exp_year:{"19":19, "20":20, "21":21, "22":22, "23":23,}
 end
