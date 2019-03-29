@@ -1,31 +1,465 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.contents{
-  width: 100vw;
+//--------------------全ページ共通設定--------------------//
+*{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
   background-color: #f5f5f5;
-  padding: 50px 100px;
-  .sidebar{
-    width: 280px;
-    .sidebar__list{
-      height: 48px;
-      line-height: 48px;
+  font-size: 1.4em;
+}
+
+a{
+  color: #0099e8;
+  text-decoration: none;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+//----------------------------------------mixinここから----------------------------------------//
+//--------------------マイページのmixin--------------------//
+@mixin right-container{
+  width: 700px;
+  float: right;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+@mixin mypage-tabs{
+  background-color: #eee;
+  font-size: 0;
+  li{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 74px;
+  }
+  li.active{
+    background-color: #fff;
+  }
+}
+
+@mixin tab-content-left{
+  display: none;
+  li{
+    height: 80px;
+    background-color: #fff;
+    border-bottom: solid 1px #eee;
+  }
+  .mypage-go-list{
+    height: 56px;
+    padding: 16px;
+    background-color: #fff;
+    a{
+      display: block;
+      line-height: 56px;
       text-align: center;
-      list-style: none;
-      background-color: #fff;
-      a{
-        color: #000;
-      }
+      background-color: #eee;
+      color: #333;
     }
   }
 }
 
+@mixin tab-content-right{
+  display: none;
+  li{
+    height: 80px;
+    background-color: #fff;
+    border-bottom: solid 1px #eee;
+  }
+  .mypage-go-list{
+    height: 56px;
+    padding: 16px;
+    background-color: #fff;
+    a{
+      display: block;
+      line-height: 56px;
+      text-align: center;
+      background-color: #eee;
+      color: #333;
+    }
+  }
+}
+//--------------------本人情報登録ページmixin--------------------//
+@mixin form-arbitrary{
+  background-color: #ccc;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+}
+@mixin input-default{
+  width: 100%;
+  height: 50px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 1.6rem;
+  box-sizing: border-box;
+}
+@mixin select-default{
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+@mixin select-wrap{
+  position: relative;
+  i{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    z-index: 2;
+    color: #888;
+    font-size: 8px;
+    transform: translate(0, -50%);
+  }
+}
+@mixin submit_button{
+  width: 100%;
+  display: block;
+  line-height: 48px;
+  font-size: 1.4rem;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+}
+
+@mixin textarea-default{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+//----------------------------------------mixinここまで----------------------------------------//
 
 
 
+//--------------------マイページ--------------------//
+.container{
+  width: 1020px;
+  margin: 40px auto;
+  .mypage{
+    width: 700px;
+    float: right;
+    &__user-icon{
+      height: 200px;
+      background-image: url(user-bg.jpg);
+      background-size: cover;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      a{
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translate(0,-50%);
+        left: 0px;
+        right: 0px;
+        color: #333;
+        figure{
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 50%;
+          overflow: hidden; 
+        }
+        h2{
+          font-size: 14px;
+        }
+        .mypage-number{
+          margin-top: 8px;
+          font-size: 0;
+          &__rate{
+            display: inline-block;
+            font-size: 1.4rem;
+          }
+          &__listings{
+            display: inline-block;
+            font-size: 1.4rem;
+            margin-left: 16px;
+          }
+        }
+      }
+    }
+    &__tab-container-notification-todo{
+      ul.mypage-tabs{
+        @include mypage-tabs
+      }
+      .tab-content{
+        ul#mypage-tab-notification{
+          @include tab-content-left
+        }
+        ul#mypage-tab-todo{
+          @include tab-content-right
+        }
+        ul#mypage-tab-notification.active{
+          display: block;
+        }
+        ul#mypage-tab-todo.active{
+          display: block;
+        }
+      }
+    }
+    &__tab-container{
+      margin-top: 40px;
+      h2{
+        padding: 0px 16px;
+        background: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+      }
+      ul.transaction-mypage-tabs{
+        @include mypage-tabs
+      }
+      .transaction-tab-content{
+        ul#mypage-tab-transaction-now{
+          @include tab-content-left
+        }
+        ul#mypage-tab-transaction-old{
+          @include tab-content-right
+        }
+        ul#mypage-tab-transaction-now.active{
+          display: block;
+        }
+        ul#mypage-tab-transaction-old.active{
+          display: block;
+        }
+      }
+    }
+  }
+  .sidebar{
+    float: left;
+    width: 280px;
+    margin-right: 40px;
+    &__list{
+      &__element{
+        a{
+          display: block;
+          padding: 16px;
+          background-color: #fff;
+          color: #333;
+          position: relative;
+          font-size: 1.3rem;
+          .fa-chevron-right{
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            right: 16px;
+            color: #ccc;
+            transition: all ease-out .2s;
+          }
+          &:hover {
+            background-color: #eee;
+            .fa-chevron-right{
+              transform: translate(10px,-50%);
+              color: #333;
+            }
+          }
+        }
+      }
+    }
+    &__head{
+      margin: 40px 0px 8px;
+    }
+  }
+}
 
-
-
-@media(max-width: 1068px){
-
+//--------------------本人情報登録ページ--------------------//
+.identification{
+  @include right-container;
+  h2.identification-head{
+    font-size: 2.4rem;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  form{
+    padding: 64px;
+    .text-right{
+      text-align: right;
+    }
+    .form-group{
+      margin-top: 40px;
+      label{
+        font-weight: 600;
+      }
+      select{
+        -webkit-appearance: none;
+      }
+      input{
+        -webkit-appearance: none;
+      }
+      .form-arbitrary{
+        @include form-arbitrary
+      }
+      .input-default{
+        @include input-default
+      }
+      .select-default{
+        @include select-default
+      }
+      .select-wrap{
+        @include select-wrap
+      }
+      .submit_button{
+        @include submit_button
+      }
+    }
+  }
+}
+//--------------------カード登録ページ--------------------//
+.card-container{
+  @include right-container;
+  &__head{
+    font-size: 2.4rem;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  form{
+    padding: 64px;
+    .l-single-content{
+      max-width: 320px;
+      margin: 0 auto;
+      .form-group{
+        &:first-child{
+          margin: 0px;
+        }
+        margin-top: 40px;
+        label{
+          font-weight: 600;
+        }
+        select{
+          -webkit-appearance: none;
+        }
+        input{
+          -webkit-appearance: none;
+        }
+        .form-arbitrary{
+          @include form-arbitrary
+        }
+        .signup-card-list{
+          margin-top: 5px;
+          li{
+            &:first-child{
+              margin: 0;
+            }
+            display: inline-block;
+            margin-left: 8px;
+          }
+        }
+        .input-default{
+          @include input-default
+        }
+        .select-default{
+          @include select-default
+        }
+        .select-wrap{
+          width: 35%;
+          margin-bottom: 5px;
+          @include select-wrap
+        }
+        .submit_button{
+          @include submit_button
+        }
+      }
+      .text-right{
+        text-align: right;
+        .form-question{
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #0099e8;
+          color: #fff;
+          line-height: 14px;
+          font-size: 12px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+//--------------------プロフィール編集ページ--------------------//
+.profile-container{
+  @include right-container;
+  .profile-container__head{
+    font-size: 2.4rem;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+  }
+  form{
+    .setting-profile-icon{
+      padding: 72px 16px 24px;
+      background: url("user-bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      img{
+        display: inline-block;
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+      input{
+        @include input-default;
+        width: 220px;
+        margin: 0 0 0 8px;
+        vertical-align: middle;
+      }
+    }
+    .setting-profile-content{
+      padding: 40px 16px;
+      textarea{
+        @include textarea-default;
+        min-height: 216px;
+      }
+      input{
+        margin-top: 40px;
+        @include submit-button;
+      }
+    }
+  }
+}
+//--------------------ログアウトページ--------------------//
+.logout-container{
+  @include right-container;
+  padding: 64px;
+  a{
+    @include submit-button;
+    width: 320px;
+    text-align: center;
+    margin: 0 auto;
+  }
 }

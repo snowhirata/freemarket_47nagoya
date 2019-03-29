@@ -66,7 +66,25 @@ gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'carrierwave', '~> 1.0.0'
+
 gem 'active_hash'
 gem 'pry-rails'
-gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
+gem 'dotenv-rails' #環境変数の設定
+
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end
+
+gem 'jquery-rails'
+gem 'active_hash'
+gem 'font-awesome-rails'

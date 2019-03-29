@@ -1,32 +1,47 @@
-.l-container
-  .l-content
-    .mypage-user-icon
-    .mypage-tab-container-notification-todo
-    .mypage-tab-container
-  %ul.l-side
-    %li.sidebar__list
-      = link_to "お知らせ","#"
-    %li.sidebar__list
-      = link_to "やることリスト","#"
-    %li.sidebar__list
-      = link_to "いいね！一覧","#"
-    %li.sidebar__list
-      = link_to "出品する","#"
-    %li.sidebar__list
-      = link_to "出品した商品-出品中-","#"
-    %li.sidebar__list
-      = link_to "出品した商品-出品中-","#"
-    %li.sidebar__list
-      = link_to "出品した商品-出品中-","#"
-    %li.sidebar__list
-      = link_to "購入した商品-出品中-","#"
-    %li.sidebar__list
-      = link_to "購入した商品-出品中-","#"
-    %li.sidebar__list
-      = link_to "ニュース一覧","#"
-    %li.sidebar__list
-      = link_to "評価一覧","#"
-    %li.sidebar__list
-      = link_to "ガイド","#"
-    %li.sidebar__list
-      = link_to "お問い合わせ","#"
+.container
+  .mypage
+    .mypage__user-icon
+      =link_to "#" do
+        %figure
+          =image_tag('member_photo_noimage_thumb.png',width:60,height:60)
+        %h2.bold snow
+        .mypage-number
+          .mypage-number__rate 評価 0
+          .mypage-number__listings 出品数 0
+    .mypage__tab-container-notification-todo
+      %ul.mypage-tabs
+        %li.active お知らせ
+        %li やることリスト
+      .tab-content
+        %ul#mypage-tab-notification.active
+          %li
+          %li
+          %li
+          %li.mypage-go-list
+            =link_to "一覧を見る","#"
+        %ul#mypage-tab-todo
+          %li
+          %li
+          %li
+          %li.mypage-go-list
+            =link_to "一覧を見る","#"
+    .mypage__tab-container
+      %h2.mypage-tab-head 購入した商品
+      %ul.transaction-mypage-tabs
+        %li.active 取引中
+        %li 過去の取引
+      .transaction-tab-content
+        %ul#mypage-tab-transaction-now.active
+          %li
+          %li
+          %li
+          %li.mypage-go-list
+            =link_to "一覧を見る","#"
+        %ul#mypage-tab-transaction-old
+          %li
+          %li
+          %li
+          %li.mypage-go-list
+            =link_to "一覧を見る","#"
+  = render partial:'sidebar'
+=javascript_include_tag 'users_show.js'
