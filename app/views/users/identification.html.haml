@@ -1,0 +1,55 @@
+.container.clearfix
+  .identification
+    %h2.identification-head 本人情報の登録
+    =form_for @user do |f|
+      %div
+        %p お客様の本人情報をご登録ください。<br>登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        %p.text-right 
+          =link_to '#' do
+            本人確認書類のアップロードについて
+            =fa_icon "chevron-right"
+      .form-group
+        =f.label :お名前
+        %p へのへの　もへじ
+      .form-group
+        =f.label :お名前カナ
+        %p へのへの　もへじ
+      .form-group
+        =f.label :生年月日
+        %p へのへの　もへじ
+      .form-group
+        =f.label :郵便番号
+        %span.form-arbitrary
+          任意
+        =f.text_field :postal_code,class: 'input-default', placeholder: '例)1234567'
+      .form-group
+        =f.label :都道府県
+        %span.form-arbitrary
+          任意
+        .select-wrap
+          =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {},class: 'select-default'
+          =fa_icon "chevron-down"
+      .form-group
+        =f.label :市区町村
+        %span.form-arbitrary
+          任意
+        =f.text_field :city,class: 'input-default', placeholder: '例)横浜市緑区'
+      .form-group
+        =f.label :番地
+        %span.form-arbitrary
+          任意
+        =f.text_field :block,class: 'input-default', placeholder: '例)青山1-1-1'
+      .form-group
+        =f.label :建物
+        %span.form-arbitrary
+          任意
+        =f.text_field :building,class: 'input-default', placeholder:'例)柳ビル103'
+      .form-group
+        =f.submit :登録する,class: 'submit_button'
+      .form-group.text-right
+        %p
+          =link_to '#' do
+            本人情報の登録について
+            =fa_icon "chevron-right"
+  = render partial:'sidebar'
+
