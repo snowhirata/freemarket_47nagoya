@@ -1,0 +1,98 @@
+.single-container
+  %header.single-header
+    %h1
+      =link_to image_tag('logo.svg'),root_path
+    %nav.progress-bar.signup-bar
+      %ol.clearfix
+        %li.active
+          会員情報
+          .progress-status
+        %li.active
+          電話番号認証
+          .progress-status
+        %li.active
+          お届け先住所入力
+          .progress-status
+        %li.active
+          支払い方法
+          .progress-status
+        %li.active
+          完了
+          .progress-status
+  %main
+    %section
+      %h2 会員情報登録
+      =form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'l-single-inner'}) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .l-single-content
+          .form-group
+            = f.label :ニックネーム
+            %span.form-require
+              必須
+            = f.text_field :nickname, autofocus: true, placeholder:'例)メルカリ太郎'
+          .form-group
+            = f.label :メールアドレス
+            %span.form-require
+              必須
+            = f.email_field :email, placeholder:'例)pc-携帯どちらでも可'
+          .form-group
+            = f.label :パスワード
+            %span.form-require
+              必須
+            = f.password_field :password, placeholder:'例)6文字以上'
+          .form-group
+            = f.label :パスワード確認
+            %span.form-require
+              必須
+            = f.password_field :password_confirmation, placeholder:'例)6文字以上'
+
+          .form-group
+            %h3.l-chapter-sub-head 本人確認
+            %p.l-single-text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+          .form-group
+            = f.label :性
+            %span.form-require
+              必須
+            = f.text_field :last_name, autofocus: true, placeholder: '例)山田'
+          .form-group
+            = f.label :名
+            %span.form-require
+              必須
+            = f.text_field :first_name, placeholder: '例)彩'
+          .form-group
+            = f.label :姓カナ
+            %span.form-require
+              必須
+            = f.text_field :last_name_kana, placeholder: '例)ヤマダ'
+          .form-group
+            = f.label :名カナ
+            %span.form-require
+              必須
+            = f.text_field :first_name_kana, placeholder: '例)アヤ'
+
+          .form-group
+            =f.label :生年月日
+            %span.form-require
+              必須
+            <br>
+            = f.date_select :birth_year, start_year: 1930, end_year: (Time.now.year - 18), default: Date.new(2000, 1, 1)
+
+
+          %p.form-info-text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+          .form-group
+            %p.l-single-text.text-center
+              「次へ進む」のボタンを押すことにより、
+              =link_to'利用規約',''
+              に同意したものとみなします
+
+          .form-group
+            = f.button "次に進む",class: 'btn-red'
+
+          .form-group.text-right
+            %p
+              =link_to'本人情報の登録について','#'
+              =fa_icon "chevron-right"

@@ -54,9 +54,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_column :users, :block, :string
     add_column :users, :building, :string
     add_column :users, :phone_number, :string
-    add_column :users, :profit, :string
-    add_column :users, :exp_month, :integer
-    add_column :users, :exp_year, :integer
     add_column :users, :profile_detail, :text
+    add_column :users, :profit, :string
+    add_column :users, :card_number, :integer
+    add_column :users, :exp_month, :string
+    add_column :users, :exp_year, :string
+    
   end
 end
