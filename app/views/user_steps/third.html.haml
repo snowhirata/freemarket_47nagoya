@@ -1,13 +1,13 @@
 .container.clearfix
-  .card-container
+  .card-container#third-card-container
     %h2.card-container__head クレジットカード情報入力
-    =form_for @user do |f|
+    = form_for @user, url: wizard_path do |f|
       .l-single-content
         .form-group
           =f.label :カード番号
           %span.form-arbitrary
             必須
-          =f.text_field :postal_code,class: 'input-default', placeholder: '例)1234567'
+          =f.text_field :card_number, class: 'input-default', placeholder: '例)1234567'
           %ul.signup-card-list
             %li
               =image_tag('visa.svg', width:49, height:20)
@@ -28,7 +28,7 @@
           %span.form-arbitrary
             必須
           .select-wrap
-            =f.select :exp_month, User.exp_months.keys,{},class: "select-default"
+            =f.select :exp_month,User.exp_months.keys,{},class: "select-default"
             =fa_icon "chevron-down"
           .select-wrap
             =f.select :exp_year, User.exp_years.keys,{},class: "select-default"
@@ -37,7 +37,7 @@
           =f.label :セキュリティコード
           %span.form-arbitrary
             必須
-          =f.text_field :city,class: 'input-default', placeholder: '例)横浜市緑区'
+          =f.text_field :city,class: 'input-default', placeholder: '例)カード背面4桁or3桁の番号'
         .text-right
           %span.form-question
             ?
@@ -45,5 +45,6 @@
             カード裏面の番号とは？
         .form-group
           =f.submit :登録する,class: 'submit_button'
-  = render partial:'sidebar'
+          = link_to 'Back', previous_wizard_path
+
       

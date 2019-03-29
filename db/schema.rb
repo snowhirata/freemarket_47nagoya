@@ -34,10 +34,11 @@ ActiveRecord::Schema.define(version: 2019_03_22_090328) do
     t.string "block"
     t.string "building"
     t.string "phone_number"
-    t.string "profit"
-    t.integer "exp_month"
-    t.integer "exp_year"
     t.text "profile_detail"
+    t.string "profit"
+    t.integer "card_number"
+    t.string "exp_month"
+    t.string "exp_year"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
