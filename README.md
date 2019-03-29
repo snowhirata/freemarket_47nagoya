@@ -42,8 +42,8 @@
 |ship-method|string|null: false|
 |ship-date|text|null: false|
 |price|integer|null:false|
-|sellar_id|integer|null: false, foreign_key: true|
-|buyer_id|integer|null: false, foreign_key: true|
+|sellar_id|references|null: false, foreign_key: true|
+|buyer_id|references|null: false, foreign_key: true|
 
 ### Assosiation
 - has_many :messages
