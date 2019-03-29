@@ -3,9 +3,16 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    10.times { @item.pictures.build }
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
+    @item = Item.create(item_params)
   end
 
   def show
@@ -19,4 +26,8 @@ class ItemsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def item_params
 end
