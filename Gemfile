@@ -84,4 +84,5 @@ end
 gem 'jquery-rails'
 gem 'active_hash'
 gem 'font-awesome-rails'
-
+gem 'wicked'
+gem 'pry-rails'
