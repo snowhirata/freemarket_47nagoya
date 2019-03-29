@@ -66,4 +66,7 @@ gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'carrierwave', '~> 1.0.0'
-
+gem 'active_hash'
+gem 'pry-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
