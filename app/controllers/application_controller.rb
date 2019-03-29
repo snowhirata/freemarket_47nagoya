@@ -5,9 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:first_name,:last_name,:first_name_kana,:last_name_kana,
-      :birth_year,:birth_month,:birth_day,:postal_code,:prefecture_id,:city,:block,:building,:phone_number,:profit,
-      :exp_month,:exp_year,:profile_detail])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:first_name,:last_name,:first_name_kana,:last_name_kana,:birth_year,:birth_month,:birth_day,:postal_code,:prefecture_id,:city,:block,:building,:phone_number,:profit,:exp_month,:exp_year,:profile_detail])
   end
 
   def basic_auth #ベーシック認証
