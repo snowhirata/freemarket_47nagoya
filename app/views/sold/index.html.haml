@@ -1,0 +1,45 @@
+.content
+  = render 'shared/second_header'
+  %main.content--main
+    .sold-form
+      %h1
+        購入を確定しますか？
+      .sold-form--img
+        .sold-form--img__in
+          %h1.img-form
+            = image_tag "https://static.mercdn.net/thumb/photos/m77112905854_1.jpg?1549103853", class:"image-form__in", width:"112px"
+          %h2.name-form
+            ミキモトコスメティックス
+          %h3.price-form
+            ¥1,700
+            %label.price-form__ship-price
+              送料込み
+          = link_to "#", class: "buy-decide-form" do
+            .buy-decide
+              %p
+                購入する
+      .sold-form--ship-region
+        .sold-form--ship-region__in
+          %h4.title
+            配送先
+          .content
+            %h5.content--place
+              〒573-1171
+            %h6.content--place
+              大阪府枚方市三栗1-1-30
+            %h7.content--place
+              大西哲平
+          = link_to "#", class: "change-content" do
+            変更する
+            %i.fa.fa-chevron-right
+      .sold-form--pay
+        .sold-form--pay__in
+          %h4.title
+            支払い方法
+          .content
+            %h6.content--place
+              \/
+          = link_to "#", class: "change-content" do
+            変更する
+            %i.fa.fa-chevron-right
+  = render 'shared/second_footer'
