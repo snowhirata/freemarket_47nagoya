@@ -83,8 +83,14 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 gem 'jquery-rails'
 gem 'active_hash'
 gem 'font-awesome-rails'
+
+gem 'wicked'
+gem 'pry-rails'
+gem 'rails-i18n'

@@ -1,103 +1,224 @@
-.signin{
+//--------------------mixin--------------------//
+@mixin input-default{
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+@mixin button-default{
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
   text-align: center;
+}
+@mixin select-default{
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+@mixin list-button-default{
   background-color: #f5f5f5;
+  text-decoration: none;
+  position: relative;
+  margin: 10px auto;
+  line-height: 50px;
+  max-width: 320px;
+  display: block;
+  i{
+    transform: translateY(-50%);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+  }
+}
+//--------------------登録方法リスト--------------------//
+.signin{
+  background-color: #f5f5f5;
+  text-align: center;
   &__panel{
-    margin:0 auto;
-    max-width: 700px;
     background-color: #fff;
+    max-width: 700px;
+    margin:0 auto;
     &__top{
-      padding: 32px 16px;
       border-bottom: solid 1px #f5f5f5;
+      padding: 32px 16px;
       h1{
-        font-size: 20px;
         font-weight: bold;
+        font-size: 20px;
         margin: 0px;
       }
     }
     &__body{
       padding: 40px;
       .m-login{
-        max-width: 320px;
-        display: block;
-        text-decoration: none;
+        @include list-button-default;
         background-color: #f5f5f5;
         color: #000;
-        margin: 10px auto;
-        line-height: 50px;
-        position: relative;
-        i{
-          position: absolute;
-          left: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
       }
       .f-login{
-        max-width: 320px;
-        display: block;
-        text-decoration: none;
+        @include list-button-default;
         background-color: #385185;
         color: #fff;
-        margin: 10px auto;
-        line-height: 50px;
-        position: relative;
-        i{
-          position: absolute;
-          left: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
       }
       .g-login{
-        margin: 10px auto;
-        max-width: 320px;
-        display: block;
-        text-decoration: none;
+        @include list-button-default;
+        border: solid 1px #f5f5f5;
         background-color: #fff;
         color: black;
-        border: solid 1px #f5f5f5;
-        line-height: 50px;
-        margin-bottom: 40px;
-        position: relative;
-        i{
-          position: absolute;
-          left: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
       }
     }
   }
   .login-footer{
     padding: 40px 0;
     &__list{
-      padding: 0px;
       list-style: none;
+      padding: 0px;
       li{
+        margin: 0 0 0 10px !important; 
+        display: inline-block;
         margin: 16px 0 0;
         a{
-          display: block;
-          color: #333;
           text-decoration: none;
           font-size: 12px;
+          display: block;
+          color: #333;
         }
       }
     }
     &__copyright{
-        display: block;
-        margin-top: 10px;
-        font-size: 10px;
+      margin-top: 10px;
+      font-size: 10px;
+      display: block;
     }
   }
 }
-@media(min-width: 768px){
-  .login-footer{
-    &__list{
-      li{
+//--------------------会員情報入力ページ--------------------//
+.single-container{
+  margin: 0 0 220px;
+  .single-header{
+    text-align: center;
+    height: 128px;
+    h1{
+      display: inline-block;
+      margin: 40px 0 0;
+      a{
         display: inline-block;
-        margin: 0 0 0 10px !important; 
+        margin: 0 8px 0 0;
+        line-height: 49px;
+        width: 185px;
+        height:49px;
+        img{
+          width: 185px;
+          height:49px;
+        }
+      }
+    }
+    nav{
+      padding: 40px 0 0 44px;
+      display: inline-block;
+      vertical-align: top;
+      ol{
+        li{
+          display: inline-block;
+          position: relative;
+          margin: 0 40px 0 0;
+          .progress-status{
+            border-radius: 50%;
+            margin: 8px auto 0;
+            background: #ccc;
+            height: 12px;
+            width: 12px;
+            &:before,&:after{
+              position: absolute;
+              background: #ccc;
+              display: block;
+              bottom: 5px;
+              z-index: -1;
+              content: '';
+              width: 100%;
+              height: 2px;
+            }
+            &:before{
+              right: 50%;
+            }
+            &:after{
+              left: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+  main{
+    background-color: #fff;
+    margin: 0 auto;
+    width: 700px;
+    section{
+      h2{
+        padding: 32px 16px;
+        text-align: center;
+        font-size: 22px;
+      }
+      .l-single-inner{
+        border-top: 1px solid #f5f5f5;
+        padding: 64px;
+        .l-single-content{
+          max-width: 320px;
+          margin: 0 auto;
+          .form-group{
+            margin: 40px 0 0;
+            &:first-child{
+              margin: 0;
+            }
+            span.form-require{
+              background-color: #ea352d;
+              border-radius: 2px;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              font-size: 12px;
+              color: #fff;
+            }
+            input{
+              @include input-default;
+              width: 100%;
+              margin: 8px 0 0;
+            }
+            select{
+              @include select-default;
+              width: 50%;
+              margin: 5px 0 0 0;
+              -webkit-appearance: none;
+            }
+            button{
+              @include button-default;
+              border: 1px solid #ea352d;
+              background-color: #ea352d;
+              color: #fff;
+            }
+            .text-center{
+              text-align: center;
+            }
+            .form-info-text{
+              color: #888;
+            }
+          }
+        }
       }
     }
   }
 }
-
