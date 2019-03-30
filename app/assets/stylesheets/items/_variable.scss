@@ -1,0 +1,36 @@
+.name-label{
+  &__name{
+    font-weight: 600;
+    font-size: 14px;
+     vertical-align: -8%;
+  }
+  &__require{
+    background-color: #ea352d;
+    padding: 2px 4px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 2px;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+}
+.select-form{
+  position: relative;
+  select{
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    background: none transparent;
+    -webkit-appearance: button;
+  }
+  .fa-chevron-down{
+    position: absolute;
+    top: 32%;
+    right: 16px;
+    font-size: 17px;
+    color: #888;
+    pointer-events: none;
+  }
+}
