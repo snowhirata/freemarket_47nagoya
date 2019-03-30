@@ -1,0 +1,37 @@
+.single__fotter{
+  height: 220px;
+  width: 456px;
+  margin: 0 auto;
+  padding: 40px 0;
+  text-align: center;
+  .navigation-bar{
+    list-style: none;
+    display: inline;
+    padding: 0;
+    .navigation-link1{
+      font-size: 12px;
+      color: #333;
+      margin-left: 0;
+    }
+    .navigation-link2{
+      font-size: 12px;
+      color: #333;
+      margin: 0 16px 0;
+    }
+    .navigation-link3{
+      font-size: 12px;
+      color: #333;
+    }
+  }
+  .single__footer__logo{
+    &__img{
+      margin: 40px 0 auto;
+    }
+  }
+  p{
+    small{
+      margin: 8px 0 0;
+      color: #333;
+    }
+  }
+}
