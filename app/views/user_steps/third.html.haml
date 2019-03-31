@@ -1,0 +1,50 @@
+.container.clearfix
+  .card-container#third-card-container
+    %h2.card-container__head クレジットカード情報入力
+    = form_for @user, url: wizard_path do |f|
+      .l-single-content
+        .form-group
+          =f.label :カード番号
+          %span.form-arbitrary
+            必須
+          =f.text_field :card_number, class: 'input-default', placeholder: '例)1234567'
+          %ul.signup-card-list
+            %li
+              =image_tag('visa.svg', width:49, height:20)
+            %li
+              =image_tag('master-card.svg', width:34, height:20)
+            %li
+              =image_tag('saison-card.svg', width:30, height:20)
+            %li
+              =image_tag('jcb.svg', width:32, height:20)
+            %li
+              =image_tag('dinersclub.svg', width:21, height:20)
+            %li
+              =image_tag('discover.svg', width:32, height:20)
+            %li
+              =image_tag('american_express.svg', width:32, height:20)
+        .form-group
+          =f.label :有効期限
+          %span.form-arbitrary
+            必須
+          .select-wrap
+            =f.select :exp_month,User.exp_months.keys,{},class: "select-default"
+            =fa_icon "chevron-down"
+          .select-wrap
+            =f.select :exp_year, User.exp_years.keys,{},class: "select-default"
+            =fa_icon "chevron-down"
+        .form-group
+          =f.label :セキュリティコード
+          %span.form-arbitrary
+            必須
+          =f.text_field :card_number,class: 'input-default', placeholder: '例)カード背面4桁or3桁の番号'
+        .text-right
+          %span.form-question
+            ?
+          =link_to '#' do
+            カード裏面の番号とは？
+        .form-group
+          =f.submit :登録する,class: 'submit_button'
+          = link_to 'Back', previous_wizard_path
+
+      

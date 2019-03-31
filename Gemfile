@@ -67,6 +67,10 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'carrierwave', '~> 1.0.0'
 
+gem 'active_hash'
+gem 'pry-rails'
+gem 'jquery-ui-rails'
+
 group :production do
   gem 'unicorn', '5.4.1'
 end
@@ -79,7 +83,15 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 gem 'jquery-rails'
-gem 'active_hash' # セレクトボックスで使用
+
+gem 'active_hash'
+gem 'font-awesome-rails'
+
+gem 'wicked'
+gem 'pry-rails'
+gem 'rails-i18n'

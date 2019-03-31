@@ -7,6 +7,8 @@
 @import "app-banner";
 @import "footer";
 @import "top_page";
-@import "sell-btn";
-@import "item-show";
 
+@import "./sell-btn";
+@import "items/new.scss";
+@import "shared/second_footer.scss";
+@import "shared/second_header.scss";

@@ -39,3 +39,12 @@
                 =link_to "" do
                   %i.fa.fa-check
                   %span やることリスト
+                  =link_to "ログアウト",destroy_user_session_path,method: :delete
+                  =link_to "新規会員登録",sign_up_list_path
+                  %p.user_name
+                    - if user_signed_in?
+                      = current_user.nickname
+:css
+  .user_name{
+  font-size: 14px;
+  }
