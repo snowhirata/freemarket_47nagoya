@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_03_31_010024) do
 
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -81,25 +80,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_010024) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_name_kana"
-    t.string "last_name_kana"
-    t.date "birth_year"
-    t.date "birth_month"
-    t.date "birth_day"
-    t.integer "postal_code"
-    t.integer "prefecture_id"
-    t.string "city"
-    t.string "block"
-    t.string "building"
-    t.string "phone_number"
-    t.text "profile_detail"
-    t.string "profit"
-    t.integer "card_number"
-    t.string "exp_month"
-    t.string "exp_year"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
