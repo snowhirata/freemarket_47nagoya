@@ -25,21 +25,22 @@ class User < ApplicationRecord
   validates :last_name_kana, presence: true
   validates :birth_year, presence: true
 
+  has_one :credential
+
   #facebook認証
   def self.find_for_oauth(auth)
     user = Credential.where(uid: auth.uid, provider: auth.provider).first
  
     unless user
-      user = Credential.new(
+      user = User.new(
         nickname: auth.extra.raw_info.name,
-        uid:      auth.uid,
-        provider: auth.provider,
         email:    auth.info.email,
         password: Devise.friendly_token[0, 20]
       )
       user.save(:validate => false)
+      credential = Credential.new(user_id: user.id, uid: auth.uid, provider: auth.provider)
+      credential.save
     end
- 
     user
   end
 
