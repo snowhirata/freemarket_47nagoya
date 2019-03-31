@@ -1,0 +1,228 @@
+= render 'header'
+
+%section.item-box-container.l-single-container
+  %h1.item-name
+    ロングカーディガン
+  .item-main-content.clearfix
+    .item-photo
+      .owl-carousel
+        .owl-item-inner
+          %img{alt: "", src: "https://static.mercdn.net/item/detail/orig/photos/m88536009874_1.jpg?1552369422", class: "owl-lazy"}
+          %img{alt: "", src: "https://static.mercdn.net/item/detail/orig/photos/m88536009874_2.jpg?1552339575", class: "owl-lazy"}
+          %img{alt: "", src: "https://static.mercdn.net/item/detail/orig/photos/m88536009874_3.jpg?1552339575", class: "owl-lazy"}
+          %img{alt: "", src: "https://static.mercdn.net/item/detail/orig/photos/m88536009874_4.jpg?1552339575", class: "owl-lazy"}
+
+
+    %table.item-detail-table
+      %tbody
+        %tr
+          %th 出品者
+          %td
+            = link_to "" do
+              %span miyu
+            .item-user-rates
+              .item-user-rates__ratings
+                =fa_icon "smile-o", class: "smile-o-pink"
+                %span 523
+              .item-user-rates__ratings
+                =fa_icon "meh-o", class: "meh-o-orange"
+                %span 1
+              .item-user-rates__ratings
+                =fa_icon "frown-o", class: "frown-o-blue"
+                %span 0
+        %tr
+          %th カテゴリー
+          %td
+            = link_to "" do
+              %span レディース
+            = link_to "" do
+              .item-detail-table-sub-category
+                %i.fa.fa-angle-right
+                %span トップス
+            = link_to "" do
+              .item-detail-table-sub-sub-category
+                %i.fa.fa-angle-right
+                %span カーディガン/ボレロ
+        %tr
+          %th ブランド
+          %td
+            = link_to "" do
+              %span イング
+        %tr
+          %th 商品のサイズ
+          %td
+            M
+        %tr
+          %th 商品の状態
+          %td
+            目立った傷や汚れなし
+        %tr
+          %th 配送料の負担
+          %td
+            送料込み(出品者負担)
+        %tr
+          %th 配送の方法
+          %td
+            未定
+        %tr
+          %th 配送元地域
+          %td
+            = link_to "" do
+              %span 鹿児島県
+        %tr
+          %th 発送日の目安
+          %td
+            4~7日で発送
+
+  .item-price-box.text-center
+    %span.item-price.bold
+      ¥888
+    %span.item-tax (税込)
+    %span.item-shipping-fee 送料込み
+  = link_to "", class: "item-buy-btn" do
+    購入画面に進む
+
+  .item-description.f14
+    %p.item-description__inner
+      目立ったキズや汚れなし。
+      数回着用の美品です。
+
+  .item-button-container.clearfix
+    .item-button-left
+      %button.item-button.item-button-like
+        %i.fa.fa-heart-o
+        %span いいね!
+        %span.fade-in-down 2
+      %button.item-button.item-button-report.clearfix
+        %i.fa.fa-flag
+        %span 不適切な商品の報告
+    .item-button-right
+      = link_to "" do
+        %i.fa.fa-lock
+        %span あんしん・あんぜんへの取り組み
+
+.item-detail-message
+  .message-container
+    .message-content
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea.textarea-default{name: "body", type: "text", value: ""}
+      %button.message-submit.btn-default.btn-gray{type: "submit"}
+        %span コメントする
+
+%ul.nav-item-link-prev-next.clearfix
+  %li.nav-item-link-prev
+    = link_to root_path do
+      %i.fa.fa-angle-left
+      %span 【縦7cm横14cm】THE NORTH  FACEカッティングステッカー 二枚
+  %li.nav-item-link-next
+    = link_to root_path do
+      %span ロデオクラウンズ♡ロングワンピース
+      %i.fa.fa-angle-right
+
+.item-social-media-box
+  .text-center
+    .fb-save
+  %ul.social-media-box
+    %li.social-media-box__icon
+      = link_to root_path do
+        = fa_icon "facebook-square", class: "facebook"
+    %li.social-media-box__icon
+      = link_to root_path do
+        = fa_icon "twitter", class: "twitter"
+    %li.social-media-box__icon
+      = link_to root_path do
+        = fa_icon "pinterest", class: "pinterest"
+
+.items-in-user-profile
+  %section.items-box-container.clearfix.items-box-overflow.items-in-user-profile
+    %h2.items-box-head
+      = link_to 'miyuさんのその他の出品', root_path
+    .items-box-content.clearfix
+      %section.items-box
+        = link_to root_path do
+          .items-box-photo
+            %img{ src: "https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208", width: "220px"}
+          .items-box-body
+            %h3.items-box-name ビジュー ニット
+            .items-box-num.clearfix
+              .items-box-price
+                ¥ 999
+                %p.item-box-tax (税込)
+              .items-box-likes
+                =fa_icon "heart-o", class: "heart"
+                %span 3
+      %section.items-box
+        = link_to root_path do
+          .items-box-photo
+            %img{ src: "https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208", width: "220px"}
+          .items-box-body
+            %h3.items-box-name ビジュー ニット
+            .items-box-num.clearfix
+              .items-box-price
+                ¥ 999
+                %p.item-box-tax (税込)
+              .items-box-likes
+                =fa_icon "heart-o", class: "heart"
+                %span 3
+      %section.items-box
+        = link_to root_path do
+          .items-box-photo
+            %img{ src: "https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208", width: "220px"}
+          .items-box-body
+            %h3.items-box-name ビジュー ニット
+            .items-box-num.clearfix
+              .items-box-price
+                ¥ 999
+                %p.item-box-tax (税込)
+              .items-box-likes
+                =fa_icon "heart-o", class: "heart"
+                %span 3
+
+.items-in-user-profile
+  %h2.items-box-head
+    = link_to "イングのカーディガン/ボレロ その他の商品", root_path
+  .items-box-content.clearfix
+    %section.items-box
+      = link_to root_path do
+        .items-box-photo
+          %img{ src: "https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208", width: "220px"}
+        .items-box-body
+          %h3.items-box-name ビジュー ニット
+          .items-box-num.clearfix
+            .items-box-price
+              ¥ 999
+              %p.item-box-tax (税込)
+            .items-box-likes
+              =fa_icon "heart-o", class: "heart"
+              %span 3
+    %section.items-box
+      = link_to root_path do
+        .items-box-photo
+          %img{ src: "https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208", width: "220px"}
+        .items-box-body
+          %h3.items-box-name ビジュー ニット
+          .items-box-num.clearfix
+            .items-box-price
+              ¥ 999
+              %p.item-box-tax (税込)
+            .items-box-likes
+              =fa_icon "heart-o", class: "heart"
+              %span 3
+    %section.items-box
+      = link_to root_path do
+        .items-box-photo
+          %img{ src: "https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208", width: "220px"}
+        .items-box-body
+          %h3.items-box-name ビジュー ニット
+          .items-box-num.clearfix
+            .items-box-price
+              ¥ 999
+              %p.item-box-tax (税込)
+            .items-box-likes
+              =fa_icon "heart-o", class: "heart"
+              %span 3
+
+
+
+= render 'app-banner'
+= render 'footer'
