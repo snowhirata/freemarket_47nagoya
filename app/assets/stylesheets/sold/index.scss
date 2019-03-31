@@ -1,0 +1,118 @@
+.content{
+  &--main{
+    .sold-form{
+      width: 700px;
+      margin: 0 auto;
+      h1{
+        padding: 32px 16px;
+        font-size: 22px;
+        text-align: center;
+        background-color: #ffffff;
+        font-weight: bold;
+        margin-bottom: 1px;
+      }
+      &--img{
+        padding: 40px;
+        width: 700px;
+        background-color: #ffffff;
+        margin-bottom: 1px;
+        &__in{
+          max-width: 320px;
+          margin: 0 auto;
+          .img-form{
+            text-align: center;
+            padding: 0;
+            &__in{
+            }
+          }
+          .name-form{
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 8px 0 0;
+          }
+          .price-form{
+            margin: 8px 0 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 28px;
+            &__ship-price{
+              font-size: 14px;
+              font-weight: 400;
+              margin-left: 8px;
+            }
+          }
+          .buy-decide-form{
+            .buy-decide{
+              color: #ffffff;
+              background-color: #ea352d;
+              font-size: 15px;
+              height: 50px;
+              width: 100%;
+              background-color: #ea352d;
+              text-decoration: none;
+              vertical-align: middle;
+              position: relative;
+              margin-top: 14px;
+              p{
+                position: absolute;
+                top: 14px;
+                left: 130px;
+              }
+            }
+          }
+        }
+      }
+      &--ship-region{
+        width: 700px;
+        background-color: #ffffff;
+        margin-bottom: 1px;
+        &__in{
+          padding: 30px 0;
+          max-width: 320px;
+          margin: 0 auto;
+          .title{
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .content{
+            margin-top: 10px;
+            &--place{
+              font-size: 14px;
+            }
+          }
+          .change-content{
+            font-size: 14px;
+            margin-left: 204px;
+            color: #0099e8;
+          }
+        }
+      }
+      &--pay{
+        width: 700px;
+        background-color: #ffffff;
+        margin-bottom: 1px;
+        &__in{
+          padding: 30px 0;
+          max-width: 320px;
+          margin: 0 auto;
+          .title{
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .content{
+            margin-top: 10px;
+            &--place{
+              font-size: 14px;
+            }
+          }
+          .change-content{
+            font-size: 14px;
+            margin-left: 204px;
+            color: #0099e8;
+          }
+        }
+      }
+    }
+  }
+}
