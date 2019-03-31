@@ -4,9 +4,11 @@ class Credential < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-  validates :email, presence: true
-  validates :uid, presence: true
-  validates :provider, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :email
+    validates :uid
+    validates :provider
+  end
 
 end
