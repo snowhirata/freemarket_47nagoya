@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_010024) do
-
+ActiveRecord::Schema.define(version: 2019_03_31_081907) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -29,20 +28,12 @@ ActiveRecord::Schema.define(version: 2019_03_31_010024) do
   end
 
   create_table "credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.string "uid"
+    t.string "provider"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname"
-    t.string "provider"
-    t.string "uid"
-    t.index ["email"], name: "index_credentials_on_email", unique: true
-    t.index ["provider"], name: "index_credentials_on_provider"
-    t.index ["reset_password_token"], name: "index_credentials_on_reset_password_token", unique: true
-    t.index ["uid"], name: "index_credentials_on_uid"
+    t.index ["user_id"], name: "index_credentials_on_user_id"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -106,5 +97,6 @@ ActiveRecord::Schema.define(version: 2019_03_31_010024) do
 
   add_foreign_key "category_items", "categories"
   add_foreign_key "category_items", "items"
+  add_foreign_key "credentials", "users"
   add_foreign_key "pictures", "items"
 end
