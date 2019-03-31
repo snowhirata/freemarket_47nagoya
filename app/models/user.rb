@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook,:google_oauth2]
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
@@ -23,5 +23,23 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :last_name_kana, presence: true
   validates :birth_year, presence: true
+
+  #facebook認証
+  def self.find_for_oauth(auth)
+    user = Credential.where(uid: auth.uid, provider: auth.provider).first
+ 
+    unless user
+      user = Credential.new(
+        nickname: auth.extra.raw_info.name,
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
+      user.save(:validate => false)
+    end
+ 
+    user
+  end
 
 end
