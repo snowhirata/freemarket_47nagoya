@@ -87,15 +87,15 @@
   .item-button-container.clearfix
     .item-button-left
       %button.item-button.item-button-like
-        %i.fa.fa-heart-o
+        =fa_icon "heart-o", class: "heart"
         %span いいね!
         %span.fade-in-down 2
       %button.item-button.item-button-report.clearfix
-        %i.fa.fa-flag
+        =fa_icon "flag"
         %span 不適切な商品の報告
     .item-button-right
       = link_to "" do
-        %i.fa.fa-lock
+        =fa_icon "lock"
         %span あんしん・あんぜんへの取り組み
 
 .item-detail-message
