@@ -7,10 +7,10 @@
       = link_to new_user_registration_path,class: "m-login" do
         %i.fa.fa-envelope
         メールアドレスで登録
-      = link_to "#",class: "f-login" do
+      = link_to user_facebook_omniauth_authorize_path, class: "f-login" do
         %i.fa.fa-facebook
         Facebookで登録
-      = link_to "#",class: "g-login" do
+      = link_to user_google_oauth2_omniauth_authorize_path, class: "g-login" do
         %i.fa.fa-google
         Googleで登録
   .login-footer
