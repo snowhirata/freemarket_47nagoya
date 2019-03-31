@@ -2,14 +2,14 @@ footer.global-footer {
   text-align: left;
   padding: 0 20px 10px 20px;
   background: #212121;
-  color: #fff;
+  color: $white;
   nav {
     width: 1020px;
     height: 391px;
     margin: 0 auto;
     display: flex;
     a {
-      color: #fff;
+      color: $white;
     }
     .footer-cell {
       display: block;
@@ -19,7 +19,7 @@ footer.global-footer {
       // width: 25%;
       vertical-align: top;
       .footer-head {
-        color: #fff;
+        color: $white;
         font-size: 16px;
         font-weight: 100;
         line-height: 1.4;
@@ -31,7 +31,7 @@ footer.global-footer {
         }
         li {
           margin: 16px 16px 16px 0;
-          color: #fff;
+          color: $white;
           line-height: 1.4;
           white-space: nowrap;
           a{

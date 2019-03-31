@@ -87,6 +87,7 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 gem 'jquery-rails'
+
 gem 'active_hash'
 gem 'font-awesome-rails'
 gem 'wicked'
