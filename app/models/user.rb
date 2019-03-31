@@ -6,8 +6,9 @@ class User < ApplicationRecord
   has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook,:google_oauth2]
-
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         :omniauth_providers => [:facebook,:google_oauth2]
+  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
