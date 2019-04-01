@@ -90,7 +90,6 @@ gem 'jquery-rails'
 
 gem 'active_hash'
 gem 'font-awesome-rails'
-gem 'wicked'
 gem 'pry-rails'
 gem 'rails-i18n'
 gem 'omniauth'

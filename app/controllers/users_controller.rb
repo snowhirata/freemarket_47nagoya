@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :identification, :register_card, :profile, :logout]
-  def index
-  end
 
   def show
   end
@@ -16,6 +14,9 @@ class UsersController < ApplicationController
   end
 
   def logout
+  end
+
+  def list
   end
 
   private
