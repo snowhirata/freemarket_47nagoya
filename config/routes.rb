@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root 'items#index'
 
   resources :items  do
@@ -12,15 +11,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
-
   }
 
-  devise_scope :user do
-    get 'sign_up/list' => 'users/registrations#list'
-    get 'sign_up/address' => 'users/registrations#address'
-    get 'sign_up/card' => 'users/registrations#card'
-    get 'sign_up/complete' => 'users/registrations#complete'
-  end
+  get 'list' => 'users#list'
 
   resources :users, only: [:index, :show] do
     member do
@@ -30,7 +23,5 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-
-  resources :user_steps, only: [:index, :show, :update]
 
 end
