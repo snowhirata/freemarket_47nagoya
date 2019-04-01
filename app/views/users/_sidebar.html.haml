@@ -1,7 +1,7 @@
 .sidebar
   %ul.sidebar__list
     %li.sidebar__list__element
-      = link_to "#" do
+      = link_to identification_user_path do
         マイページ
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
@@ -69,7 +69,7 @@
   %h3.sidebar__head 設定
   %ul.sidebar__list
     %li.sidebar__list__element
-      = link_to "#" do
+      = link_to profile_user_path do
         プロフィール
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
@@ -77,7 +77,7 @@
         発送元・お届け先住所変更
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to "#" do
+      = link_to register_card_user_path do
         支払い方法
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
@@ -85,7 +85,7 @@
         メール/パスワード
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to "#" do
+      = link_to user_path do
         本人情報
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
@@ -93,7 +93,7 @@
         電話番号の確認
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to "#" do
+      = link_to logout_user_path do
         ログアウト
         %i.fa.fa-chevron-right
         
