@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_081907) do
     t.integer "card_number"
     t.string "exp_month"
     t.string "exp_year"
+    t.integer "security_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
