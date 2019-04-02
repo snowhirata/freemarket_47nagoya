@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   #facebook認証
   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+    user = Credential.where(uid: auth.uid, provider: auth.provider).first
  
     unless user
       user = User.new(
