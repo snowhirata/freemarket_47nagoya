@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true
-  validates :password, presence: true, length: {minimum:6}, length: {maximum:10}
+  validates :password, presence: true
   validates :password_confirmation, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -28,21 +28,19 @@ class User < ApplicationRecord
   validates :birth_year, presence: true
 
   #facebook認証
-  def self.find_for_oauth(auth)
+  def self.from_omniauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
- 
+
     unless user
       user = User.new(
-        nickname: auth.extra.raw_info.name,
+        uid:      auth.uid,
+        provider: auth.provider,
+        nickname: auth.info.name,
         email:    auth.info.email,
         password: Devise.friendly_token[0, 20]
       )
-      user.save(:validate => false)
-      credential = Credential.new(user_id: user.id, uid: auth.uid, provider: auth.provider)
-      credential.save
+      user.save!(validate: false)
     end
- 
     user
   end
-
 end
