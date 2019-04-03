@@ -29,18 +29,27 @@ class User < ApplicationRecord
 
   #facebook認証
   def self.from_omniauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    unless user
-      user = User.new(
-        uid:      auth.uid,
-        provider: auth.provider,
-        nickname: auth.info.name,
-        email:    auth.info.email,
-        password: Devise.friendly_token[0, 20]
-      )
-      user.save!(validate: false)
-    end
-    user
+      if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
+        user = credential.user
+      end
+
+      unless credential
+        user = User.new(
+          nickname: auth.info.name,
+          email:    auth.info.email,
+          password: Devise.friendly_token[0, 20]
+        )
+        user.save(validate: false)
+
+        credential = Credential.new(
+          uid:      auth.uid,
+          provider: auth.provider,
+          user_id:  user.id
+        )
+        credential.save
+      end
+      binding.pry
+      user
   end
 end
