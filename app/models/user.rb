@@ -49,7 +49,6 @@ class User < ApplicationRecord
         )
         credential.save
       end
-      binding.pry
       user
   end
 end
