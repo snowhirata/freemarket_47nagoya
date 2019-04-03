@@ -2,15 +2,16 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  has_one :credential
 
-  has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
-  has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
+  # has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
+  # has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
+  # itemとuserのアソシエーション　user設定完了時追加
+  has_one :credential
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook,:google_oauth2]
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
