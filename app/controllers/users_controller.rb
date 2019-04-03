@@ -18,6 +18,9 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def list
+  end
+  
   private
 
   def set_user
