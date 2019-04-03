@@ -32,9 +32,7 @@ class User < ApplicationRecord
 
       if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
         user = credential.user
-      end
-
-      unless credential
+      else credential
         user = User.new(
           nickname: auth.info.name,
           email:    auth.info.email,
@@ -49,6 +47,5 @@ class User < ApplicationRecord
         )
         credential.save
       end
-      user
   end
 end
