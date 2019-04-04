@@ -18,7 +18,11 @@ class UsersController < ApplicationController
 
   def list
   end
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/master
   private
 
   def set_user

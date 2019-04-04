@@ -102,6 +102,53 @@
           margin-left: 220px;
           width: 400px;
           @import "variable";
+          .brand-state{
+            margin-top: 40px;
+            .name-label{
+              &__name{
+                font-weight: 600;
+                font-size: 14px;
+                 vertical-align: -8%;
+              }
+              &__require{
+                background-color: #ccc;
+                padding: 2px 4px;
+                color: #fff;
+                font-size: 12px;
+                border-radius: 2px;
+                font-weight: 600;
+                margin-left: 6px;
+              }
+            }
+            .select-form{
+              position: relative;
+              select{
+                height: 48px;
+                padding: 0 16px;
+                border-radius: 4px;
+                font-size: 16px;
+                width: 100%;
+                background: none transparent;
+                -webkit-appearance: button;
+              }
+              .fa-chevron-down{
+                position: absolute;
+                top: 32%;
+                right: 16px;
+                font-size: 17px;
+                color: #888;
+                pointer-events: none;
+              }
+            }
+            .brand-form{
+              font-size: 14px;
+              width: 100%;
+              height: 48px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              padding: 10px 16px 8px;
+            }
+          }
           .item-state{
             margin-top: 40px;
             @import "variable";
@@ -123,6 +170,10 @@
           margin-left: 220px;
           width: 400px;
           @import "variable";
+          .item-ship_method{
+            margin-top: 40px;
+            @import "variable";
+          }
           .item-charge{
             margin-top: 40px;
             @import "variable";
@@ -187,6 +238,7 @@
             }
             &--right{
               float: right;
+              font-size: 14px;
             }
           }
           .profit-label{

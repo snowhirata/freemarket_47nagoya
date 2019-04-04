@@ -4,21 +4,21 @@
       =link_to image_tag('logo.svg'),root_path
     %nav.progress-bar.signup-bar
       %ol.clearfix
-        %li.active
+        %li
           会員情報
-          .progress-status
-        %li.active
+          .progress-status.active#step1
+        %li
           電話番号認証
-          .progress-status
-        %li.active
+          .progress-status#step2
+        %li
           お届け先住所入力
-          .progress-status
-        %li.active
+          .progress-status#step3
+        %li
           支払い方法
-          .progress-status
-        %li.active
+          .progress-status#step4
+        %li
           完了
-          .progress-status
+          .progress-status#step5
   %main
     %section
       %h2 会員情報登録
@@ -96,6 +96,10 @@
             %p
               =link_to'本人情報の登録について','#'
               =fa_icon "chevron-right"
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         .l-single-content#second-form
           .form-group
             = f.label :郵便番号
@@ -174,5 +178,20 @@
               カード裏面の番号とは？
           .form-group
             =f.submit :登録する,class: 'submit_button'
+<<<<<<< HEAD
 
 =javascript_include_tag 'registrations_new.js'
+=======
+        
+        %section#forth-form
+          %h2 会員情報登録完了
+          .l-single-content
+            .form-group
+              .text-center
+                ありがとうございます。<br>
+                会員登録が完了しました。
+            .form-group
+              = f.button "メルカリをはじめる！",type: :button,class: 'btn-red',id: 'ivent-button3'
+
+=javascript_include_tag 'registrations_new.js'
+>>>>>>> origin/master

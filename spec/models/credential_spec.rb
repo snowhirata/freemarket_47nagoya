@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe Credential do 
   describe '#create' do
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/master
     it "uidが空は保存させない" do
       credential = build(:credential, uid: nil)
       credential.valid?
