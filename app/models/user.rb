@@ -1,9 +1,6 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_one :credential
-
   has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
   has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
 
@@ -25,27 +22,38 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
   validates :last_name_kana, presence: true
-  validates :birth_year, presence: true
+  validates :birth_year,presence: true
+
+  validates :postal_code, presence: true
+  validates :prefecture_id, presence: true
+  validates :city, presence: true
+  validates :block, presence: true
+  validates :building, presence: true
+  validates :phone_number, presence: true
+
+  validates :card_number, presence: true
+  validates :exp_month, presence: true
+  validates :exp_year, presence: true
+  validates :security_code, presence: true
 
   #facebook認証
   def self.from_omniauth(auth)
+    if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
+      user = credential.user
+    else credential
+      user = User.new(
+        nickname: auth.info.name,
+        email:    auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
+      user.save(validate: false)
 
-      if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
-        user = credential.user
-      else credential
-        user = User.new(
-          nickname: auth.info.name,
-          email:    auth.info.email,
-          password: Devise.friendly_token[0, 20]
-        )
-        user.save(validate: false)
-
-        credential = Credential.new(
-          uid:      auth.uid,
-          provider: auth.provider,
-          user_id:  user.id
-        )
-        credential.save
-      end
+      credential = Credential.new(
+        uid:      auth.uid,
+        provider: auth.provider,
+        user_id:  user.id
+      )
+      credential.save
+    end
   end
 end

@@ -1,0 +1,52 @@
+.single-container
+  %main
+    %section
+      %h2 会員情報登録
+      =form_for(resource, url: third_path, html: {class: 'l-single-inner'}) do |f|
+        .l-single-content#second-form
+          .form-group
+            = f.label :郵便番号
+            %span.form-require
+              必須
+            = f.text_field :postal_code, placeholder:'例)123-4567'
+            - if resource.errors.full_messages_for(:postal_code) != []
+              郵便番号を入力してください
+          .form-group
+            =f.label :都道府県
+            %span.form-arbitrary
+              任意
+            .select-wrap
+              =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {},class: 'select-default'
+              =fa_icon "chevron-down"
+            - if resource.errors.full_messages_for(:prefecture_id) != []
+              都道府県を洗濯してください
+          .form-group
+            = f.label :市区町村
+            %span.form-require
+              必須
+            = f.text_field :city, placeholder:'例)横浜市緑区'
+            - if resource.errors.full_messages_for(:city) != []
+              市区町村を入力してください
+          .form-group
+            = f.label :番地
+            %span.form-require
+              必須
+            = f.text_field :block, placeholder: '例)青山1-1-1'
+            - if resource.errors.full_messages_for(:block) != []
+              番地を入力してください
+          .form-group
+            = f.label :建物名
+            %span.form-require
+              必須
+            = f.text_field :building, placeholder: '例)柳ビル103'
+            - if resource.errors.full_messages_for(:building) != []
+              建物名を入力してください
+          .form-group
+            = f.label :電話番号
+            %span.form-require
+              必須
+            = f.text_field :phone_number, placeholder: '例)09012345678'
+            - if resource.errors.full_messages_for(:phone_number) != []
+              電話番号を入力してください
+          .form-group
+            = f.submit "次へ進む",class: 'btn-red',id: 'ivent-button2'

@@ -1,0 +1,56 @@
+.single-container
+  %main
+    %section
+      %h2 会員情報登録
+      =form_for(resource, url: forth_path, html: {class: 'l-single-inner'}) do |f|   
+        .l-single-content#third-form
+          .form-group
+            =f.label :カード番号
+            %span.form-arbitrary
+              必須
+            =f.text_field :card_number, class: 'input-default', placeholder: '例)1234567'
+            - if resource.errors.full_messages_for(:card_number) != []
+              カード番号を入力してください
+            %ul.signup-card-list
+              %li
+                =image_tag('visa.svg', width:49, height:20)
+              %li
+                =image_tag('master-card.svg', width:34, height:20)
+              %li
+                =image_tag('saison-card.svg', width:30, height:20)
+              %li
+                =image_tag('jcb.svg', width:32, height:20)
+              %li
+                =image_tag('dinersclub.svg', width:21, height:20)
+              %li
+                =image_tag('discover.svg', width:32, height:20)
+              %li
+                =image_tag('american_express.svg', width:32, height:20)
+          .form-group
+            =f.label :有効期限
+            %span.form-arbitrary
+              必須
+            .select-wrap
+              =f.select :exp_month,User.exp_months.keys,{},class: "select-default"
+              =fa_icon "chevron-down"
+              - if resource.errors.full_messages_for(:exp_month) != []
+                有効期限(月)を入力してください
+            .select-wrap
+              =f.select :exp_year, User.exp_years.keys,{},class: "select-default"
+              =fa_icon "chevron-down"
+              - if resource.errors.full_messages_for(:exp_year) != []
+                有効期限(日)を入力してください
+          .form-group
+            =f.label :セキュリティコード
+            %span.form-arbitrary
+              必須
+            =f.text_field :security_code,class: 'input-default', placeholder: '例)カード背面4桁or3桁の番号'
+            - if resource.errors.full_messages_for(:security_code) != []
+              セキュリティコードを入力してください
+          .text-right
+            %span.form-question
+              ?
+            =link_to '#' do
+              カード裏面の番号とは？
+          .form-group
+            = f.submit :登録する,class: 'submit_button',id: 'ivent-button3'

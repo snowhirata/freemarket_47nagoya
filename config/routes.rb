@@ -15,6 +15,16 @@ Rails.application.routes.draw do
 
   get 'list' => 'users#list'
 
+  devise_scope :user do
+    get 'second' => 'users/registrations#new'
+    get 'third' => 'users/registrations#new'
+    get 'forth' => 'users/registrations#new'
+
+    post 'second' => 'users/registrations#second'
+    post 'third' => 'users/registrations#third'
+    post 'forth' => 'users/registrations#forth'
+  end    
+
   resources :users, only: [:index, :show] do
     member do
       get 'identification'
