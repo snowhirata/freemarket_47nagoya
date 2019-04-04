@@ -154,3 +154,22 @@
     }
   }
 }
+
+.sold-badge {
+  position: absolute;
+  border-right: 90px solid transparent;
+  border-bottom: 90px solid transparent;
+  border-left: 90px solid $red;
+  color: #fff;
+  font-size: 26px;
+}
+.SOLD {
+  position: absolute;
+  top: 20;
+  left: -100;
+  right: 10;
+  transform: rotate(-45deg);
+  font-weight: 600;
+
+}
+
