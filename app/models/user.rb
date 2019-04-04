@@ -2,15 +2,16 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  has_one :credential
 
-  has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
-  has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
+  # has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
+  # has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
+  # itemとuserのアソシエーション　user設定完了時追加
+  has_one :credential
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook,:google_oauth2]
-  
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
@@ -19,7 +20,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true
-  validates :password, presence: true, length: {minimum:6}, length: {maximum:10}
+  validates :password, presence: true
   validates :password_confirmation, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -28,21 +29,24 @@ class User < ApplicationRecord
   validates :birth_year, presence: true
 
   #facebook認証
-  def self.find_for_oauth(auth)
-    user = Credential.where(uid: auth.uid, provider: auth.provider).first
- 
-    unless user
-      user = User.new(
-        nickname: auth.extra.raw_info.name,
-        email:    auth.info.email,
-        password: Devise.friendly_token[0, 20]
-      )
-      user.save(:validate => false)
-      credential = Credential.new(user_id: user.id, uid: auth.uid, provider: auth.provider)
-      credential.save
-    end
- 
-    user
-  end
+  def self.from_omniauth(auth)
 
+      if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
+        user = credential.user
+      else credential
+        user = User.new(
+          nickname: auth.info.name,
+          email:    auth.info.email,
+          password: Devise.friendly_token[0, 20]
+        )
+        user.save(validate: false)
+
+        credential = Credential.new(
+          uid:      auth.uid,
+          provider: auth.provider,
+          user_id:  user.id
+        )
+        credential.save
+      end
+  end
 end

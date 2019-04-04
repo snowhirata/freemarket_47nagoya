@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_102035) do
+ActiveRecord::Schema.define(version: 2019_04_02_035246) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,14 +41,11 @@ ActiveRecord::Schema.define(version: 2019_04_01_102035) do
     t.text "description"
     t.string "brand"
     t.string "state", null: false
-    t.integer "category_id"
-    t.integer "prefecture_id"
+    t.integer "prefecture_id", null: false
     t.string "ship_charge", null: false
-    t.string "ship_method", null: false
+    t.string "ship_method"
     t.string "ship_date", null: false
     t.integer "price", null: false
-    t.integer "seller_id"
-    t.integer "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_items_on_name"
@@ -59,8 +56,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_102035) do
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "item"
-    t.string "references"
     t.index ["item_id"], name: "index_pictures_on_item_id"
   end
 
@@ -72,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_102035) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
     t.string "nickname"
     t.string "first_name"
     t.string "last_name"
@@ -92,6 +88,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_102035) do
     t.integer "security_code"
     t.string "exp_month"
     t.string "exp_year"
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

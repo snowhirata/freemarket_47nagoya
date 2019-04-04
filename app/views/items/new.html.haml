@@ -15,10 +15,9 @@
             %p
               最大10枚までアップロードできます
             .img_file_field
-              = f.fields_for :pictures do |picture|
+              = f.fields_for :pictures do |p|
                 %label.img_file_field__in
-                  = picture.file_field :image, class: 'hidden', multiple: "true"
-                <br>
+                  = p.file_field :image
         .sell-form--item
           .sell-form--item__name
             .name-label
@@ -44,9 +43,15 @@
               %label.name-label__require
                 必須
             .select-form
-              = f.fields_for :categories do |i|
-                = i.select :name, [["---", "---"],["レディース", "レディース"],["メンズ","メンズ"],["ベビー・キッズ","ベビー・キッズ"],["インテリア・住まい・小物","インテリア・住まい・小物"],["本・音楽・ゲーム", "本・音楽・ゲーム"],["おもちゃ・ホビーグッズ","おもちゃ・ホビーグッズ"],["コスメ・香水・美容","コスメ・香水・美容"],["家電・スマホ・カメラ","家電・スマホ・カメラ"],["スポーツ・レジャー","スポーツ・レジャー"],["ハンドメイド","ハンドメイド"],["チケット","チケット"],["自転車・オートバイ","自転車・オートバイ"],["その他","その他"]]
-              %i.fa.fa-chevron-down
+              = f.fields_for :category_items do |i|
+                = i.collection_select :category_id, Category.all, :id, :name
+            .brand-state
+              .name-label
+                %label.name-label__name
+                  ブランド
+                %label.name-label__require
+                  任意
+              = f.text_field :brand, class: 'brand-form', placeholder: '例）シャネル'
             .item-state
               .name-label
                 %label.name-label__name
@@ -54,7 +59,7 @@
                 %label.name-label__require
                   必須
               .select-form
-                = f.select :name, [["---", "---"],["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]]
+                = f.select :state, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], prompt: "---"
                 %i.fa.fa-chevron-down
         .sell-form--ship
           %label.sell-form--ship__name
@@ -66,8 +71,17 @@
               %label.name-label__require
                 必須
             .select-form
-              = f.select :ship_charge, [["---", "---"],["送料こみ(出品者負担)", "送料こみ(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]]
+              = f.select :ship_charge, [["送料こみ(出品者負担)", "送料こみ(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], prompt: "---"
               %i.fa.fa-chevron-down
+            .item-ship_method
+              .name-label
+                %label.name-label__name
+                  配送の方法
+                %label.name-label__require
+                  必須
+              .select-form
+                = f.select :ship_method, [["未定", "未定"],["らくらくメルカリ便", "らくらくメルカリ便"],["ゆうメール", "ゆうメール"],["レターパック", "レターパック"],["普通郵便(定型、定形外)", "普通郵便(定型、定形外)"],["クロネコヤマト", "クロネコヤマト"],["ゆうパック","ゆうパック"],["クリックポスト","クリックポスト"],["ゆうパケット","ゆうパケット"]], prompt: "---"
+                %i.fa.fa-chevron-down
             .item-charge
               .name-label
                 %label.name-label__name
@@ -75,7 +89,7 @@
                 %label.name-label__require
                   必須
               .select-form
-                = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---"
                 %i.fa.fa-chevron-down
             .item-date
               .name-label
@@ -84,7 +98,7 @@
                 %label.name-label__require
                   必須
               .select-form
-                = f.select :ship_date, [["---", "---"],["1~2日で発送", "1~2日で発送"],["2~3日で発送", "2~3日で発送"],["4~7日で発送","4~7日で発送"]]
+                = f.select :ship_date, [["1~2日で発送", "1~2日で発送"],["2~3日で発送", "2~3日で発送"],["4~7日で発送","4~7日で発送"]], prompt: "---"
                 %i.fa.fa-chevron-down
         .sell-form--charge
           .sell-form--charge__name
