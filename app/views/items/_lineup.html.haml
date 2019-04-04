@@ -1,8 +1,11 @@
 %section.items-box
+  -if item.buyer_id != nil
+    .sold-badge
+      .SOLD SOLD
   = link_to item_path(item.id) do
     .figure.items-box-photo
       - item.pictures.first(1).each do |picture|
-        =image_tag(picture.image.url)
+        =image_tag(picture.image.url, class: 'main-image' )
 
     .items-box-body
       %h3.items-box-name.font-2
