@@ -4,20 +4,18 @@ describe ItemsController, type: :controller do
   describe 'GET #index' do
     # render_views
     let(:user) { create(:user) }
-    let(:category) {create(:category)}
+    # let(:category) {create(:category)}
 
-    before do
-      user.confirm
-      sign_in user
-    end
+    # before do
+    #   user.confirm
+    #   sign_in user
+    # end
 
-    # 該当するビューへの遷移
     it "renders the :index template" do
       get :index
       expect(response).to render_template :index
     end
 
-    # @itemsという変数の中身確認
     it "assgins the requested item to @item" do
       item = create(:item, seller_id: user.id, buyer_id: user.id, category_id: category.id)
       get :index
