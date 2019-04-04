@@ -143,6 +143,9 @@
             background: #ccc;
             height: 12px;
             width: 12px;
+            &.active{
+              background-color: red;
+            }
             &:before,&:after{
               position: absolute;
               background: #ccc;
