@@ -44,7 +44,7 @@
                 必須
             .select-form
               = f.fields_for :category_items do |i|
-                = i.collection_select :category_id, Category.all, :id, :name, prompt: "---"
+                = i.collection_select :category_id, Category.all, :id, :name
             .brand-state
               .name-label
                 %label.name-label__name
