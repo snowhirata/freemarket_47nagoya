@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :identification, :register_card, :profile, :logout]
+  def index
+  end
 
   def show
   end
@@ -18,11 +20,7 @@ class UsersController < ApplicationController
 
   def list
   end
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> origin/master
   private
 
   def set_user
