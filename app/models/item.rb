@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   # itemとuserのアソシエーション　user設定完了時追加
   has_many :category_items, dependent: :destroy
   has_many :categories, through: :category_items
-  has_many :pictures, :dependent => :destroy
+  has_many :pictures, dependent: :destroy
   accepts_nested_attributes_for :pictures
   accepts_nested_attributes_for :category_items
   extend ActiveHash::Associations::ActiveRecordExtensions
