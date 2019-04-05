@@ -24,4 +24,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user_steps, only: [:index, :show, :update]
+
 end
