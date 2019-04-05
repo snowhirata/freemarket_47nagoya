@@ -2,10 +2,6 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items  do
-    resources :sold, only: [:index, :show]
-  end
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -22,8 +18,11 @@ Rails.application.routes.draw do
       get 'profile'
       get 'logout'
     end
+    resources :items  do
+      resources :sold, only: [:index, :show]
+      resources :bought
+    end
   end
-
+  
   resources :user_steps, only: [:index, :show, :update]
-
 end

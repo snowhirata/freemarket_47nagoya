@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe Credential do 
+describe Credential do
   describe '#create' do
-    
+
     it "uidが空は保存させない" do
       credential = build(:credential, uid: nil)
       credential.valid?

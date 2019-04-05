@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def list
   end
-  
+
   private
 
   def set_user

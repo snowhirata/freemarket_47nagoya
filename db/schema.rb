@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 2019_04_05_035213) do
     t.text "profile_detail"
     t.string "profit"
     t.integer "card_number"
-    t.integer "security_code"
     t.string "exp_month"
     t.string "exp_year"
     t.string "uid"
