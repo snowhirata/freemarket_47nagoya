@@ -18,11 +18,12 @@ Rails.application.routes.draw do
       get 'profile'
       get 'logout'
     end
-    resources :items  do
-      resources :sold, only: [:index, :show]
-      resources :bought
-    end
   end
-  
+
+  resources :items  do
+    resources :sold, only: [:index, :show]
+    resources :bought
+  end
+
   resources :user_steps, only: [:index, :show, :update]
 end
