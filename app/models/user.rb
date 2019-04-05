@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_one :credential
+
   has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
   has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
 
@@ -23,18 +24,6 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :last_name_kana, presence: true
   validates :birth_year,presence: true
-
-  validates :postal_code, presence: true
-  validates :prefecture_id, presence: true
-  validates :city, presence: true
-  validates :block, presence: true
-  validates :building, presence: true
-  validates :phone_number, presence: true
-
-  validates :card_number, presence: true
-  validates :exp_month, presence: true
-  validates :exp_year, presence: true
-  validates :security_code, presence: true
 
   #facebook認証
   def self.from_omniauth(auth)

@@ -6,25 +6,13 @@ Rails.application.routes.draw do
     resources :sold, only: [:index, :show]
   end
 
+  #ユーザー周りのルーティング
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-
-  get 'list' => 'users#list'
-
-  devise_scope :user do
-    get 'second' => 'users/registrations#new'
-    get 'third' => 'users/registrations#new'
-    get 'forth' => 'users/registrations#new'
-
-    post 'second' => 'users/registrations#second'
-    post 'third' => 'users/registrations#third'
-    post 'forth' => 'users/registrations#forth'
-  end    
-
   resources :users, only: [:index, :show] do
     member do
       get 'identification'
@@ -33,5 +21,12 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
+  get 'list' => 'users#list'
+  get 'setuser' => 'users#setuser'
+  get 'complete' => 'users#complete'
+  resources :uservalids, only:[:new,:create]
+  resources :addressvalids, only:[:new,:create]
+  resources :creditvalids, only:[:new,:create]
+
 
 end
