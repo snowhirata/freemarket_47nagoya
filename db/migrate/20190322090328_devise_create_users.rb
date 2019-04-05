@@ -60,6 +60,5 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
     add_column :users, :security_code, :integer
     add_column :users, :exp_month, :string
     add_column :users, :exp_year, :string
-    add_column :users, :security_code, :integer
   end
 end
