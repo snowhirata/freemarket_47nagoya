@@ -2,13 +2,13 @@
 
 %section.item-box-container.l-single-container
   %h1.item-name
-    ロングカーディガン
+    = @item.name
   .item-main-content.clearfix
     .item-photo
       .owl-carousel
         .owl-item-inner
-          = image_tag 'https://static.mercdn.net/item/detail/orig/photos/m88536009874_1.jpg?1552369422', class: 'owl-lazy'
-
+          - @item.pictures.first(1).each do |picture|
+            = image_tag picture.image.url, class: "owl-lazy"
 
     %table.item-detail-table
       %tbody
@@ -17,6 +17,7 @@
           %td
             = link_to "" do
               %span miyu
+              //出品者名は後ほど
             .item-user-rates
               .item-user-rates__ratings
                 =fa_icon "smile-o", class: "smile-o-pink"
@@ -44,36 +45,32 @@
           %th ブランド
           %td
             = link_to "" do
-              %span イング
-        %tr
-          %th 商品のサイズ
-          %td
-            M
+              = @item.brand
         %tr
           %th 商品の状態
           %td
-            目立った傷や汚れなし
+            = @item.state
         %tr
           %th 配送料の負担
           %td
-            送料込み(出品者負担)
+            = @item.ship_charge
         %tr
           %th 配送の方法
           %td
-            未定
+            = @item.ship_method
         %tr
           %th 配送元地域
           %td
             = link_to "" do
-              %span 鹿児島県
+              = @item.prefecture.name
         %tr
           %th 発送日の目安
           %td
-            4~7日で発送
+            = @item.ship_date
 
   .item-price-box.text-center
     %span.item-price.bold
-      ¥888
+      = "¥ #{number_with_delimiter(@item.price)}"
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
   = link_to "", class: "item-buy-btn" do
@@ -81,8 +78,7 @@
 
   .item-description.f14
     %p.item-description__inner
-      目立ったキズや汚れなし。
-      数回着用の美品です。
+      = @item.description
 
   .item-button-container.clearfix
     .item-button-left
