@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :destroy]
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
@@ -30,6 +31,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
@@ -38,4 +44,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description,:state, :brand, :ship_charge, :prefecture_id, :ship_method, :ship_date, :price, pictures_attributes: [:id, :image, :_destroy], category_items_attributes: [:id, :category_id, :_destroy])
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end

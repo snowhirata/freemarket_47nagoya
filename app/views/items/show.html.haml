@@ -73,8 +73,12 @@
       = "¥ #{number_with_delimiter(@item.price)}"
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
-  = link_to "", class: "item-buy-btn" do
+  = link_to "#", class: "item-buy-btn" do
     購入画面に進む
+  = link_to "#", class: "item-edit-btn" do
+    商品の編集
+  = link_to user_item_path(@item), method: :delete, class: "item-edit-btn" do
+    商品を削除する
 
   .item-description.f14
     %p.item-description__inner
