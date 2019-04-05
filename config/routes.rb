@@ -23,5 +23,6 @@ Rails.application.routes.draw do
       resources :bought
     end
   end
-
+  
+  resources :user_steps, only: [:index, :show, :update]
 end

@@ -10,9 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  #def create
-  #  super
-  #end
+  def create
+    super
+    if resource
+      session[:user_id] = resource.id
+    else
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -21,8 +26,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   # def update
-  #   super
-  # end
+    #super
+  #end
 
   # DELETE /resource
   # def destroy
@@ -51,9 +56,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  #def after_sign_up_path_for(resource)
-  #  root_path
-  #end
+  def after_sign_up_path_for(resource)
+    user_steps_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
