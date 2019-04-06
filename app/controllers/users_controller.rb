@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :identification, :register_card, :profile, :logout]
+  
   def index
   end
 
@@ -34,7 +35,6 @@ class UsersController < ApplicationController
       birth_year: session[:birth_year],
       birth_month: session[:birth_month],
       birth_day: session[:birth_day],
-
     )
     @user.save
 
@@ -56,7 +56,6 @@ class UsersController < ApplicationController
       exp_year: session[:exp_year],
       security_code: session[:security_code]
     )
-    binding.pry
     @credit.save
 
     redirect_to complete_path

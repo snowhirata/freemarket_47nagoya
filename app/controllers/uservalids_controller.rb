@@ -1,12 +1,10 @@
 class UservalidsController < ApplicationController
-  
   def new
     @uservalid = Uservalid.new
   end
 
   def create
     @uservalid = Uservalid.new(get_params)
-
     if @uservalid.valid?
       @uservalid.save
       session[:user_id] = @uservalid.id
@@ -30,7 +28,6 @@ class UservalidsController < ApplicationController
   private
 
   def get_params
-    params.require(:uservalid).permit(:nickname,:email,:password,:password_confirmation,:last_name,:first_name,:last_name_kana,:first_name_kana,:birth_year,:birth_month,:birth_day)
+    params.require(:uservalid).permit(:nickname,:email,:password,:password_confirmation,:last_name,:first_name,:last_name_kana,:first_name_kana).merge(birth_year: params[:uservalid]['birth_year(1i)'],birth_month: params[:uservalid]['birth_year(2i)'], birth_day: params[:uservalid]['birth_year(3i)'])
   end
-
 end

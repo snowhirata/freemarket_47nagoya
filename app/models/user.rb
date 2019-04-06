@@ -44,5 +44,6 @@ class User < ApplicationRecord
       )
       credential.save
     end
+    user
   end
 end

@@ -6,7 +6,7 @@
       %ol.clearfix
         %li
           会員情報
-          .progress-status.active#step1
+          .progress-status#step1
         %li
           電話番号認証
           .progress-status#step2
@@ -31,7 +31,8 @@
             = f.text_field :nickname, autofocus: true, placeholder:'例)メルカリ太郎'
             - if @uservalid.errors.full_messages_for(:nickname) != []
               - @uservalid.errors.full_messages_for(:nickname).each do |message|
-                = message
+                .error_message
+                  = message
           .form-group
             = f.label :メールアドレス
             %span.form-require
@@ -39,7 +40,8 @@
             = f.email_field :email, placeholder:'例)pc-携帯どちらでも可'
             - if @uservalid.errors.full_messages_for(:email) != []
               - @uservalid.errors.full_messages_for(:email).each do |message|
-                = message
+                .error_message
+                  = message
 
           .form-group
             = f.label :パスワード
@@ -48,7 +50,8 @@
             = f.password_field :password, placeholder:'例)6文字以上'
             - if @uservalid.errors.full_messages_for(:password) != []
               - @uservalid.errors.full_messages_for(:password).each do |message|
-                = message
+                .error_message
+                  = message
           .form-group
             = f.label :パスワード確認
             %span.form-require
@@ -56,7 +59,8 @@
             = f.password_field :password_confirmation, placeholder:'例)6文字以上'
             - if @uservalid.errors.full_messages_for(:password_confirmation) != []
               - @uservalid.errors.full_messages_for(:password_confirmation).each do |message|
-                = message
+                .error_message
+                  = message
           .form-group
             %h3.l-chapter-sub-head 本人確認
             %p.l-single-text
@@ -68,7 +72,8 @@
             = f.text_field :last_name, autofocus: true, placeholder: '例)山田'
             - if @uservalid.errors.full_messages_for(:last_name) != []
               - @uservalid.errors.full_messages_for(:last_name).each do |message|
-                = message
+                .error_message
+                  = message
           .form-group
             = f.label :名
             %span.form-require
@@ -76,7 +81,8 @@
             = f.text_field :first_name, placeholder: '例)彩'
             - if @uservalid.errors.full_messages_for(:first_name) != []
               - @uservalid.errors.full_messages_for(:first_name).each do |message|
-                = message
+                .error_message
+                  = message
           .form-group
             = f.label :姓カナ
             %span.form-require
@@ -84,7 +90,8 @@
             = f.text_field :last_name_kana, placeholder: '例)ヤマダ'
             - if @uservalid.errors.full_messages_for(:last_name_kana) != []
               - @uservalid.errors.full_messages_for(:first_name_kana).each do |message|
-                = message
+                .error_message
+                  = message
           .form-group
             = f.label :名カナ
             %span.form-require
@@ -92,16 +99,27 @@
             = f.text_field :first_name_kana, placeholder: '例)アヤ'
             - if @uservalid.errors.full_messages_for(:first_name_kana) != []
               - @uservalid.errors.full_messages_for(:first_name_kana).each do |message|
-                = message
+                .error_message
+                  = message
           .form-group
             =f.label :生年月日
             %span.form-require
               必須
             <br>
-            = f.date_select :birth_year, start_year: 1930, end_year: (Time.now.year - 18), default: Date.new(2000, 1, 1)
-            - if @uservalid.errors.full_messages_for(:birth_year) != []
-              - @auservalid.errors.full_messages_for(:birth_year).each do |message|
-                = message
+            .select-wrap
+              = f.date_select :birth_year, start_year: 1930, end_year: (Time.now.year - 18),prompt: '--'
+              - if @uservalid.errors.full_messages_for(:birth_year) != []
+                - @uservalid.errors.full_messages_for(:birth_year).each do |message|
+                  .error_message
+                    = message
+              - if @uservalid.errors.full_messages_for(:birth_month) != []
+                - @uservalid.errors.full_messages_for(:birth_month).each do |message|
+                  .error_message
+                    = message
+              - if @uservalid.errors.full_messages_for(:birth_day) != []
+                - @uservalid.errors.full_messages_for(:birth_day).each do |message|
+                  .error_message
+                    = message
           %p.form-info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .form-group
