@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     10.times { @item.pictures.build }
-    3.times { @item.category_items.build }
   end
 
   def create
@@ -47,7 +46,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description,:state, :brand, :ship_charge, :prefecture_id, :ship_method, :ship_date, :price, pictures_attributes: [:id, :image, :_destroy], category_items_attributes: [:id, :category_id, :_destroy])
+    params.require(:item).permit(:name, :user_id, :category, :description,:state, :brand, :ship_charge, :prefecture_id, :ship_method, :ship_date, :price, pictures_attributes: [:id, :image, :_destroy])
   end
 
   def set_item
