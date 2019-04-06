@@ -9,7 +9,6 @@
         %i.fa.fa-facebook
         Facebookでログイン
       = link_to user_google_oauth2_omniauth_authorize_path,class: "g-log" do
-
         %i.fa.fa-google
         Googleでログイン
       .form
@@ -18,8 +17,7 @@
             = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス"
           .form__group
             = f.password_field :password, autocomplete: "current-password",placeholder: "パスワード"
-      .recapcha
-      = link_to"ログイン",new_user_session_path,class: "login-button"
+            = f.submit "Log in",class: "login-button"
       .forget-password
         = link_to"パスワードをお忘れの方","#"
   .login-footer
