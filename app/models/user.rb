@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
 
   # has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
@@ -24,28 +22,29 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
   validates :last_name_kana, presence: true
-  validates :birth_year, presence: true
+  validates :birth_year,presence: true
 
   #facebook認証
   def self.from_omniauth(auth)
 
-      if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
-        user = credential.user
-      else credential
-        user = User.new(
-          nickname: auth.info.name,
-          email:    auth.info.email,
-          password: Devise.friendly_token[0, 20]
-        )
-        user.save(validate: false)
+    if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
+      user = credential.user
+    else credential
+      user = User.new(
+        nickname: auth.info.name,
+        email:    auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
+      user.save(validate: false)
 
-        credential = Credential.new(
-          uid:      auth.uid,
-          provider: auth.provider,
-          user_id:  user.id
-        )
-        credential.save
-      end
-      user
+      credential = Credential.new(
+        uid:      auth.uid,
+        provider: auth.provider,
+        user_id:  user.id
+      )
+      credential.save
+    end
+    user
+
   end
 end

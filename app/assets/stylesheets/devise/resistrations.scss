@@ -201,11 +201,20 @@
               width: 100%;
               margin: 8px 0 0;
             }
-            select{
-              @include select-default;
-              width: 50%;
-              margin: 5px 0 0 0;
-              -webkit-appearance: none;
+            .select-wrap{
+              select{
+                @include select-default;
+                width: 50%;
+                margin: 5px 0 0 0;
+                -webkit-appearance: none;
+              }
+              i{
+                position: relative;
+                left: -30px;
+              }
+              .field_with_errors{
+                display: inline;
+              }
             }
             button{
               @include button-default;
@@ -213,12 +222,26 @@
               background-color: #ea352d;
               color: #fff;
             }
+            .btn-red{
+              color: white;
+              background-color: #ea352d;
+            }
             .text-center{
               text-align: center;
             }
             .form-info-text{
               color: #888;
             }
+            .signup-card-list{
+              li{
+                margin: 10px 0 0 0;
+                display: inline-block;
+              }
+            }
+            .error_message{
+              color: red;
+            }
+
           }
         }
       }
