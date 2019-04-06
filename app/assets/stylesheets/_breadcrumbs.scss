@@ -1,0 +1,42 @@
+.bread-container {
+  position: relative;
+  background-color: $white;
+  border-top: 1px solid $gray;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+  display: flex;
+  justify-content: center;
+  .breadcrumbs {
+    width: 1020px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    a {
+      color: $black;
+      font-size: 14px;
+
+      &:hover {
+        opacity: 0.7;
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      color: $black;
+      font-size: 14px;
+    }
+
+    .current {
+      color: $black;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    i {
+      display: block;
+      margin: 0 10px;
+      color: #888;
+      font-size: 12px;
+    }
+  }
+}

@@ -26,7 +26,7 @@
             %li
               .header-user-icon
                 -if user_signed_in?
-                  =link_to identification_user_path(current_user) do
+                  =link_to user_path(current_user) do
                     .icon
                       =image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", width: "32")
                     %div マイページ
@@ -46,3 +46,6 @@
                   %p.user_name
                     - if user_signed_in?
                       = current_user.nickname
+
+  %nav.bread-container
+    = breadcrumbs separator: "#{content_tag(:i, '', :class=>'fa fa-angle-right')}"
