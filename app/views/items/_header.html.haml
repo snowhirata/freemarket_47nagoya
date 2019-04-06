@@ -46,3 +46,6 @@
                   %p.user_name
                     - if user_signed_in?
                       = current_user.nickname
+
+  %nav.bread-container
+    = breadcrumbs separator: "#{content_tag(:i, '', :class=>'fa fa-angle-right')}"
