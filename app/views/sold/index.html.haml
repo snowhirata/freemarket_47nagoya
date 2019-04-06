@@ -7,11 +7,12 @@
       .sold-form--img
         .sold-form--img__in
           %h1.img-form
-            = image_tag "https://static.mercdn.net/thumb/photos/m77112905854_1.jpg?1549103853", class:"image-form__in", width:"112px"
+            - @item.pictures.first(1).each do |picture|
+              = image_tag picture.image.url, class: "image-form__in", width:"112px"
           %h2.name-form
-            ミキモトコスメティックス
+            = @item.name
           %h3.price-form
-            ¥1,700
+            = "¥ #{number_with_delimiter(@item.price)}"
             %label.price-form__ship-price
               送料込み
           = link_to "#", class: "buy-decide-form" do

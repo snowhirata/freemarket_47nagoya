@@ -5,14 +5,14 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :brand
       t.string :state, null: false
-      t.integer :category_id, foreign_key: true
-      t.integer :prefecture_id, foreign_key: true
+      t.integer :prefecture_id, foreign_key: true, null: false
       t.string :ship_charge, null: false
-      t.string :ship_method, null: false
+      t.string :ship_method
       t.string :ship_date, null: false
       t.integer :price, null: false
-      t.integer :seller_id, foreign_key: true
-      t.integer :buyer_id, foreign_key: true
+      # t.integer :seller_id, foreign_key: true
+      # t.integer :buyer_id, foreign_key: true
+      # itemとuserのアソシエーション　user設定完了時追加
       t.timestamps
     end
   end

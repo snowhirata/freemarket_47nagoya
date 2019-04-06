@@ -21,32 +21,59 @@
 
   .pickup-container
     %h2.pickup-head
-      ピックアップ商品
+      ピックアップカテゴリー
     %section.items-box-container.clearfix
       %h3.text-center
-        =link_to "新着アイテム"
+        =link_to "レディース 新着アイテム"
       .items-box-content.clearfix
-        %section.items-box
-          = link_to ""
-          .figure.items-box-photo
-            =image_tag("https://static.mercdn.net/thumb/photos/m36779249979_1.jpg?1553412832", height: "220px", width: "213px")
-          .items-box-body
-            %h3.items-box-name.font-2
-              ブルゾン
-            .items-box-num.clearfix
-              .items-box-price.font-5
-                ¥888
-                %p.items-box-tax
-                  (税込)
-              .items-box-likes.font-2
-                %i.fa.fa-heart
-                %span
-                  8
-
-
+        = render partial: 'itembox', collection: @items, as: 'item'
+    .view-all
+      =link_to "すべての商品を見る"
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "メンズ 新着アイテム"
+      .items-box-content.clearfix
+    .view-all
+      =link_to "すべての商品を見る"
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "ベビー・キッズ 新着アイテム"
+      .items-box-content.clearfix
+    .view-all
+      =link_to "すべての商品を見る"
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "コスメ・香水・美容 新着アイテム"
+      .items-box-content.clearfix
     .view-all
       =link_to "すべての商品を見る"
 
+    %h2.pickup-head
+      ピックアップブランド
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "シャネル 新着アイテム"
+      .items-box-content.clearfix
+    .view-all
+      =link_to "すべての商品を見る"
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "ルイ ヴィトン 新着アイテム"
+      .items-box-content.clearfix
+    .view-all
+      =link_to "すべての商品を見る"
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "シュプリーム 新着アイテム"
+      .items-box-content.clearfix
+    .view-all
+      =link_to "すべての商品を見る"
+    %section.items-box-container.clearfix
+      %h3.text-center
+        =link_to "ナイキ 新着アイテム"
+      .items-box-content.clearfix
+    .view-all
+      =link_to "すべての商品を見る"
 
   = render 'sell-btn'
   = render 'app-banner'

@@ -27,6 +27,11 @@ Rails.application.routes.draw do
   resources :uservalids, only:[:new,:create]
   resources :addressvalids, only:[:new,:create]
   resources :creditvalids, only:[:new,:create]
+  #ここまで
 
+  resources :items  do
+    resources :sold, only: [:index, :show]
+    resources :bought
+  end
 
 end
