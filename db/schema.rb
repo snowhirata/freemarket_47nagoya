@@ -87,8 +87,10 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
     t.integer "price", null: false
     t.string "category", null: false
     t.bigint "user_id"
+    t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -158,5 +160,6 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
   add_foreign_key "credits", "users"
   add_foreign_key "creditvalids", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "pictures", "items"
 end
