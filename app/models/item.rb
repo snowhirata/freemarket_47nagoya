@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   # belongs_to :seller, class_name: 'User'
-  # belongs_to :buyer, class_name: 'User'
+  belongs_to :buyer, class_name: 'User', optional: true
   # itemとuserのアソシエーション　user設定完了時追加
   belongs_to :user
   has_many :pictures, dependent: :destroy

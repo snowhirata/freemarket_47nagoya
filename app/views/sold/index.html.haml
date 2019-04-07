@@ -15,10 +15,9 @@
             = "¥ #{number_with_delimiter(@item.price)}"
             %label.price-form__ship-price
               送料込み
-          = link_to "#", class: "buy-decide-form" do
-            .buy-decide
-              %p
-                購入する
+          = form_for @item, url:"/items/#{@item.id}/sold/1" do |f|
+            = f.hidden_field :buyer_id, value: current_user.id
+            = f.button "購入する", class: "buy-decide-form"
       .sold-form--ship-region
         .sold-form--ship-region__in
           %h4.title

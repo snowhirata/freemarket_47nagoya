@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items  do
-    resources :sold, only: [:index, :show]
+    resources :sold, only: [:index, :show, :update]
   end
 
   #ユーザー周りのルーティング
