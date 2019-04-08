@@ -1,3 +1,7 @@
+- breadcrumb :register_card
+
+= render 'items/header'
+
 .container.clearfix
   .card-container
     %h2.card-container__head クレジットカード情報入力
@@ -46,4 +50,3 @@
         .form-group
           =f.submit :登録する,class: 'submit_button'
   = render partial:'sidebar'
-      

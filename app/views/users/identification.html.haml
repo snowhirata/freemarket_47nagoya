@@ -1,11 +1,14 @@
-=render 'items/header.html.haml'
+- breadcrumb :identification
+
+= render 'items/header'
+
 .container.clearfix
   .identification
     %h2.identification-head 本人情報の登録
     =form_for @user do |f|
       %div
         %p お客様の本人情報をご登録ください。<br>登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-        %p.text-right 
+        %p.text-right
           =link_to '#' do
             本人確認書類のアップロードについて
             =fa_icon "chevron-right"

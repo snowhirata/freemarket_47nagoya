@@ -1,3 +1,5 @@
+- breadcrumb :show, @item
+
 = render 'header'
 
 %section.item-box-container.l-single-container
@@ -16,8 +18,7 @@
           %th 出品者
           %td
             = link_to "" do
-              %span miyu
-              //出品者名は後ほど
+              = @item.user.nickname
             .item-user-rates
               .item-user-rates__ratings
                 =fa_icon "smile-o", class: "smile-o-pink"
@@ -32,15 +33,15 @@
           %th カテゴリー
           %td
             = link_to "" do
-              %span レディース
-            = link_to "" do
-              .item-detail-table-sub-category
-                %i.fa.fa-angle-right
-                %span トップス
-            = link_to "" do
-              .item-detail-table-sub-sub-category
-                %i.fa.fa-angle-right
-                %span カーディガン/ボレロ
+              = @item.category
+            / = link_to "" do
+            /   .item-detail-table-sub-category
+            /     %i.fa.fa-angle-right
+            /     %span トップス
+            / = link_to "" do
+            /   .item-detail-table-sub-sub-category
+            /     %i.fa.fa-angle-right
+            /     %span カーディガン/ボレロ
         %tr
           %th ブランド
           %td
@@ -73,12 +74,17 @@
       = "¥ #{number_with_delimiter(@item.price)}"
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
-  = link_to item_sold_index_path(@item), class: "item-buy-btn" do
-    購入画面に進む
-  = link_to edit_item_path(@item), class: "item-edit-btn" do
-    商品の編集
-  = link_to item_path(@item), method: :delete, class: "item-edit-btn" do
-    商品を削除する
+  - if user_signed_in? && current_user.id != @item.user_id
+    = link_to item_sold_index_path(@item), class: "item-buy-btn" do
+      購入画面に進む
+    - if user_signed_in? && current_user.id == @item.user_id
+      = link_to edit_item_path(@item), class: "item-edit-btn" do
+        商品の編集
+      = link_to item_path(@item), method: :delete, class: "item-edit-btn" do
+        商品を削除する
+  - else
+    = link_to new_user_session_path, class: "item-buy-btn" do
+      購入画面に進む
 
   .item-description.f14
     %p.item-description__inner
@@ -133,7 +139,7 @@
 .items-in-user-profile
   %section.items-box-container.clearfix.items-box-overflow.items-in-user-profile
     %h2.items-box-head
-      = link_to 'miyuさんのその他の出品', root_path
+      = link_to "#{@item.user.nickname}さんのその他の出品", root_path
     .items-box-content.clearfix
       %section.items-box
         = link_to root_path do
@@ -177,7 +183,7 @@
 
 .items-in-user-profile
   %h2.items-box-head
-    = link_to "イングのカーディガン/ボレロ その他の商品", root_path
+    = link_to "#{@item.category} その他の商品", root_path
   .items-box-content.clearfix
     %section.items-box
       = link_to root_path do

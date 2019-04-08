@@ -2,6 +2,7 @@
   = render 'shared/second_header'
   %main.content--main
     = form_for @item do |f|
+      = f.hidden_field :user_id, value: current_user.id
       %section.sell-form
         %h1
           商品の情報を入力
@@ -43,8 +44,7 @@
               %label.name-label__require
                 必須
             .select-form
-              = f.fields_for :category_items do |i|
-                = i.collection_select :category_id, Category.all, :id, :name
+              = f.select :category, Category.categories.keys, {prompt: '---'}
             .brand-state
               .name-label
                 %label.name-label__name
@@ -59,7 +59,7 @@
                 %label.name-label__require
                   必須
               .select-form
-                = f.select :state, [["新品、未使用", "新品、未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], prompt: "---"
+                = f.select :state, State.states.keys, prompt: "---"
                 %i.fa.fa-chevron-down
         .sell-form--ship
           %label.sell-form--ship__name
@@ -71,7 +71,7 @@
               %label.name-label__require
                 必須
             .select-form
-              = f.select :ship_charge, [["送料こみ(出品者負担)", "送料こみ(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], prompt: "---"
+              = f.select :ship_charge, Ship_charge.ship_charges.keys, prompt: "---"
               %i.fa.fa-chevron-down
             .item-ship_method
               .name-label

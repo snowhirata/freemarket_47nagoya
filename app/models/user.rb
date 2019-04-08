@@ -2,9 +2,10 @@ class User < ApplicationRecord
 
 
   # has_many :items_of_seller, class_name: 'item', foreign_key: 'seller_id'
-  # has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
+  has_many :items_of_buyer, class_name: 'item', foreign_key: 'buyer_id'
   # itemとuserのアソシエーション　user設定完了時追加
   has_one :credential
+  has_many :items
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
