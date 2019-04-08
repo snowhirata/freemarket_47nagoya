@@ -7,7 +7,7 @@
             = image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3112359103", width: "134", height: "36")
         .header__inner__flex__right-form
           =form_tag('/items/search', method: :get) do
-            =text_field_tag(:keyword, "", class: "input-search", placeholder: "何をお探しですか？")
+            =text_field_tag(:keyword, "", class: "input-search", placeholder: "何かお探しですか？")
             =button_tag'<i class="fa fa-search"></i>'.html_safe, type: "submit",class: "btn-search"
 
       .header__inner__nav-box
@@ -16,36 +16,45 @@
             %li
               %h2
                 =link_to "", class: "header-nav-root" do
-                  カテゴリーから探す
+                  %i.fa.fa-list-ul
+                  %span カテゴリーから探す
             %li
               %h2
                 =link_to "", class: "header-nav-root" do
-                  ブランドから探す
-        .header__inner__nav-box__right
-          %ul.header__inner__nav-box__right__user-nav
-            %li
-              .header-user-icon
-                -if user_signed_in?
+                  %i.fa.fa-tag
+                  %span ブランドから探す
+        - if user_signed_in?
+          .header__inner__nav-box__right
+            %ul.header__inner__nav-box__right__user-nav
+              %li
+                .header-nav-root
+                  =link_to "" do
+                    %i.fa.fa-bell-o
+                    %span お知らせ
+              %li
+                .header-nav-root
+                  =link_to "" do
+                    %i.fa.fa-check
+                    %span やることリスト
+              %li
+                .header-user-icon
                   =link_to user_path(current_user) do
-                    .icon
-                      =image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", width: "32")
+                    =image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "icon")
                     %div マイページ
-            %li
-              .header-nav-root
-                =link_to "" do
-                  %i.fa.fa-bell-o
-                  %span お知らせ
-            %li
-              .header-nav-root
-                =link_to "" do
-                  %i.fa.fa-check
-                  %span やることリスト
-                  =link_to "ログアウト",destroy_user_session_path,method: :delete
-                  =link_to "ログイン",new_user_session_path
-                  =link_to "新規会員登録",list_path
-                  %p.user_name
-                    - if user_signed_in?
-                      = current_user.nickname
+                  = render 'items/mypage-pulldown'
+              %li
+                .header-nav-root
+                  =link_to destroy_user_session_path, method: :delete do
+                    %i.fa.fa-sign-out
+                    %span ログアウト
+        - else
+          .header__inner__nav-box__right
+            %ul.header__inner__nav-box__right__login
+              %li.header__inner__nav-box__right__login__icon
+                =link_to "ログイン",new_user_session_path, class: "header-btn btn-red"
+              %li.header__inner__nav-box__right__login__icon
+                =link_to "新規会員登録",list_path, class: "header-btn btn-blue"
+
 
   %nav.bread-container
     = breadcrumbs separator: "#{content_tag(:i, '', :class=>'fa fa-angle-right')}"
