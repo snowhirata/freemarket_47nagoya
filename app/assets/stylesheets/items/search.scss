@@ -6,17 +6,15 @@
 .searchmain{
   margin: 40px auto 0;
   width: 1020px;
-  
   .left-contents{
     float: left;
     width: 280px;
     margin: 0 40px 0 0;
     .sort-container{
+      margin: 10px 0 30px;
       select{
-        -webkit-appearance: none;
-        padding: 0 16px;
-        width: 100%;
-        height: 48px;
+        @include select-default;
+        background-color: #fff;
       }
     }
     .search-container{
@@ -24,64 +22,71 @@
       background-color: #fff;
       .form-group{
         width: 100%;
-        margin-top: 10px;
-        select{
-          -webkit-appearance: none;
-          padding: 0 16px;
-          width: 100%;
-          height: 48px;
+        margin: 10px 0 30px 0;
+        label{
+          display: block;
         }
-        input{
-          padding: 0 16px;
-          width: 100%;
-          height: 48px;
+        select{
+          @include select-default;
+        }
+        input[type=search]{
+          @include input-default;
         }
         input[type=checkbox] {
-          transform: scale(1.2);
           width: auto;
           height: auto;
+          transform: scale(1.2);
         }
-        .price-range{
+        input[type=number]{
+          @include input-default;
+          width: 40%;
+        }
+        span{
+          margin: 0 16px;
+        }
+        .checkbox-group{
+          width: 49%;
+          position: relative;
+          display: inline-block;
           margin-top: 10px;
-          select{
-            width: 40%;
-            &:first-child{
-              margin-right: 18%;
-            }
+          vertical-align: middle;
+          .checkbox-left{
+            top: 50%;
+            position: absolute;
+            display: inline-block;
+            transform: translateY(-50%);
+          }
+          .checkbox-right{
+            margin-left: 25px;
+            display: inline-block;
           }
         }
       }
-      .l-checkbox-group{
-        
-        .checkbox-group{
-          margin: 10px 0;
-          font-size: 1.4rem;
-          width: 50%;
+      .button-group{
+        margin-top: 10px;
+        .search-btn{
+          color: #fff;
+          width: 48%;
+          height: 52px;
+          font-size: 14px;
+          border: 1px solid #aaa;
+          background-color: #ea352d;
+          -webkit-appearance: none;
+        }
+        .clear-btn{
+          color: #fff;
+          width: 48%;
+          height: 50px;
+          line-height: 50px;
+          font-size: 14px;
+          text-align: center;
           display: inline-block;
+          background-color: #aaa;
+          border: 1px solid #aaa;
+          -webkit-appearance: none;    
         }
       }
     }
-    .button-group{
-      width: 100%;
-      font-size: 0;
-      .button_to{
-        display: inline-block;
-        width: 45%;
-        &:first-child{
-          margin-right: 10%; 
-        }
-        .clear{
-          background-color: #aaa;
-          width: 100%;
-          padding: 10px;
-        }
-        .complete{
-          background-color: #ea352d;
-          width: 100%;
-          padding: 10px;
-        }
-      }
-    } 
   }
   .right-contents{
     float: right;
@@ -89,8 +94,10 @@
     height: 500px;
     .item-box-container{
       .item-box{
+        margin-right: 10px;
         width: 160px;
         display: inline-block;
+        background-color: #fff;
         .item-photo{
           width: 160px;
           height: 160px;
@@ -98,6 +105,26 @@
         .item-body{
           height: 110px;
           padding: 15px;
+          box-sizing: border-box;
+          .item-name{
+            height: 48px;
+            overflow: hidden;
+          }
+          .item-num{
+            .item-price{
+              display: inline-block;
+              font-size: 16px;
+              font-weight: 600;
+            }
+            .item-likes{
+              display: inline-block;
+              float: right;
+              font-size: 15px;
+            }
+            .item-tax{
+              font-size: 10px;
+            }
+          }
         }
       }
     }

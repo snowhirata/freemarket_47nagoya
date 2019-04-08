@@ -16,9 +16,9 @@ class ItemsController < ApplicationController
 
   def sort
     if params[:sort] == 'new'
-      @items=Item.includes(:pictures).order('created_at DESC')
-    elsif params[:sort] == 'old'
       @items=Item.includes(:pictures).order('created_at ASC')
+    elsif params[:sort] == 'old'
+      @items=Item.includes(:pictures).order('created_at DESC')
     elsif params[:sort] == 'cheap'
       @items=Item.includes(:pictures).order('price DESC')
     else params[:sort] == 'high'
@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
     end
     render partial: '/items/result', locals: { items: @items }
   end
-
 
   def new
     @item = Item.new

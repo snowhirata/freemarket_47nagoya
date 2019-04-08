@@ -1,16 +1,21 @@
-%h3 検索結果0件
+%h3 検索結果#{items.length}件
 .item-box-container
   -items.each do |item|
-    .itembox
-      .itembox-photo
-        = image_tag 'member_photo.png', size: "160x160"
-      .itembox-body
-        .itembox-name
+    .item-box
+      .item-photo
+        - if item.pictures.first
+          = image_tag item.pictures.first.image.url, size: "160x160"
+        -else
+          = image_tag 'member_photo.png', size: "160x160"
+      .item-body
+        .item-name
           =item.name
-        .itembox-num
-          .itembox-price
+        .item-num
+          .item-price
+            ¥
             =item.price
-          .itembox-likes
+          .item-likes
             ♡
-          .itembox-tax
+            / =item.likes
+          .item-tax
             (税込)
