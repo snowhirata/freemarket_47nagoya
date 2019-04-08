@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :items  do
     resources :sold, only: [:index, :show, :update]
   end
-
+  get 'search' => 'items#search'
+  get 'sort' => 'items#sort'
   #ユーザー周りのルーティング
   devise_for :users, controllers: {
     registrations: 'users/registrations',

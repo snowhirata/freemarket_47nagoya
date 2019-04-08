@@ -5,6 +5,28 @@ class ItemsController < ApplicationController
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
   end
 
+  def search
+      @categories = Category.all
+      @allitems = Item.all
+      @q = Item.ransack(params[:q])
+      @items = @q.result(distinct: true)
+      #キーワード検索
+      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
+  end
+
+  def sort
+    if params[:sort] == 'new'
+      @items=Item.includes(:pictures).order('created_at ASC')
+    elsif params[:sort] == 'old'
+      @items=Item.includes(:pictures).order('created_at DESC')
+    elsif params[:sort] == 'cheap'
+      @items=Item.includes(:pictures).order('price DESC')
+    else params[:sort] == 'high'
+      @items=Item.includes(:pictures).order('price ASC')
+    end
+    render partial: '/items/result', locals: { items: @items }
+  end
+
   def new
     @item = Item.new
     10.times { @item.pictures.build }

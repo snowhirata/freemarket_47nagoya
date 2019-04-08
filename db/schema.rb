@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_033535) do
+ActiveRecord::Schema.define(version: 2019_04_05_075917) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code"
@@ -39,8 +39,18 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "category_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_items_on_category_id"
+    t.index ["item_id"], name: "index_category_items_on_item_id"
   end
 
   create_table "credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -79,10 +89,9 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
     t.text "description"
     t.string "brand"
     t.string "state", null: false
-    t.integer "category_id"
-    t.integer "prefecture_id"
+    t.integer "prefecture_id", null: false
     t.string "ship_charge", null: false
-    t.string "ship_method", null: false
+    t.string "ship_method"
     t.string "ship_date", null: false
     t.integer "price", null: false
     t.string "category", null: false
@@ -100,8 +109,6 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "item"
-    t.string "references"
     t.index ["item_id"], name: "index_pictures_on_item_id"
   end
 
@@ -130,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
     t.text "profile_detail"
     t.string "profit"
     t.integer "card_number"
+    t.integer "security_code"
     t.string "exp_month"
     t.string "exp_year"
     t.string "uid"
@@ -156,6 +164,8 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "addressvalids", "users"
+  add_foreign_key "category_items", "categories"
+  add_foreign_key "category_items", "items"
   add_foreign_key "credentials", "users"
   add_foreign_key "credits", "users"
   add_foreign_key "creditvalids", "users"
