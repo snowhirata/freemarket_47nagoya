@@ -1,0 +1,16 @@
+%h3 検索結果0件
+.item-box-container
+  -items.each do |item|
+    .itembox
+      .itembox-photo
+        = image_tag 'member_photo.png', size: "160x160"
+      .itembox-body
+        .itembox-name
+          =item.name
+        .itembox-num
+          .itembox-price
+            =item.price
+          .itembox-likes
+            ♡
+          .itembox-tax
+            (税込)

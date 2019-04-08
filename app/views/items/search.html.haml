@@ -1,0 +1,46 @@
+= render 'header'
+.searchmain.clearfix
+  .left-contents
+    .sort-container
+      %select#sort
+        %option{value: "cheap",selected:'selected'} 選択してください
+        %option{value: "cheap"} 価格の安い順
+        %option{value: "high"} 価格の高い順
+        %option{value: "old"} 出品の古い順
+        %option{value: "new"} 出品の新しい順
+    .search-container
+      %h3 詳細検索
+      .form-group
+        %p キーワードを追加する
+        =form_tag(search_path,method: :get) do
+          =text_field_tag(:keyword,'',{class: "input-search", placeholder: "キーワードを入力"})
+          =button_tag'<i class="fa fa-search"></i>'.html_safe, type: "submit",class: "btn-search"
+      .form-group
+        =search_form_for(@q,url:search_path) do |f|
+          =f.label :categories_name_cont, 'カテゴリーを選択する'
+          =f.collection_select :categories_name_cont, @categories, :name, :name, :include_blank => '指定なし'
+
+          =f.label :brand_cont, 'ブランド名から探す'
+          =f.search_field :brand_cont
+
+          =f.label :price, '価格'
+          =f.number_field :price_gteq
+          =f.number_field :price_lteq
+
+          =f.label :state, '商品の状態'
+          =f.collection_check_boxes :state_eq, @allitems, :state, :state
+
+          =f.label :state, '配送料の負担'
+          =f.collection_check_boxes :state_eq, @allitems, :state, :state
+
+          =f.label :state, '販売状況'
+          =f.collection_check_boxes :state_eq, @allitems, :state, :state
+
+          =f.submit '検索'
+      .button-group
+        =button_to 'クリア',{},class: 'clear'
+        =button_to '完了',{},class: 'complete'
+  .right-contents
+    =render 'result', items: @items
+
+=javascript_include_tag 'items_search.js'
