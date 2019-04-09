@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.index ["user_id"], name: "index_addressvalids_on_user_id"
   end
 
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.index ["category_id"], name: "index_category_items_on_category_id"
     t.index ["item_id"], name: "index_category_items_on_item_id"
   end
-
+  
   create_table "credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uid"
     t.string "provider"
