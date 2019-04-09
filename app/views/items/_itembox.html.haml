@@ -1,23 +1,23 @@
-%section.items-box
-  / -if item.buyer_id != nil
-  /   .sold-badge
-  /     .sold SOLD
+%section.items-box-content
+  -if item.buyer_id != nil
+    .sold-badge
+      .sold-badge-text SOLD
   = link_to item_path(item.id) do
-    .figure.items-box-photo
+    .items-box-content-photo
       - item.pictures.first(1).each do |picture|
         =image_tag(picture.image.url, class: 'main-image' )
 
-    .items-box-body
-      %h3.items-box-name.font-2
+    .items-box-content-body
+      %h3.items-box-content-name.font-2
         = item.name
-      .items-box-num.clearfix
-        .items-box-price.font-5
+      .items-box-content-num.clearfix
+        .items-box-content-price.font-5
           = "¥ #{number_with_delimiter(item.price)}"
-        .items-box-likes.font-2
+        .items-box-content-likes.font-2
           %i.fa.fa-heart
           %span
             8
-      %p.items-box-tax
+      %p.items-box-content-tax
         (税込)
 
 
