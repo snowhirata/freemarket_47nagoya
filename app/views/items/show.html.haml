@@ -5,12 +5,26 @@
 %section.item-box-container.l-single-container
   %h1.item-name
     = @item.name
-  .item-main-content.clearfix
-    .item-photo
+  .item-box-container__main-content.clearfix
+    .item-box-container__main-content__photo
+      -if @item.buyer_id != nil
+        .sold-badge
+          .sold-badge-text SOLD
       .owl-carousel
-        .owl-item-inner
-          - @item.pictures.first(1).each do |picture|
-            = image_tag picture.image.url, class: "owl-lazy"
+        .owl-stage-outer
+          .owl-stage{ style: 'left:0px',width: '900px'}
+            - @item.pictures.each do |picture|
+              - if picture.image.url.present?
+                .owl-item{ style: 'width:300px'}
+                  .owl-item__inner.is-higher-width
+                    = image_tag picture.image.url
+
+        .owl-dots
+          - if @item.pictures.present?
+            - @item.pictures.each do |picture|
+              .owl-dot
+                .owl-dot-inner
+                  = image_tag picture.image.url
 
     %table.item-detail-table
       %tbody
@@ -74,7 +88,12 @@
       = "¥ #{number_with_delimiter(@item.price)}"
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
-  - if user_signed_in? && current_user.id != @item.user_id
+
+
+  - if @item.buyer_id != nil
+    = link_to "", class: "item-buy-btn sold-out" do
+      売り切れました
+  - elsif user_signed_in? && current_user.id != @item.user_id
     = link_to item_sold_index_path(@item), class: "item-buy-btn" do
       購入画面に進む
     - if user_signed_in? && current_user.id == @item.user_id

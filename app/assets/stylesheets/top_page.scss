@@ -21,13 +21,11 @@
           font-weight: bold;
           display: inline-block;
           font-size: 60px;
-
         }
         p {
           margin: 16px 0 0;
           font-size: 18px;
         }
-      // }
         &-store {
           margin: 24px 0 0;
           line-height: 0;
@@ -44,8 +42,8 @@
   }
 
   .pickup-container {
-      margin: auto;
-      padding-top: 40px 0;
+      margin: 0 auto;
+      padding: 40px 0;
       background-color: $gray;
     }
 
@@ -56,11 +54,10 @@
       line-height: 1.4;
     }
 
-    .items-box-container{
-      width: 700px;
+    .items-detail-container{
       margin: 0 auto;
+      width: 940px;
     }
-
     .text-center {
       color: $blue;
       text-decoration: none;
@@ -69,84 +66,33 @@
       font-size: 22px;
       margin: 26px 11px;
     }
-
-    .items-box-content {
-     display: flex;
-     color: $black;
-     width: auto;
-     margin: 0 auto;
-     a:link {
+    .items-box {
+      display: flex;
+      color: $black;
+      width: 940px;
+      margin: 0 auto;
+      a:link {
        color: $black;
-     }
-     a:visited {
+      }
+      a:visited {
        color: $black;
-     }
-     a:hover {
+      }
+      a:hover {
        color: $black;
        text-decoration: none;
-     }
-   }
-
-   .items-box {
-    position: relative;
-    text-align: center;
-    width: 213px;
-    margin: 0 0 0 20px;
-    float: left;
-    background: $white;
-    &-photo {
-      width: 213px;
-      height: 220px;
+      }
     }
-    &-body {
-      height: 110px;
-      padding: 16px;
+    .view-all {
+      width: 99.5%;
+      padding: 20px 0 30px;
+      text-align: right;
+      margin: 0 auto;
+      font-size: 14px;
+      a:visited {
+        text-decoration: none;
+        color:  $blue;
+      }
     }
-    &-name {
-      overflow: hidden;
-      font-weight: 400;
-      height: 3em;
-      line-height: 1.5;
-      word-break: break-word;
-      white-space: normal;
-      text-align: left;
-      font-size: 16px;
-    }
-    &-num {
-      margin: 8px 0 0;
-      display: flex;
-      justify-content: space-between;
-    }
-    &-price {
-      float: left;
-      font-size: 16px;
-      font-weight: 600;
-    }
-    &-likes {
-      float: right;
-      font-size: 16px;
-      font-weight: 400;
-      margin-left: auto;
-    }
-    &-tax {
-      font-size: 10px;
-      clear: both;
-      text-align: left;
-      font-weight: 400;
-    }
-  }
-
-  .view-all {
-    a:visited {
-      text-decoration: none;
-      color:  $blue;
-    }
-    width: 99.5%;
-    padding: 20px 0 30px;
-    text-align: right;
-    margin: 0 auto;
-    font-size: 14px;
-  }
 
   .fa {
     &-heart {
@@ -155,24 +101,79 @@
   }
 }
 
-.sold-badge {
-  position: absolute;
-  border-right: 90px solid transparent;
-  border-bottom: 90px solid transparent;
-  border-left: 90px solid $red;
-  color: #fff;
-  font-size: 26px;
-}
-.sold {
-  position: absolute;
-  top: 20;
-  left: -100;
-  right: 10;
-  transform: rotate(-45deg);
-  font-weight: 600;
+
+.items-box-content {
+  position: relative;
+  text-align: left;
+  width: 213px;
+  margin: 0 0 0 20px;
+  float: left;
+  background: $white;
+  padding: 0;
+  &-photo {
+  width: 213px;
+  height: 220px;
+  }
+  &-body {
+    height: 110px;
+    padding: 16px;
+  }
+  &-name {
+    overflow: hidden;
+    font-weight: 400;
+    height: 3em;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: normal;
+    text-align: left;
+    font-size: 16px;
+  }
+  &-num {
+    margin: 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  &-price {
+    float: left;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  &-likes {
+    float: right;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: auto;
+  }
+  &-tax {
+    font-size: 10px;
+    clear: both;
+    text-align: left;
+    font-weight: 400;
+  }
 }
 
 .main-image {
-    width: 213px;
-    height: 213px;
+  width: 213px;
+  height: 213px;
+  position: relative;
+  padding: 0;
+}
+
+.sold-badge {
+  position: absolute;
+  border-top: 60px solid $red;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid $red;
+  color: #fff;
+  font-size: 26px;
+  z-index: 1;
+  &-text {
+    position: absolute;
+    transform: rotate(-45deg);
+    font-weight: 600;
+    top: -40px;
+    left: -60px;
+    letter-spacing: 2px;
+  }
 }

@@ -1,10 +1,10 @@
-/ .header-mypage-box
-/   .header-mypage-box__state
-/     %figure.header-mypage-box__state__figure
-/       .header-mypage-box__state__figure__div
-/         = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", alt: ""
-/       %figcaption
-/         = current_user&.nickname
+.header-mypage-box{ style: "display:none"}
+  .header-mypage-box__state
+    %figure.header-mypage-box__state__figure
+      .header-mypage-box__state__figure__div
+        = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", alt: ""
+      %figcaption
+        = current_user&.nickname
 
 /     %ul.header-mypage-box__state__listing
 /       %li.header-mypage-box__state__listing__li
