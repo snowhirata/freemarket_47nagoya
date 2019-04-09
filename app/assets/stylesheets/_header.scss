@@ -220,7 +220,6 @@
         margin: 0 0 0 16px;
         font-size: 14px;
         a {
-          display: block;
           font-size: 14px;
           color: $black;
           font-size: 14px;
@@ -263,18 +262,14 @@
           color: $black;
           font-size: 14px;
           display: block;
-          // &:after {
-          //   content: "";
-          //   clear: both;
-          //   display: block;
-          // }
           // .left {
           //   float: left;
+          //   padding-bottom: 0px;
           // }
           // .right {
           //   float: right;
           //   .mypage-nav-icon {
-          //     color: #ccc;
+          //     color: $blue;
           //   }
           // }
         }
@@ -305,17 +300,17 @@
           position: absolute;
           top: 50%;
           right: 18px;
-          color: #ccc;
+          color: $blue;
           transform: translate(0, -50%);
           transition: all ease-out .2s;
-          font-size: 1.5rem;
+          font-size: 27px;
         }
       }
       .list-item:hover {
         background:#f8f8f8;
         .mypage-nav-icon {
           transition-duration: 0.3s;
-          color: black;
+          color: $black;
           font-size: 27px;
           transform: translate(10px,-50%);
         }
