@@ -44,7 +44,7 @@
               %label.name-label__require
                 必須
             .select-form
-              = f.select :category, Category.categories.keys, {prompt: '---'}
+              = f.select :category, Category.categories, {prompt: '---'}
             .brand-state
               .name-label
                 %label.name-label__name
