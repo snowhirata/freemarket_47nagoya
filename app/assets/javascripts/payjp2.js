@@ -22,36 +22,21 @@ $(function() {
     exp_year = Number(exp_year);
     security_code = Number(security_code);
 
-    console.log(card_number)
-    console.log(exp_month)
-    console.log(exp_year)
-    console.log(security_code)
-
     var card = {
         number: card_number,
         cvc: security_code,
         exp_month: exp_month,
         exp_year: exp_year
     };
-    console.log(card)
+
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
-        // form.find('.payment-errors').text(response.error.message);
-        // form.find('button').prop('disabled', false);
-        console.log('error')
+        alert('失敗しました');
       }
       else {
-        // $(".number").removeAttr("name");
-        // $(".cvc").removeAttr("name");
-        // $(".exp_month").removeAttr("name");
-        // $(".exp_year").removeAttr("name");
-
         var token = response.id;
-
         $(".l-single-inner").append($('<input type="hidden" name="creditvalid[payjp_token]" id="creditvalid_payjp_token" />').val(token));
         $(".l-single-inner").get(0).submit();
-        // form.append($('<input type="hidden" name="payjpToken" />').val(token));
-        // form.get(0).submit();
       }
     });
   });
