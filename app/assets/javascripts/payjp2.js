@@ -10,6 +10,7 @@ $(function() {
     card_number = $('#card_number').val()
     exp_month = $('#exp_month').val()
     exp_year = $('#exp_year').val()
+    exp_year = ""+20+exp_year
     security_code = $('#security_code').val()
 
     card_number = Number(card_number);
@@ -19,9 +20,9 @@ $(function() {
 
     var card = {
         number: card_number,
-        cvc: security_code,
         exp_month: exp_month,
-        exp_year: exp_year
+        exp_year: exp_year,
+        cvc: security_code
     };
 
     Payjp.createToken(card, function(s, response) {
