@@ -29,10 +29,14 @@ class User < ApplicationRecord
 
   #facebook認証
   def self.from_omniauth(auth)
-
-    if credential = Credential.where(uid: auth.uid, provider: auth.provider).first
+    credential = Credential.where(uid: auth.uid, provider: auth.provider).first
+    exist_user = User.where(email: auth.info.email).first
+    binding.pry
+    if credential
       user = credential.user
-    else credential
+    elsif exist_user
+      user = exist_user
+    else
       user = User.new(
         nickname: auth.info.name,
         email:    auth.info.email,
