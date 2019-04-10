@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :credential
   has_one :address
   has_one :credit
+  accepts_nested_attributes_for :address 
   has_many :items
 
   devise :database_authenticatable, :registerable,

@@ -1,6 +1,7 @@
 class CreditsController < ApplicationController
 
   def new
+    @user = User.find(params[:user_id])
     @credit = Credit.new
   end
 
@@ -9,12 +10,10 @@ class CreditsController < ApplicationController
   end
 
   def create
+    @credit = Credit.new(credit_params)
     token = params[:credit][:payjp_token]
     customer = Mypayjp.create_customer(token)
-    @credit = Credit.new(credit_params)
     @credit.cus_id = customer.id
-    @credit.user_id = current_user.id
-    binding.pry
     if @credit.save
       redirect_to root_path
     else
@@ -22,13 +21,19 @@ class CreditsController < ApplicationController
     end
   end
 
-  def update
-    binding.pry
+  def edit
+    @user = User.find(params[:user_id])
     @credit = Credit.find(params[:id])
-    if @credit.update(credit_params)
-      redirect_to root_path
+  end
+
+  def update
+    @credit = Credit.find(params[:id])
+    @credit.update(credit_params)
+    if @credit.valid?
+      redirect_to profile_user_path
     else
-      render :new
+      @user = User.find(params[:user_id])
+      render :edit
     end
   end
 
@@ -40,7 +45,7 @@ class CreditsController < ApplicationController
   private
 
   def credit_params
-    params.require(:credit).permit(:card_number, :exp_year, :exp_month, :security_code)
+    params.require(:credit).permit(:card_number, :exp_year, :exp_month, :security_code).merge(user_id: params[:user_id])
   end
 
 end

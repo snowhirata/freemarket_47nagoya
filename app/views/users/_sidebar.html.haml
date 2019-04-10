@@ -1,7 +1,7 @@
 .sidebar
   %ul.sidebar__list
     %li.sidebar__list__element
-      = link_to user_path do
+      = link_to '#' do
         マイページ
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
@@ -73,16 +73,21 @@
         プロフィール
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to "#" do
-        発送元・お届け先住所変更
-        %i.fa.fa-chevron-right
+      -if current_user.address
+        = link_to edit_user_address_path(current_user,current_user.address) do
+          発送元・お届け先住所変更
+          %i.fa.fa-chevron-right
+      -else
+        = link_to new_user_address_path(current_user) do
+          発送元・お届け先住所登録
+          %i.fa.fa-chevron-right
     %li.sidebar__list__element
       - if current_user.credit
-        = link_to credit_path(current_user.credit.id) do
+        = link_to edit_user_credit_path(current_user,current_user.credit) do
           支払い方法
           %i.fa.fa-chevron-right
       - else
-        = link_to new_credit_path do
+        = link_to new_user_credit_path(current_user) do
           支払い方法
           %i.fa.fa-chevron-right
     %li.sidebar__list__element

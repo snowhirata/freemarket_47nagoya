@@ -2,14 +2,18 @@
 = render 'items/header'
 .container.clearfix
   .card-container
-    %h2.card-container__head クレジットカード情報詳細
-    =form_for(@credit,html:{class: 'l-single-inner'}) do |f|
+    %h2.card-container__head クレジットカード情報編集
+    =form_for([@user,@credit],html:{class: 'l-single-inner'}) do |f|
       .l-single-content
         .form-group
           =f.label :カード番号
           %span.form-arbitrary
             必須
           =f.text_field :card_number,id: 'card_number',class: 'input-default', placeholder: '例)1234567'
+          - if @credit.errors.full_messages_for(:card_number) != []
+            - @credit.errors.full_messages_for(:card_number).each do |message|
+              .error_message
+                = message
           %ul.signup-card-list
             %li
               =image_tag('visa.svg', width:49, height:20)
@@ -32,14 +36,26 @@
           .select-wrap
             =f.select :exp_month, User.exp_months.keys,{},class: "select-default",id: 'exp_month'
             =fa_icon "chevron-down"
+            - if @credit.errors.full_messages_for(:exp_month) != []
+              - @credit.errors.full_messages_for(:exp_month).each do |message|
+                .error_message
+                  = message
           .select-wrap
             =f.select :exp_year, User.exp_years.keys,{},class: "select-default",id: 'exp_year'
             =fa_icon "chevron-down"
+            - if @credit.errors.full_messages_for(:exp_year) != []
+              - @credit.errors.full_messages_for(:exp_year).each do |message|
+                .error_message
+                  = message
         .form-group
           =f.label :セキュリティコード
           %span.form-arbitrary
             必須
           =f.text_field :security_code,id: 'security_code',class: 'input-default', placeholder: '例)123'
+          - if @credit.errors.full_messages_for(:security_code) != []
+            - @credit.errors.full_messages_for(:security_code).each do |message|
+              .error_message
+                = message
         .text-right
           %span.form-question
             ?

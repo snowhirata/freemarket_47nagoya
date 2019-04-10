@@ -14,46 +14,56 @@
             =fa_icon "chevron-right"
       .form-group
         =f.label :お名前
-        %p へのへの　もへじ
+        %p 
+          =@user.nickname
       .form-group
         =f.label :お名前カナ
-        %p へのへの　もへじ
+        %p
+          =@user.last_name
+          =@user.first_name
       .form-group
         =f.label :生年月日
-        %p へのへの　もへじ
-      .form-group
-        =f.label :郵便番号
-        %span.form-arbitrary
-          任意
-        =f.text_field :postal_code,class: 'input-default', placeholder: '例)1234567'
-      .form-group
-        =f.label :都道府県
-        %span.form-arbitrary
-          任意
-        .select-wrap
-          =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {},class: 'select-default'
-          =fa_icon "chevron-down"
-      .form-group
-        =f.label :市区町村
-        %span.form-arbitrary
-          任意
-        =f.text_field :city,class: 'input-default', placeholder: '例)横浜市緑区'
-      .form-group
-        =f.label :番地
-        %span.form-arbitrary
-          任意
-        =f.text_field :block,class: 'input-default', placeholder: '例)青山1-1-1'
-      .form-group
-        =f.label :建物
-        %span.form-arbitrary
-          任意
-        =f.text_field :building,class: 'input-default', placeholder:'例)柳ビル103'
-      .form-group
-        =f.submit :登録する,class: 'submit_button'
-      .form-group.text-right
-        %p
-          =link_to '#' do
-            本人情報の登録について
-            =fa_icon "chevron-right"
+        %p 
+          =@user.birth_year
+          年
+          =@user.birth_month
+          月
+          =@user.birth_day
+          日
+      = f.fields_for :address do |a|
+        .form-group
+          =a.label :郵便番号
+          %span.form-arbitrary
+            任意
+          =a.text_field :postal_code,class: 'input-default', placeholder: '例)1234567'
+        .form-group
+          =a.label :都道府県
+          %span.form-arbitrary
+            任意
+          .select-wrap
+            =a.collection_select :prefecture_id, Prefecture.all, :id, :name, {},class: 'select-default'
+            =fa_icon "chevron-down"
+        .form-group
+          =a.label :市区町村
+          %span.form-arbitrary
+            任意
+          =a.text_field :city,class: 'input-default', placeholder: '例)横浜市緑区'
+        .form-group
+          =a.label :番地
+          %span.form-arbitrary
+            任意
+          =a.text_field :block,class: 'input-default', placeholder: '例)青山1-1-1'
+        .form-group
+          =a.label :建物
+          %span.form-arbitrary
+            任意
+          =a.text_field :building,class: 'input-default', placeholder:'例)柳ビル103'
+        .form-group
+          =f.submit :登録する,class: 'submit_button'
+        .form-group.text-right
+          %p
+            =link_to '#' do
+              本人情報の登録について
+              =fa_icon "chevron-right"
   = render partial:'sidebar'
 =render 'items/footer.html.haml'
