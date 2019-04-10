@@ -19,6 +19,7 @@ class UservalidsController < ApplicationController
       session[:birth_year] = params[:uservalid]["birth_year(1i)"].to_i
       session[:birth_month] = params[:uservalid]['birth_year(2i)'].to_i
       session[:birth_day] = params[:uservalid]['birth_year(3i)'].to_i
+      @uservalid.delete
       redirect_to new_addressvalid_path
     else
       render :new
