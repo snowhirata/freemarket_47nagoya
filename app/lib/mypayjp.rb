@@ -1,7 +1,7 @@
 require 'payjp'
 
 class Mypayjp
-  Payjp::api_key = Rails.application.credentials.payjp[:api_key]
+  Payjp::api_key = Rails.application.credentials.payjp[:api_sk]
 
   # カードトークンを生成
   def self.create_token(number, cvc, exp_month, exp_year)

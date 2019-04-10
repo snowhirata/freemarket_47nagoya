@@ -1,7 +1,7 @@
 
 $(function() {
 
-   Payjp.setPublicKey('pk_test_61e818d4f22147be9f208a2b');
+   Payjp.setPublicKey(Rails.application.credentials.payjp[:api_pk]);
   $("#ivent-button3").click(function(e) {
 
     console.log('開始')
