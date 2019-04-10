@@ -31,7 +31,6 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     credential = Credential.where(uid: auth.uid, provider: auth.provider).first
     exist_user = User.where(email: auth.info.email).first
-    binding.pry
     if credential
       user = credential.user
     elsif exist_user
