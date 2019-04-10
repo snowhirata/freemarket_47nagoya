@@ -4,9 +4,7 @@ $(function() {
    Payjp.setPublicKey(Rails.application.credentials.payjp[:api_pk]);
   $("#ivent-button3").click(function(e) {
 
-    console.log('開始')
     e.preventDefault();
-
     card_number = $('#card_number').val()
     exp_month = $('#exp_month').val()
     exp_year = $('#exp_year').val()
