@@ -9,7 +9,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   validates :name, presence: true
-  validates :brand, presence: true
   validates :state, presence: true
   validates :prefecture_id, presence: true
   validates :ship_charge, presence: true
