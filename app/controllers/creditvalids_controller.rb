@@ -5,12 +5,16 @@ class CreditvalidsController < ApplicationController
   end
 
   def create
+    token = params[:creditvalid][:payjp_token]
+    customer = Mypayjp.create_customer(token)
+
     @creditvalid = Creditvalid.new(get_params)
     if @creditvalid.valid?
       session[:card_number] = params[:creditvalid][:card_number]
       session[:exp_month] = params[:creditvalid][:exp_month]
       session[:exp_year] = params[:creditvalid][:exp_year]
       session[:security_code] = params[:creditvalid][:security_code]
+      session[:cus_id] = customer.id
       redirect_to setuser_path
     else
       render :new

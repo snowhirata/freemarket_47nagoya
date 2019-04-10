@@ -28,7 +28,7 @@
             =f.label :カード番号
             %span.form-arbitrary
               必須
-            =f.text_field :card_number, class: 'input-default', placeholder: '例)1234567'
+            =f.text_field :card_number, id: 'card_number',class: 'input-default', placeholder: '例)1234567'
             - if @creditvalid.errors.full_messages_for(:card_number) != []
               - @creditvalid.errors.full_messages_for(:card_number).each do |message|
                 = message
@@ -52,14 +52,14 @@
             %span.form-arbitrary
               必須
             .select-wrap
-              =f.select :exp_month,User.exp_months.keys,{prompt: '--'},class: "select-default"
+              =f.select :exp_month,User.exp_months.keys,{prompt: '--'},class: "select-default",id: 'exp_month'
               =fa_icon "chevron-down"
               - if @creditvalid.errors.full_messages_for(:exp_month) != []
                 - @creditvalid.errors.full_messages_for(:exp_month).each do |message|
                   .error_message
                     = message
             .select-wrap
-              =f.select :exp_year, User.exp_years.keys,{prompt: '--'},class: "select-default"
+              =f.select :exp_year, User.exp_years.keys,{prompt: '--'},class: "select-default",id: 'exp_year'
               =fa_icon "chevron-down"
               - if @creditvalid.errors.full_messages_for(:exp_year) != []
                 - @creditvalid.errors.full_messages_for(:exp_year).each do |message|
@@ -69,7 +69,7 @@
             =f.label :セキュリティコード
             %span.form-arbitrary
               必須
-            =f.text_field :security_code,class: 'input-default', placeholder: '例)カード背面4桁or3桁の番号'
+            =f.text_field :security_code,id: 'security_code',class: 'input-default', placeholder: '例)カード背面4桁or3桁の番号'
             - if @creditvalid.errors.full_messages_for(:security_code) != []
               - @creditvalid.errors.full_messages_for(:security_code).each do |message|
                 .error_message
@@ -80,7 +80,9 @@
             =link_to '#' do
               カード裏面の番号とは？
           .form-group
-            = f.submit :登録する,class: 'submit_button',id: 'ivent-button3'
+            = f.submit '登録する',class: 'submit_button',id: 'ivent-button3'
 
 =javascript_include_tag 'registrations_new.js'
+=javascript_include_tag 'payjp.js'
+
             

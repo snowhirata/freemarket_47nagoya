@@ -54,7 +54,8 @@ class UsersController < ApplicationController
       card_number: session[:card_number],
       exp_month: session[:exp_month],
       exp_year: session[:exp_year],
-      security_code: session[:security_code]
+      security_code: session[:security_code],
+      cus_id: session[:cus_id]
     )
     @credit.save
 
