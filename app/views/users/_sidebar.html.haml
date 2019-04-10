@@ -77,9 +77,14 @@
         発送元・お届け先住所変更
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to register_card_user_path do
-        支払い方法
-        %i.fa.fa-chevron-right
+      - if current_user.credit
+        = link_to credit_path(current_user.credit.id) do
+          支払い方法
+          %i.fa.fa-chevron-right
+      - else
+        = link_to new_credit_path do
+          支払い方法
+          %i.fa.fa-chevron-right
     %li.sidebar__list__element
       = link_to "#" do
         メール/パスワード

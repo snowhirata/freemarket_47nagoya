@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
+
+  resources :credits
+
   get 'list' => 'users#list'
   get 'setuser' => 'users#setuser'
   get 'complete' => 'users#complete'

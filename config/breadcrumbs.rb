@@ -13,7 +13,7 @@ crumb :profile do
 end
 
 crumb :register_card do
-  link "支払い方法", register_card_user_path
+  link "支払い方法", credits_path
   parent :mypage
 end
 
