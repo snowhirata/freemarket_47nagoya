@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_030948) do
     t.integer "birth_month"
     t.integer "birth_day"
     t.string "profit"
+    t.text "profile_detail"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

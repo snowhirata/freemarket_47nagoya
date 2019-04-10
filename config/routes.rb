@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :update] do
     member do
       get 'identification'
       get 'register_card'

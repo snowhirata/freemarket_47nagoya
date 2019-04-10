@@ -6,7 +6,6 @@ class RemoveColumnsFromUsers < ActiveRecord::Migration[5.2]
     remove_column :users, :block, :string
     remove_column :users, :building, :string
     remove_column :users, :phone_number, :string
-    remove_column :users, :profile_detail, :text
     remove_column :users, :card_number, :integer
     remove_column :users, :security_code, :integer
     remove_column :users, :exp_month, :string
