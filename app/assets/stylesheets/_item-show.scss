@@ -22,10 +22,12 @@
       background: background-photo;
       .owl-carousel {
         position: relative;
-        .owl-stage-outer {
+        // overflow: hidden;
+        // height: 0;
+        .owl-stage {
           position: relative;
           overflow: hidden;
-          .owl-stage {
+          .owl-stage-outer {
             position: relative;
             .owl-item {
               min-height: 1px;
@@ -292,6 +294,9 @@
     padding: 0 14px 0 0;
     text-align: right;
   }
+  .arrow-icon {
+    font-size: 20px;
+  }
 }
 
 .item-social-media-box {
@@ -352,31 +357,41 @@
 .items-in-user-profile {
   width: 700px;
   margin: 0 auto;
-  .items-box-content {
-    padding: 0;
-    margin: 0 auto;
-    width: auto;
-    overflow-x: auto;
-    overflow-y: hidden;
+  .items-box-head {
+    margin-bottom: 6px;
+  }
+  .items-box {
     display: flex;
-    justify-content: space-around;
-    a {
-      color: $black;
+    color: $black;
+    width: 940px;
+    margin: 0 auto;
+    a:link {
+     color: $black;
     }
-    .items-box {
+    a:visited {
+     color: $black;
+    }
+    a:hover {
+     color: $black;
+     text-decoration: none;
+    }
+    .items-box-content:first-child {
+      margin: 0 0 20px 0;
+    }
+    .items-box-content {
       position: relative;
-      text-align: center;
+      text-align: left;
       width: 220px;
-      height: 330px;
       margin: 0 0 20px 20px;
       float: left;
       background: $white;
+      padding: 0;
       &-photo {
-        width: 220px;
-        height: 220px;
+      width: 220px;
+      height: 220px;
       }
       &-body {
-        height: 100px;
+        height: 110px;
         padding: 16px;
       }
       &-name {
@@ -390,6 +405,7 @@
         font-size: 16px;
       }
       &-num {
+        margin: 8px 0 0;
         display: flex;
         justify-content: space-between;
       }
