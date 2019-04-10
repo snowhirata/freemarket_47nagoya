@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function(){
-  $(".header-user-icon").hover(function(e){
-    e.preventDefault();
+  $(".header-user-icon").hover(function(){
     var mypageBox = $(".header-mypage-box:not(:animated)");
     mypageBox.show();
     mypageBox.hover(function(){

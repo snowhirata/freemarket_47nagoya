@@ -6,51 +6,51 @@
       %figcaption
         = current_user&.nickname
 
-/     %ul.header-mypage-box__state__listing
-/       %li.header-mypage-box__state__listing__li
-/         = link_to "" do
-/           評価: 0
-/       %li.header-mypage-box__state__listing__li
-/         = link_to "" do
-/           出品数: 0
+    %ul.header-mypage-box__state__listing
+      %li.header-mypage-box__state__listing__li
+        = link_to "" do
+          評価: 0
+      %li.header-mypage-box__state__listing__li
+        = link_to "" do
+          出品数: 0
 
-/     %ul.header-mypage-box__state__points
-/       %li.header-mypage-box__state__points__li
-/         = link_to "", class: "clearfix" do
-/           .left 売上金
-/           .right
-/             = 0
-/             = fa_icon 'angle-right', class: 'mypage-nav-icon'
+    %ul.header-mypage-box__state__points
+      %li.header-mypage-box__state__points__li
+        = link_to "", class: "clearfix" do
+          .left 売上金
+          .right
+            = 0
+            = fa_icon 'angle-right', class: 'mypage-nav-icon'
 
-/       %li.header-mypage-box__state__points__li
-/         = link_to "", class: "clearfix" do
-/           .left ポイント
-/           .right
-/             = "P 0"
-/             = fa_icon 'angle-right', class: 'mypage-nav-icon'
+      %li.header-mypage-box__state__points__li
+        = link_to "", class: "clearfix" do
+          .left ポイント
+          .right
+            = "P 0"
+            = fa_icon 'angle-right', class: 'mypage-nav-icon'
 
-/   %ul.header-mypage-box__list
-/     %li
-/       = link_to "#", class: "list-item" do
-/         いいね！一覧
-/         = fa_icon 'angle-right', class: 'mypage-nav-icon'
-/     %li
-/       = link_to "", class: "list-item" do
-/         出品した商品 - 出品中
-/         = fa_icon 'angle-right', class: 'mypage-nav-icon'
-/     %li
-/       = link_to "", class: "list-item" do
-/         出品した商品 - 取引中
-/         = fa_icon 'angle-right', class: 'mypage-nav-icon'
-/     %li
-/       = link_to "", class: "list-item" do
-/         出品した商品 - 売却済み
-/         = fa_icon 'angle-right', class: 'mypage-nav-icon'
-/     %li
-/       = link_to "", class: "list-item" do
-/         購入した商品 - 取引中
-/         = fa_icon 'angle-right', class: 'mypage-nav-icon'
-/     %li
-/       = link_to "", class: "list-item" do
-/         購入した商品 - 過去の取引
-/         = fa_icon "angle-right", class: 'mypage-nav-icon'
+  %ul.header-mypage-box__list
+    %li
+      = link_to "#", class: "list-item" do
+        いいね！一覧
+        = fa_icon 'angle-right', class: 'mypage-nav-icon'
+    %li
+      = link_to "", class: "list-item" do
+        出品した商品 - 出品中
+        = fa_icon 'angle-right', class: 'mypage-nav-icon'
+    %li
+      = link_to "", class: "list-item" do
+        出品した商品 - 取引中
+        = fa_icon 'angle-right', class: 'mypage-nav-icon'
+    %li
+      = link_to "", class: "list-item" do
+        出品した商品 - 売却済み
+        = fa_icon 'angle-right', class: 'mypage-nav-icon'
+    %li
+      = link_to "", class: "list-item" do
+        購入した商品 - 取引中
+        = fa_icon 'angle-right', class: 'mypage-nav-icon'
+    %li
+      = link_to "", class: "list-item" do
+        購入した商品 - 過去の取引
+        = fa_icon "angle-right", class: 'mypage-nav-icon'
