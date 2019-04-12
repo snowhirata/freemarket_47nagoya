@@ -1,4 +1,4 @@
-- breadcrumb :identification
+/ - breadcrumb :identification
 
 = render 'items/header'
 
@@ -11,6 +11,10 @@
         %span.form-arbitrary
           任意
         =f.text_field :postal_code,class: 'input-default', placeholder: '例)1234567'
+        - if @address.errors.full_messages_for(:postal_code) != []
+          - @address.errors.full_messages_for(:postal_code).each do |message|
+            .error_message
+              = message
       .form-group
         =f.label :都道府県
         %span.form-arbitrary
@@ -18,21 +22,46 @@
         .select-wrap
           =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {},class: 'select-default'
           =fa_icon "chevron-down"
+          - if @address.errors.full_messages_for(:prefecture_id) != []
+            - @address.errors.full_messages_for(:prefecture_id).each do |message|
+              .error_message
+                = message
       .form-group
         =f.label :市区町村
         %span.form-arbitrary
           任意
         =f.text_field :city,class: 'input-default', placeholder: '例)横浜市緑区'
+        - if @address.errors.full_messages_for(:city) != []
+          - @address.errors.full_messages_for(:city).each do |message|
+            .error_message
+              = message
       .form-group
         =f.label :番地
         %span.form-arbitrary
           任意
         =f.text_field :block,class: 'input-default', placeholder: '例)青山1-1-1'
+        - if @address.errors.full_messages_for(:block) != []
+          - @address.errors.full_messages_for(:block).each do |message|
+            .error_message
+              = message
       .form-group
         =f.label :建物
         %span.form-arbitrary
           任意
         =f.text_field :building,class: 'input-default', placeholder:'例)柳ビル103'
+        - if @address.errors.full_messages_for(:building) != []
+          - @address.errors.full_messages_for(:building).each do |message|
+            .error_message
+              = message
+      .form-group
+        =f.label :電話番号
+        %span.form-arbitrary
+          任意
+        =f.text_field :phone_number,class: 'input-default', placeholder:'例)09029262655'
+        - if @address.errors.full_messages_for(:phone_number) != []
+          - @address.errors.full_messages_for(:phone_number).each do |message|
+            .error_message
+              = message
       .form-group
         =f.submit :登録する,class: 'submit_button'
       .form-group.text-right

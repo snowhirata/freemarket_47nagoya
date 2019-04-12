@@ -1,13 +1,18 @@
 class AddressesController < ApplicationController
 
   def new
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @address = Address.new
   end
 
   def create
-    @address = Address.create(address_params)
-    redirect_to profile_user_path
+    @address = Address.new(address_params)
+    if @address.valid?
+      @address.save
+      redirect_to profile_user_path(params[:user_id])
+    else
+      render :new
+    end
   end
 
   def edit
