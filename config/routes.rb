@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
+  match 'category_select', to: 'items#category_select', via: [:get, :post]
+  match 'child_category_select', to: 'items#child_category_select', via: [:get, :post]
+
   resources :items  do
     resources :sold, only: [:index, :show, :update]
   end

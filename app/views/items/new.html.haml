@@ -43,8 +43,14 @@
                 カテゴリー
               %label.name-label__require
                 必須
-            .select-form
-              = f.select :category, Category.categories.keys, {prompt: '---'}
+            .select-form{style: 'position: relative;'}
+              = f.select :category_id, options_from_collection_for_select( @category, :id, :name),
+  {:include_blank => '---'},{data:{remote: true, url: url_for(action: :category_select)}}
+              = fa_icon "chevron-down"
+            .child-category{style: 'position: relative; margin-top: 8px;'}
+              #category-select
+            .grand-child-category{style: 'position: relative; margin-top: 8px;'}
+              #child-category-select
             .brand-state
               .name-label
                 %label.name-label__name

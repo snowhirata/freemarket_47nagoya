@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_033535) do
+ActiveRecord::Schema.define(version: 2019_04_05_075917) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code"
@@ -39,8 +39,15 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "main_category_id"
+    t.bigint "sub_category_id"
+    t.integer "depth"
+    t.text "intro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["main_category_id"], name: "index_categories_on_main_category_id"
+    t.index ["sub_category_id"], name: "index_categories_on_sub_category_id"
   end
 
   create_table "credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -79,18 +86,22 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
     t.text "description"
     t.string "brand"
     t.string "state", null: false
-    t.integer "category_id"
-    t.integer "prefecture_id"
+    t.integer "prefecture_id", null: false
     t.string "ship_charge", null: false
-    t.string "ship_method", null: false
+    t.string "ship_method"
     t.string "ship_date", null: false
     t.integer "price", null: false
-    t.string "category", null: false
+    t.bigint "category_id"
+    t.bigint "child_category_id"
+    t.bigint "grand_child_category_id"
     t.bigint "user_id"
     t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["child_category_id"], name: "index_items_on_child_category_id"
+    t.index ["grand_child_category_id"], name: "index_items_on_grand_child_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -100,8 +111,6 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "item"
-    t.string "references"
     t.index ["item_id"], name: "index_pictures_on_item_id"
   end
 
@@ -130,6 +139,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
     t.text "profile_detail"
     t.string "profit"
     t.integer "card_number"
+    t.integer "security_code"
     t.string "exp_month"
     t.string "exp_year"
     t.string "uid"
@@ -159,6 +169,9 @@ ActiveRecord::Schema.define(version: 2019_04_06_033535) do
   add_foreign_key "credentials", "users"
   add_foreign_key "credits", "users"
   add_foreign_key "creditvalids", "users"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "categories", column: "child_category_id"
+  add_foreign_key "items", "categories", column: "grand_child_category_id"
   add_foreign_key "items", "users"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "pictures", "items"
