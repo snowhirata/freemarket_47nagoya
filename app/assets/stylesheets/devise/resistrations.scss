@@ -133,6 +133,16 @@
       display: inline-block;
       vertical-align: top;
       ol{
+        li:first-child{
+          .progress-status:before{
+            content: none;
+          }
+        }
+        li:last-child{
+          .progress-status:after{
+            content: none;
+          }
+        }
         li{
           display: inline-block;
           position: relative;

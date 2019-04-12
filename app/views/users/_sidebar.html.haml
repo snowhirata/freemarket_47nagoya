@@ -1,7 +1,7 @@
 .sidebar
   %ul.sidebar__list
     %li.sidebar__list__element
-      = link_to user_path do
+      = link_to '#' do
         マイページ
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
@@ -69,23 +69,33 @@
   %h3.sidebar__head 設定
   %ul.sidebar__list
     %li.sidebar__list__element
-      = link_to profile_user_path do
+      = link_to profile_user_path(current_user) do
         プロフィール
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to "#" do
-        発送元・お届け先住所変更
-        %i.fa.fa-chevron-right
+      -if current_user.address
+        = link_to edit_user_address_path(current_user,current_user.address) do
+          発送元・お届け先住所変更
+          %i.fa.fa-chevron-right
+      -else
+        = link_to new_user_address_path(current_user) do
+          発送元・お届け先住所登録
+          %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to register_card_user_path do
-        支払い方法
-        %i.fa.fa-chevron-right
+      - if current_user.credit
+        = link_to edit_user_credit_path(current_user,current_user.credit) do
+          支払い方法
+          %i.fa.fa-chevron-right
+      - else
+        = link_to new_user_credit_path(current_user) do
+          支払い方法
+          %i.fa.fa-chevron-right
     %li.sidebar__list__element
       = link_to "#" do
         メール/パスワード
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to identification_user_path do
+      = link_to identification_user_path(current_user) do
         本人情報
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
@@ -93,6 +103,6 @@
         電話番号の確認
         %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      = link_to logout_user_path do
+      = link_to logout_user_path(current_user) do
         ログアウト
         %i.fa.fa-chevron-right

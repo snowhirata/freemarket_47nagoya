@@ -1,10 +1,19 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :identification, :register_card, :profile, :logout]
+  before_action :set_user, only: [:show, :update, :identification, :register_card, :profile, :logout]
   
   def index
   end
 
   def show
+  end
+
+  def update
+    @user.assign_attributes(user_params)
+    if @user.save(validate: false)
+      redirect_to profile_user_path(@user)
+    else
+      render :profile
+    end
   end
 
   def identification
@@ -70,6 +79,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname,:profile_detail,address_attributes: [:id,:postal_code, :prefecture_id, :city, :block, :building])
   end
 
 end

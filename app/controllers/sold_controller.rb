@@ -8,13 +8,15 @@ class SoldController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      if customer = current_user.credit.cus_id
-        Mypayjp.create_charge_by_customer(customer,params[:item][:item_price])
-      end
+    
+    if current_user.credit
+      customer = current_user.credit.cus_id
+      @item.update(item_params)
+      Mypayjp.create_charge_by_customer(customer,params[:item][:item_price])
       redirect_to root_path
     else
-      render :index
+      flash[:credit] = '支払い情報を登録してください'
+      redirect_to new_credit_path
     end
   end
 

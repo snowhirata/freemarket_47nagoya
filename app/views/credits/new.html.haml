@@ -1,17 +1,15 @@
-- breadcrumb :register_card
-
+/ - breadcrumb :register_card
 = render 'items/header'
-
 .container.clearfix
   .card-container
     %h2.card-container__head クレジットカード情報入力
-    =form_for @user do |f|
+    =form_for([@user,@credit],html:{class: 'l-single-inner'}) do |f|
       .l-single-content
         .form-group
           =f.label :カード番号
           %span.form-arbitrary
             必須
-          =f.text_field :postal_code,class: 'input-default', placeholder: '例)1234567'
+          =f.text_field :card_number,id: 'card_number',class: 'input-default', placeholder: '例)1234567'
           %ul.signup-card-list
             %li
               =image_tag('visa.svg', width:49, height:20)
@@ -32,21 +30,23 @@
           %span.form-arbitrary
             必須
           .select-wrap
-            =f.select :exp_month, User.exp_months.keys,{},class: "select-default"
+            =f.select :exp_month, User.exp_months.keys,{},class: "select-default",id: 'exp_month'
             =fa_icon "chevron-down"
           .select-wrap
-            =f.select :exp_year, User.exp_years.keys,{},class: "select-default"
+            =f.select :exp_year, User.exp_years.keys,{},class: "select-default",id: 'exp_year'
             =fa_icon "chevron-down"
         .form-group
           =f.label :セキュリティコード
           %span.form-arbitrary
             必須
-          =f.text_field :city,class: 'input-default', placeholder: '例)横浜市緑区'
+          =f.text_field :security_code,id: 'security_code',class: 'input-default', placeholder: '例)123'
         .text-right
           %span.form-question
             ?
           =link_to '#' do
             カード裏面の番号とは？
         .form-group
-          =f.submit :登録する,class: 'submit_button'
-  = render partial:'sidebar'
+          =f.submit :登録する,class: 'submit_button',id: 'ivent-button3'
+  = render partial:'users/sidebar'
+
+=javascript_include_tag 'payjp2.js'

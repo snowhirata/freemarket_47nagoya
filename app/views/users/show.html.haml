@@ -8,10 +8,15 @@
       =link_to "#" do
         %figure
           =image_tag('member_photo_noimage_thumb.png',width:60,height:60)
-        %h2.bold snow
+        %h2.bold 
+          =@user.nickname
         .mypage-number
-          .mypage-number__rate 評価 0
-          .mypage-number__listings 出品数 0
+          .mypage-number__rate
+            評価
+            0
+          .mypage-number__listings
+            出品数
+            =current_user.items.length
     .mypage__tab-container-notification-todo
       %ul.mypage-tabs
         %li.active お知らせ
