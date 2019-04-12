@@ -5,12 +5,26 @@
 %section.item-box-container.l-single-container
   %h1.item-name
     = @item.name
-  .item-main-content.clearfix
-    .item-photo
+  .item-box-container__main-content.clearfix
+    .item-box-container__main-content__photo
+      -if @item.buyer_id != nil
+        .sold-badge
+          .sold-badge-text SOLD
       .owl-carousel
-        .owl-item-inner
-          - @item.pictures.first(1).each do |picture|
-            = image_tag picture.image.url, class: "owl-lazy"
+        .owl-stage
+          .owl-stage-outer{ style: 'left:0px',width: '900px'}
+            - @item.pictures.each do |picture|
+              - if picture.image.url.present?
+                .owl-item{ style: 'width:300px'}
+                  .owl-item__inner.is-higher-width
+                    = image_tag picture.image.url
+
+        .owl-dots
+          - if @item.pictures.present?
+            - @item.pictures.each do |picture|
+              .owl-dot
+                .owl-dot-inner
+                  = image_tag picture.image.url
 
     %table.item-detail-table
       %tbody
@@ -74,7 +88,12 @@
       = "¥ #{number_with_delimiter(@item.price)}"
     %span.item-tax (税込)
     %span.item-shipping-fee 送料込み
-  - if user_signed_in? && current_user.id != @item.user_id
+
+
+  - if @item.buyer_id != nil
+    = link_to "", class: "item-buy-btn sold-out" do
+      売り切れました
+  - elsif user_signed_in? && current_user.id != @item.user_id
     = link_to item_sold_index_path(@item), class: "item-buy-btn" do
       購入画面に進む
     - if user_signed_in? && current_user.id == @item.user_id
@@ -115,12 +134,12 @@
 %ul.nav-item-link-prev-next.clearfix
   %li.nav-item-link-prev
     = link_to root_path do
-      %i.fa.fa-angle-left
+      = fa_icon 'angle-left', class: 'arrow-icon'
       %span 【縦7cm横14cm】THE NORTH  FACEカッティングステッカー 二枚
   %li.nav-item-link-next
     = link_to root_path do
       %span ロデオクラウンズ♡ロングワンピース
-      %i.fa.fa-angle-right
+      = fa_icon 'angle-right', class: 'arrow-icon'
 
 .item-social-media-box
   .text-center
@@ -137,95 +156,94 @@
         = fa_icon "pinterest", class: "pinterest"
 
 .items-in-user-profile
-  %section.items-box-container.clearfix.items-box-overflow.items-in-user-profile
-    %h2.items-box-head
-      = link_to "#{@item.user.nickname}さんのその他の出品", root_path
-    .items-box-content.clearfix
-      %section.items-box
-        = link_to root_path do
-          .items-box-photo
-            = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-          .items-box-body
-            %h3.items-box-name ビジュー ニット
-            .items-box-num.clearfix
-              .items-box-price
-                ¥ 999
-                %p.item-box-tax (税込)
-              .items-box-likes
-                =fa_icon "heart-o", class: "heart"
-                %span 3
-      %section.items-box
-        = link_to root_path do
-          .items-box-photo
-            = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-          .items-box-body
-            %h3.items-box-name ビジュー ニット
-            .items-box-num.clearfix
-              .items-box-price
-                ¥ 999
-                %p.item-box-tax (税込)
-              .items-box-likes
-                =fa_icon "heart-o", class: "heart"
-                %span 3
-      %section.items-box
-        = link_to root_path do
-          .items-box-photo
-            = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-          .items-box-body
-            %h3.items-box-name ビジュー ニット
-            .items-box-num.clearfix
-              .items-box-price
-                ¥ 999
-                %p.item-box-tax (税込)
-              .items-box-likes
-                =fa_icon "heart-o", class: "heart"
-                %span 3
+  %h2.items-box-head
+    = link_to "#{@item.user.nickname}さんのその他の出品", root_path
+  .items-box.clearfix
+    %section.items-box-content
+      = link_to root_path do
+        .items-box-content-photo
+          = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
+        .items-box-content-body
+          %h3.items-box-content-name ビジュー ニット
+          .items-box-content-num.clearfix
+            .items-box-content-price
+              ¥ 999
+              %p.item-box-content-tax (税込)
+            .items-box-content-likes
+              =fa_icon "heart-o", class: "heart"
+              %span 3
+    %section.items-box-content
+      = link_to root_path do
+        .items-box-content-photo
+          = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
+        .items-box-content-body
+          %h3.items-box-content-name ビジュー ニット
+          .items-box-content-num.clearfix
+            .items-box-content-price
+              ¥ 999
+              %p.item-box-content-tax (税込)
+            .items-box-content-likes
+              =fa_icon "heart-o", class: "heart"
+              %span 3
+    %section.items-box-content
+      = link_to root_path do
+        .items-box-content-photo
+          = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
+        .items-box-content-body
+          %h3.items-box-content-name ビジュー ニット
+          .items-box-content-num.clearfix
+            .items-box-content-price
+              ¥ 999
+              %p.item-box-content-tax (税込)
+            .items-box-content-likes
+              =fa_icon "heart-o", class: "heart"
+              %span 3
 
 .items-in-user-profile
   %h2.items-box-head
     = link_to "#{@item.category} その他の商品", root_path
-  .items-box-content.clearfix
-    %section.items-box
+  .items-box.clearfix
+    %section.items-box-content
       = link_to root_path do
-        .items-box-photo
+        .items-box-content-photo
           = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-        .items-box-body
-          %h3.items-box-name ビジュー ニット
-          .items-box-num.clearfix
-            .items-box-price
+        .items-box-content-body
+          %h3.items-box-content-name ビジュー ニット
+          .items-box-content-num.clearfix
+            .items-box-content-price
               ¥ 999
-              %p.item-box-tax (税込)
-            .items-box-likes
+              %p.item-box-content-tax (税込)
+            .items-box-content-likes
               =fa_icon "heart-o", class: "heart"
               %span 3
-    %section.items-box
+    %section.items-box-content
       = link_to root_path do
-        .items-box-photo
+        .items-box-content-photo
           = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-        .items-box-body
-          %h3.items-box-name ビジュー ニット
-          .items-box-num.clearfix
-            .items-box-price
+        .items-box-content-body
+          %h3.items-box-content-name ビジュー ニット
+          .items-box-content-num.clearfix
+            .items-box-content-price
               ¥ 999
-              %p.item-box-tax (税込)
-            .items-box-likes
+              %p.item-box-content-tax (税込)
+            .items-box-content-likes
               =fa_icon "heart-o", class: "heart"
               %span 3
-    %section.items-box
+    %section.items-box-content
       = link_to root_path do
-        .items-box-photo
+        .items-box-content-photo
           = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-        .items-box-body
-          %h3.items-box-name ビジュー ニット
-          .items-box-num.clearfix
-            .items-box-price
+        .items-box-content-body
+          %h3.items-box-content-name ビジュー ニット
+          .items-box-content-num.clearfix
+            .items-box-content-price
               ¥ 999
-              %p.item-box-tax (税込)
-            .items-box-likes
+              %p.item-box-content-tax (税込)
+            .items-box-content-likes
               =fa_icon "heart-o", class: "heart"
               %span 3
-
-
 
 = render 'app-banner'
 = render 'footer'
+
+=javascript_include_tag 'slick.js'

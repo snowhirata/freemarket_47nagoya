@@ -1,0 +1,103 @@
+= render 'header'
+.searchmain.clearfix
+  .left-contents
+    .sort-container
+      %select#sort
+        %option{value: "cheap",selected:'selected'} 並び替え
+        %option{value: "cheap"} 価格の安い順
+        %option{value: "high"} 価格の高い順
+        %option{value: "old"} 出品の古い順
+        %option{value: "new"} 出品の新しい順
+    =search_form_for(@q,url:search_path,class: 'search-container') do |f|
+      %h3 詳細検索
+      .form-group
+        / =f.label :name,'キーワードを追加する'
+        =fa_icon "plus",text:'キーワードを追加する'
+        =f.search_field :name_cont,{placeholder:'例)値下げ',id:'clear-name'}
+      .form-group
+        / =f.label :category
+        =fa_icon "list",text:'カテゴリーを選択する'
+        =f.select :category_cont, Category.categories.map{|k,v| [Category.categories_i18n[k], v]}
+      .form-group
+        / =f.label :brand, 'ブランド名から探す'
+        =fa_icon "tag",text:'ブランド名から探す'
+        =f.search_field :brand_cont, {placeholder:'例)シャネル',id:'clear-brand'}
+      .form-group
+        / =f.label :price, '価格'
+        .price-label
+          =fa_icon "star",text:'価格から探す'
+        =f.number_field :price_gteq, {placeholder:'¥min',id: 'clear-price1'}
+        %span ~
+        =f.number_field :price_lteq, {placeholder:'¥max',id: 'clear-price2'}
+      .form-group
+        / =f.label :state, '商品の状態'
+        .state-label
+          =fa_icon "star",text:'商品の状態'
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :state_eq_any,{multiple: true,id: 'all'},'すべて',nil
+          .checkbox-right
+            すべて
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'新品、未使用',nil
+          .checkbox-right
+            新品、未使用
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'未使用に近い',nil 
+          .checkbox-right
+            未使用に近い
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'目立った傷や汚れなし',nil 
+          .checkbox-right
+            目立った傷や汚れなし
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'やや傷や汚れあり',nil 
+          .checkbox-right
+            やや傷や汚れあり
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'傷や汚れあり',nil 
+          .checkbox-right
+            傷や汚れあり
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'全体的に状態が悪い',nil 
+          .checkbox-right
+            全体的に状態が悪い
+      .form-group
+        / =f.label :ship_charge, '配送料の負担'
+        .ship-charge-label
+          =fa_icon "star",text:'配送料の負担'
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :ship_charge_eq_any,{multiple: true,id: 'ship-charge-all'},'すべて',nil
+          .checkbox-right
+            すべて
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :ship_charge_eq_any,{multiple: true,class: 'ship-charge-checkbox'},'着払い(購入者負担)',nil
+          .checkbox-right
+            着払い(購入者負担)
+        .checkbox-group
+          .checkbox-left
+            =f.check_box :ship_charge_eq_any,{multiple: true,class: 'ship-charge-checkbox'},'送料込み(出品者負担)',nil 
+          .checkbox-right
+            送料込み(出品者負担)
+      .button-group
+        .clear-btn
+          クリア
+        =f.submit '検索',class: 'search-btn'
+        / =f.label :state, '販売状況'
+        / =f.collection_check_boxes :state_eq, Sales_state.sales_states, :first, :first
+        / =f.check_box :ship_charge_eq_any,{multiple: true},'販売中',nil
+        / 販売中
+        / =f.check_box :ship_charge_eq_any,{multiple: true},'売り切れ',nil 
+        / 売り切れ
+  .right-contents
+    =render 'result', items: @items
+
+=javascript_include_tag 'items_search.js'

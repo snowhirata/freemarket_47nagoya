@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   resources :items  do
     resources :sold, only: [:index, :show, :update]
+    resources :bought
   end
+  get 'search' => 'items#search'
+  get 'sort' => 'items#sort'
 
   #ユーザー周りのルーティング
   devise_for :users, controllers: {
@@ -16,25 +19,22 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :update] do
+    resources :credits
+    resources :addresses
     member do
-      get 'identification'
-      get 'register_card'
       get 'profile'
+      get 'identification'
       get 'logout'
     end
   end
+  
+  #会員登録で使うルーティング
   get 'list' => 'users#list'
   get 'setuser' => 'users#setuser'
   get 'complete' => 'users#complete'
   resources :uservalids, only:[:new,:create]
   resources :addressvalids, only:[:new,:create]
   resources :creditvalids, only:[:new,:create]
-  #ここまで
-
-  resources :items  do
-    resources :sold, only: [:index, :show]
-    resources :bought
-  end
 
 end

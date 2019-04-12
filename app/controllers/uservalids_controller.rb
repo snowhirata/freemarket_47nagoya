@@ -19,6 +19,7 @@ class UservalidsController < ApplicationController
       session[:birth_year] = params[:uservalid]["birth_year(1i)"].to_i
       session[:birth_month] = params[:uservalid]['birth_year(2i)'].to_i
       session[:birth_day] = params[:uservalid]['birth_year(3i)'].to_i
+      @uservalid.delete
       redirect_to new_addressvalid_path
     else
       render :new
@@ -28,6 +29,8 @@ class UservalidsController < ApplicationController
   private
 
   def get_params
-    params.require(:uservalid).permit(:nickname,:email,:password,:password_confirmation,:last_name,:first_name,:last_name_kana,:first_name_kana).merge(birth_year: params[:uservalid]['birth_year(1i)'],birth_month: params[:uservalid]['birth_year(2i)'], birth_day: params[:uservalid]['birth_year(3i)'])
+    params.require(:uservalid).permit(:nickname,:email,:password,:password_confirmation,:last_name,
+      :first_name,:last_name_kana,:first_name_kana,:cus_id).merge(birth_year: params[:uservalid]['birth_year(1i)'],
+      birth_month: params[:uservalid]['birth_year(2i)'], birth_day: params[:uservalid]['birth_year(3i)'],)
   end
 end

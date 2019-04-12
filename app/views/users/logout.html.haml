@@ -4,5 +4,5 @@
 
 .container.clearfix
   .logout-container
-    =link_to'ログアウト',''
+    =link_to'ログアウト', destroy_user_session_path, method: :delete
   = render partial:'sidebar'

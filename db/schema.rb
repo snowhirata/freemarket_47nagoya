@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.string "city"
     t.string "block"
     t.string "building"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.index ["sub_category_id"], name: "index_categories_on_sub_category_id"
   end
 
+  create_table "category_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_items_on_category_id"
+    t.index ["item_id"], name: "index_category_items_on_item_id"
+  end
+
   create_table "credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uid"
     t.string "provider"
@@ -63,10 +72,11 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.integer "security_code"
     t.string "exp_month"
     t.string "exp_year"
-    t.integer "card_number"
+    t.string "card_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cus_id"
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
 
@@ -130,20 +140,8 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.integer "birth_year"
     t.integer "birth_month"
     t.integer "birth_day"
-    t.integer "postal_code"
-    t.integer "prefecture_id"
-    t.string "city"
-    t.string "block"
-    t.string "building"
-    t.string "phone_number"
-    t.text "profile_detail"
     t.string "profit"
-    t.integer "card_number"
-    t.integer "security_code"
-    t.string "exp_month"
-    t.string "exp_year"
-    t.string "uid"
-    t.string "provider"
+    t.text "profile_detail"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

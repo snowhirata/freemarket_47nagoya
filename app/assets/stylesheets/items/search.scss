@@ -1,0 +1,132 @@
+.clearfix:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.searchmain{
+  margin: 40px auto 0;
+  width: 1020px;
+  .left-contents{
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    .sort-container{
+      margin: 10px 0 30px;
+      select{
+        @include select-default;
+        background-color: #fff;
+      }
+    }
+    .search-container{
+      padding: 16px;
+      background-color: #fff;
+      .form-group{
+        width: 100%;
+        margin: 10px 0 30px 0;
+        label{
+          display: block;
+        }
+        select{
+          @include select-default;
+        }
+        input[type=search]{
+          @include input-default;
+        }
+        input[type=checkbox] {
+          width: auto;
+          height: auto;
+          transform: scale(1.2);
+        }
+        input[type=number]{
+          @include input-default;
+          width: 40%;
+        }
+        span{
+          margin: 0 16px;
+        }
+        .checkbox-group{
+          width: 49%;
+          position: relative;
+          display: inline-block;
+          margin-top: 10px;
+          vertical-align: middle;
+          .checkbox-left{
+            top: 50%;
+            position: absolute;
+            display: inline-block;
+            transform: translateY(-50%);
+          }
+          .checkbox-right{
+            margin-left: 25px;
+            display: inline-block;
+          }
+        }
+      }
+      .button-group{
+        margin-top: 10px;
+        .search-btn{
+          color: #fff;
+          width: 48%;
+          height: 52px;
+          font-size: 14px;
+          border: 1px solid #aaa;
+          background-color: #ea352d;
+          -webkit-appearance: none;
+        }
+        .clear-btn{
+          color: #fff;
+          width: 48%;
+          height: 50px;
+          line-height: 50px;
+          font-size: 14px;
+          text-align: center;
+          display: inline-block;
+          background-color: #aaa;
+          border: 1px solid #aaa;
+          -webkit-appearance: none;    
+        }
+      }
+    }
+  }
+  .right-contents{
+    float: right;
+    width: 700px;
+    height: 500px;
+    .item-box-container{
+      .item-box{
+        margin-right: 10px;
+        width: 160px;
+        display: inline-block;
+        background-color: #fff;
+        .item-photo{
+          width: 160px;
+          height: 160px;
+        }
+        .item-body{
+          height: 110px;
+          padding: 15px;
+          box-sizing: border-box;
+          .item-name{
+            height: 48px;
+            overflow: hidden;
+          }
+          .item-num{
+            .item-price{
+              display: inline-block;
+              font-size: 16px;
+              font-weight: 600;
+            }
+            .item-likes{
+              display: inline-block;
+              float: right;
+              font-size: 15px;
+            }
+            .item-tax{
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

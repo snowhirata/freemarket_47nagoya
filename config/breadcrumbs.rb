@@ -12,8 +12,13 @@ crumb :profile do
   parent :mypage
 end
 
-crumb :register_card do
-  link "支払い方法", register_card_user_path
+crumb :address do
+  link "発送元・お届け先住所変更", edit_user_address_path
+  parent :mypage
+end
+
+crumb :credit do
+  link "支払い方法", edit_user_credit_path
   parent :mypage
 end
 
