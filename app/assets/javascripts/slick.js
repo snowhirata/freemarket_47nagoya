@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(function() {
   $('.owl-dots .owl-dot:first-child').addClass('active');
   $('.owl-dots .owl-dot:first-child').css({'opacity':'1','pointer':'default'});
 
