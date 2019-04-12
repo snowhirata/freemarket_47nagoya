@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   $(".header-user-icon").hover(function(){
     var mypageBox = $(".header-mypage-box:not(:animated)");
     mypageBox.show();
