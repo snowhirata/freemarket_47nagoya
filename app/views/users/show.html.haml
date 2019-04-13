@@ -47,9 +47,12 @@
           %li.mypage-go-list
             =link_to "一覧を見る","#"
         %ul#mypage-tab-transaction-old
-          %li
-          %li
-          %li
+          -@buyitems.each do |item|
+            %li
+              =image_tag item.pictures.first.image.url
+              %p
+                =item.name
+                を購入しました。取引が完了しました。
           %li.mypage-go-list
             =link_to "一覧を見る","#"
   = render partial:'sidebar'

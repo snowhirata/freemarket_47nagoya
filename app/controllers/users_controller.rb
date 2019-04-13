@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @buyitems = Item.where(buyer_id: params[:id]) 
   end
 
   def update

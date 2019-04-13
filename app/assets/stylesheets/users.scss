@@ -52,6 +52,14 @@ a{
 @mixin tab-content-left{
   display: none;
   li{
+    img{
+      width: 70px;
+      padding: 5px;
+    p{
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
     height: 80px;
     background-color: #fff;
     border-bottom: solid 1px #eee;
@@ -73,6 +81,14 @@ a{
 @mixin tab-content-right{
   display: none;
   li{
+    img{
+      width: 70px;
+      padding: 5px;
+    }
+    p{
+      display: inline-block;
+      vertical-align: top;
+    }
     height: 80px;
     background-color: #fff;
     border-bottom: solid 1px #eee;
