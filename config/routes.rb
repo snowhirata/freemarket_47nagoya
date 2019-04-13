@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :items  do
     resources :sold, only: [:index, :show]
     resources :bought
+    resources :comments, only: [:create, :destroy]
   end
 
 end

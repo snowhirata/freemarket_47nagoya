@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_054658) do
+ActiveRecord::Schema.define(version: 2019_04_12_015626) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code"
@@ -38,19 +38,14 @@ ActiveRecord::Schema.define(version: 2019_04_09_054658) do
     t.index ["user_id"], name: "index_addressvalids_on_user_id"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "category_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "category_id"
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "item_id"
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_items_on_category_id"
-    t.index ["item_id"], name: "index_category_items_on_item_id"
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -165,6 +160,8 @@ ActiveRecord::Schema.define(version: 2019_04_09_054658) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "addressvalids", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "credentials", "users"
   add_foreign_key "credits", "users"
   add_foreign_key "creditvalids", "users"
