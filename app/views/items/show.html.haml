@@ -96,11 +96,11 @@
   - elsif user_signed_in? && current_user.id != @item.user_id
     = link_to item_sold_index_path(@item), class: "item-buy-btn" do
       購入画面に進む
-    - if user_signed_in? && current_user.id == @item.user_id
-      = link_to edit_item_path(@item), class: "item-edit-btn" do
-        商品の編集
-      = link_to item_path(@item), method: :delete, class: "item-edit-btn" do
-        商品を削除する
+  - elsif user_signed_in? && current_user.id == @item.user_id
+    = link_to edit_item_path(@item), class: "item-edit-btn" do
+      商品の編集
+    = link_to item_path(@item), method: :delete, class: "item-edit-btn" do
+      商品を削除する
   - else
     = link_to new_user_session_path, class: "item-buy-btn" do
       購入画面に進む
@@ -125,11 +125,20 @@
 
 .item-detail-message
   .message-container
-    .message-content
-      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      %textarea.textarea-default{name: "body", type: "text", value: ""}
-      %button.message-submit.btn-default.btn-gray{type: "submit"}
-        %span コメントする
+    - if @comments.present?
+      .message-content
+        %ul.message-items
+          = render partial: 'comments',locals: { item: @item, comments: @comments}
+    - if user_signed_in?
+      .message-content
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form_for [@item, @comment] do |comment|
+          - if @item.buyer_id == nil
+            = comment.text_area :text, class: 'textarea-default'
+            = comment.submit "コメントする",class: 'message-submit btn-default btn-gray',id: "new-comment-submit"
+          - else
+            = comment.text_area :text, class: 'textarea-default disabled'
+            = comment.submit "売り切れのためコメントできません", class: 'message-submit btn-default btn-gray',disabled: true
 
 %ul.nav-item-link-prev-next.clearfix
   %li.nav-item-link-prev
