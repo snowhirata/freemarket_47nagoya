@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   match 'category_select', to: 'items#category_select', via: [:get, :post]
   match 'child_category_select', to: 'items#child_category_select', via: [:get, :post]
+  #カテゴリ検索用
+  match 'category_select_search', to: 'items#category_select_search', via: [:get, :post]
+  match 'child_category_select_search', to: 'items#child_category_select_search', via: [:get, :post]
 
   resources :items  do
     resources :sold, only: [:index, :show, :update]

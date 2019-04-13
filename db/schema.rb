@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_075917) do
+ActiveRecord::Schema.define(version: 2019_04_10_030948) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postal_code"
@@ -48,15 +48,6 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.datetime "updated_at", null: false
     t.index ["main_category_id"], name: "index_categories_on_main_category_id"
     t.index ["sub_category_id"], name: "index_categories_on_sub_category_id"
-  end
-
-  create_table "category_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "category_id"
-    t.bigint "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_items_on_category_id"
-    t.index ["item_id"], name: "index_category_items_on_item_id"
   end
 
   create_table "credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -140,8 +131,8 @@ ActiveRecord::Schema.define(version: 2019_04_05_075917) do
     t.integer "birth_year"
     t.integer "birth_month"
     t.integer "birth_day"
-    t.string "profit"
     t.text "profile_detail"
+    t.string "profit"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
