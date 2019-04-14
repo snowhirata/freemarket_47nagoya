@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :addresses
     member do
       get 'profile'
+      get 'card_index'
       get 'identification'
       get 'logout'
     end
