@@ -1,10 +1,10 @@
-- breadcrumb :address
+- breadcrumb :address_new
 
 = render 'items/header'
 
 .container.clearfix
   .identification
-    %h2.identification-head 発送元・お届け先住所変更
+    %h2.identification-head 発送元・お届け先住所登録
     =form_for([@user,@address], html: {class: 'l-single-inner'}) do |f|
       .form-group
         =f.label :郵便番号

@@ -1,8 +1,8 @@
-- breadcrumb :credit
+- breadcrumb :credit_new
 = render 'items/header'
 .container.clearfix
   .card-container
-    %h2.card-container__head クレジットカード情報入力
+    %h2.card-container__head クレジットカード情報登録
     =form_for([@user,@credit],html:{class: 'l-single-inner'}) do |f|
       .l-single-content
         .form-group
