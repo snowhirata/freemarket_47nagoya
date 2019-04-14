@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match 'child_category_select_search', to: 'items#child_category_select_search', via: [:get, :post]
 
   resources :items  do
+    resources :messages, only: [:index,:new,:create,:destroy]
     resources :sold, only: [:index, :show, :update]
     resources :bought
   end
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
     resources :addresses
     member do
       get 'profile'
+      get 'card_index'
       get 'identification'
       get 'logout'
     end

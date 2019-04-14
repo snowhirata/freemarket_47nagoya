@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @buyitems = Item.where(buyer_id: params[:id]) 
   end
 
   def update
@@ -19,7 +20,13 @@ class UsersController < ApplicationController
   def identification
   end
 
-  def register_card
+  def card_index
+    if current_user.credit
+      @num = current_user.credit.card_number
+      @num[0..9] = "**********"
+      @exp_month = current_user.credit.exp_month
+      @exp_year = current_user.credit.exp_year
+    end
   end
 
   def profile
@@ -29,6 +36,10 @@ class UsersController < ApplicationController
   end
 
   def list
+  end
+
+  def sold_item
+    @sold_item = @user.items
   end
 
   def setuser

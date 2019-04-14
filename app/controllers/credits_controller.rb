@@ -15,7 +15,7 @@ class CreditsController < ApplicationController
     customer = Mypayjp.create_customer(token)
     @credit.cus_id = customer.id
     if @credit.save
-      redirect_to root_path
+      redirect_to card_index_user_path(current_user)
     else
       render :new
     end
@@ -30,7 +30,7 @@ class CreditsController < ApplicationController
     @credit = Credit.find(params[:id])
     @credit.update(credit_params)
     if @credit.valid?
-      redirect_to profile_user_path
+      redirect_to card_index_user_path(current_user)
     else
       @user = User.find(params[:user_id])
       render :edit
@@ -38,8 +38,9 @@ class CreditsController < ApplicationController
   end
 
   def destroy
-    @credit = Credit.find(:id)
-    @credit.destroy
+    @credit = Credit.where(user_id: params[:user_id])
+    @credit.destroy(params[:id])
+    redirect_to card_index_user_path(current_user)
   end
 
   private
