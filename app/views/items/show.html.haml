@@ -91,8 +91,7 @@
 
 
   - if @item.buyer_id != nil
-    = link_to "", class: "item-buy-btn sold-out" do
-      売り切れました
+    .item-buy-btn.sold-out 売り切れました
   - elsif user_signed_in? && current_user.id != @item.user_id
     = link_to item_sold_index_path(@item), class: "item-buy-btn" do
       購入画面に進む
@@ -146,8 +145,8 @@
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         = form_for [@item, @comment] do |comment|
           - if @item.buyer_id == nil
-            = comment.text_area :text, class: 'textarea-default'
-            = comment.submit "コメントする",class: 'message-submit btn-default btn-gray',id: "new-comment-submit"
+            = comment.text_area :text, class: 'textarea-default', required: ""
+            = comment.submit "コメントする",class: 'message-submit btn-default btn-gray', style: "cursor: auto;"
           - else
             = comment.text_area :text, class: 'textarea-default disabled'
             = comment.submit "売り切れのためコメントできません", class: 'message-submit btn-default btn-gray',disabled: true
@@ -193,32 +192,7 @@
             .items-box-content-likes
               =fa_icon "heart-o", class: "heart"
               %span 3
-    %section.items-box-content
-      = link_to root_path do
-        .items-box-content-photo
-          = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-        .items-box-content-body
-          %h3.items-box-content-name ビジュー ニット
-          .items-box-content-num.clearfix
-            .items-box-content-price
-              ¥ 999
-              %p.item-box-content-tax (税込)
-            .items-box-content-likes
-              =fa_icon "heart-o", class: "heart"
-              %span 3
-    %section.items-box-content
-      = link_to root_path do
-        .items-box-content-photo
-          = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-        .items-box-content-body
-          %h3.items-box-content-name ビジュー ニット
-          .items-box-content-num.clearfix
-            .items-box-content-price
-              ¥ 999
-              %p.item-box-content-tax (税込)
-            .items-box-content-likes
-              =fa_icon "heart-o", class: "heart"
-              %span 3
+
 
 .items-in-user-profile
   %h2.items-box-head

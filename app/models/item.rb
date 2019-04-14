@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :pictures, dependent: :destroy
   accepts_nested_attributes_for :pictures
-  has_many :comments
+  has_many :comments, dependent: :destroy
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 

@@ -9,11 +9,12 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to item_path(params[:item_id])
-  end
+  #To Do コメント削除機能
+  # def destroy
+  #   @comment = Comment.find(params[:id])
+  #   @comment.destroy
+  #   redirect_to item_path(params[:item_id])
+  # end
 
   private
 
