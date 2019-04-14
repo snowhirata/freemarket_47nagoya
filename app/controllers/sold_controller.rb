@@ -1,10 +1,14 @@
 class SoldController < ApplicationController
   before_action :set_item, only: [:index, :update]
+  protect_from_forgery :except => [:update]
 
   def index
   end
 
   def show
+  end
+
+  def complete
   end
 
   def update
