@@ -166,7 +166,7 @@
     }
     .sold-out {
       background: #888;
-      pointer-events: none;
+      cursor: not-allowed;
     }
     .item-edit-btn {
       height: 60px;
@@ -408,6 +408,7 @@
               i.fa.fa-flag-o {
                 vertical-align: middle;
                 font-size: 16px;
+                background: #eef0f4;
               }
               time-ago {
                 vertical-align: middle;
@@ -455,6 +456,7 @@
       }
       .textarea-default {
         margin: 8px 0 0;
+        padding: 10px;
         display: block;
         width: 630px;
         max-width: 100%;
@@ -464,6 +466,16 @@
         font-size: 16px;
         line-height: 1.5;
       }
+      .message-submit {
+        width: 100%;
+        height: 48px;
+        margin: 8px 0 0;
+        font-size: 14px;
+        text-align: center;
+        background: #aaa;
+        border: 1px solid #aaa;
+        color: $white;
+      }
       .btn-default {
         border: 1px solid #888;
         background: #888;
@@ -472,48 +484,12 @@
         line-height: 48px;
         display: block;
       }
-      .message-submit {
-        width: 100%;
-        height: 48px;
-        margin: 8px 0 0;
-        font-size: 0;
-        text-align: center;
-        background: #aaa;
-        border: 1px solid #aaa;
-        color: $white;
-      }
       .new_comment {
+        cursor: auto;
         p {
           padding: 8px;
           font-size: 14px;
           background: #fff6de;
-        }
-        .textarea-default {
-          margin: 8px 0 0;
-          display: block;
-          width: 630px;
-          max-width: 100%;
-          min-height: 104px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          font-size: 16px;
-          line-height: 1.5;
-          background: #f5f5f5;
-        }
-        .btn-default {
-          border: 1px solid #888;
-          background: #888;
-          color: $white;
-          cursor: not-allowed;
-          line-height: 48px;
-          display: block;
-        }
-        .message-submit {
-          width: 100%;
-          margin: 8px 0 0;
-          text-align: center;
-          font-size: 14px;
-          color: $white;
         }
       }
     }
