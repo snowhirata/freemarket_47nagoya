@@ -32,6 +32,11 @@ crumb :credit_new do
   parent :mypage
 end
 
+crumb :credit_index do
+  link "カード一覧", card_index_user_path(current_user)
+  parent :mypage
+end
+
 crumb :identification do
   link "本人情報の登録", identification_user_path
   parent :mypage
