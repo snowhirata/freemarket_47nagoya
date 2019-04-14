@@ -48,11 +48,12 @@
             =link_to "一覧を見る","#"
         %ul#mypage-tab-transaction-old
           -@buyitems.each do |item|
-            %li
-              =image_tag item.pictures.first.image.url
-              %p
-                =item.name
-                を購入しました。取引が完了しました。
+            =link_to item_messages_path(item) do
+              %li
+                =image_tag item.pictures.first.image.url
+                %p
+                  =item.name
+                  を購入しました。取引が完了しました。
           %li.mypage-go-list
             =link_to "一覧を見る","#"
   = render partial:'sidebar'
