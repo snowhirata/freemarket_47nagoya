@@ -52,6 +52,14 @@ a{
 @mixin tab-content-left{
   display: none;
   li{
+    img{
+      width: 70px;
+      padding: 5px;
+    p{
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
     height: 80px;
     background-color: #fff;
     border-bottom: solid 1px #eee;
@@ -73,6 +81,14 @@ a{
 @mixin tab-content-right{
   display: none;
   li{
+    img{
+      width: 70px;
+      padding: 5px;
+    }
+    p{
+      display: inline-block;
+      vertical-align: top;
+    }
     height: 80px;
     background-color: #fff;
     border-bottom: solid 1px #eee;
@@ -171,7 +187,7 @@ a{
     float: right;
     &__user-icon{
       height: 200px;
-      background-image: url(user-bg.jpg);
+      background-image: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?78152110);
       background-size: cover;
       padding: 20px;
       text-align: center;
@@ -335,6 +351,55 @@ a{
     }
   }
 }
+//--------------------カード一覧ページ--------------------//
+.container.clearfix{
+  .profile-container{
+    .card-index{
+      .l-single-inner{
+        padding: 64px;
+        text-align: center;
+        p{
+          position: relative;
+          left: -93px;
+          font-weight: 600;
+        }
+        .settings-add-card{
+          padding: 24px 0;
+          border-bottom: 1px solid #eee;
+          .l-single-content{
+            text-align: left;
+            max-width: 320px;
+            margin: 0 auto;
+            .card-exp-month{
+              display: inline-block;
+            }
+            .card-exp-year{
+              display: inline-block;
+            }
+            .span{
+              display: inline-block;
+            }
+            a{
+              text-align: center;
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              border: 1px solid transparent;
+              -webkit-transition: all ease-out .3s;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 //--------------------カード登録ページ--------------------//
 .card-container{
   @include right-container;
@@ -420,7 +485,7 @@ a{
   form{
     .setting-profile-icon{
       padding: 72px 16px 24px;
-      background: url("user-bg.jpg");
+      background: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?78152110");
       background-repeat: no-repeat;
       background-size: cover;
       text-align: center;

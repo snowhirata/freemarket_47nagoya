@@ -8,10 +8,15 @@
       =link_to "#" do
         %figure
           =image_tag('member_photo_noimage_thumb.png',width:60,height:60)
-        %h2.bold snow
+        %h2.bold 
+          =@user.nickname
         .mypage-number
-          .mypage-number__rate 評価 0
-          .mypage-number__listings 出品数 0
+          .mypage-number__rate
+            評価
+            0
+          .mypage-number__listings
+            出品数
+            =current_user.items.length
     .mypage__tab-container-notification-todo
       %ul.mypage-tabs
         %li.active お知らせ
@@ -42,9 +47,13 @@
           %li.mypage-go-list
             =link_to "一覧を見る","#"
         %ul#mypage-tab-transaction-old
-          %li
-          %li
-          %li
+          -@buyitems.each do |item|
+            =link_to item_messages_path(item) do
+              %li
+                =image_tag item.pictures.first.image.url
+                %p
+                  =item.name
+                  を購入しました。取引が完了しました。
           %li.mypage-go-list
             =link_to "一覧を見る","#"
   = render partial:'sidebar'

@@ -1,9 +1,11 @@
 class Item < ApplicationRecord
-  # belongs_to :seller, class_name: 'User'
   belongs_to :buyer, class_name: 'User', optional: true
   # itemとuserのアソシエーション　user設定完了時追加
   belongs_to :user
   has_many :pictures, dependent: :destroy
+  belongs_to :category
+  belongs_to :child_category, class_name: 'Category'
+  belongs_to :grand_child_category, class_name: 'Category'
   accepts_nested_attributes_for :pictures
   has_many :comments, dependent: :destroy
   extend ActiveHash::Associations::ActiveRecordExtensions

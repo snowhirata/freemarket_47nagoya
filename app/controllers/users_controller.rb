@@ -1,16 +1,32 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :identification, :register_card, :profile, :logout]
+  before_action :set_user, only: [:show, :update, :identification, :register_card, :profile, :logout]
   
   def index
   end
 
   def show
+    @buyitems = Item.where(buyer_id: params[:id]) 
+  end
+
+  def update
+    @user.assign_attributes(user_params)
+    if @user.save(validate: false)
+      redirect_to profile_user_path(@user)
+    else
+      render :profile
+    end
   end
 
   def identification
   end
 
-  def register_card
+  def card_index
+    if current_user.credit
+      @num = current_user.credit.card_number
+      @num[0..9] = "**********"
+      @exp_month = current_user.credit.exp_month
+      @exp_year = current_user.credit.exp_year
+    end
   end
 
   def profile
@@ -20,6 +36,10 @@ class UsersController < ApplicationController
   end
 
   def list
+  end
+
+  def sold_item
+    @sold_item = @user.items
   end
 
   def setuser
@@ -70,6 +90,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname,:profile_detail,address_attributes: [:id,:postal_code, :prefecture_id, :city, :block, :building])
   end
 
 end

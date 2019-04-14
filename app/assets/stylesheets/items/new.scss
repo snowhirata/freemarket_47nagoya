@@ -13,7 +13,7 @@
       }
       &--img{
         padding: 40px;
-        width: 618px;
+        width: 620px;
         background-color: #ffffff;
         margin-bottom: 1px;
         &__name{
@@ -122,23 +122,20 @@
               }
             }
             .select-form{
-              position: relative;
-              select{
-                height: 48px;
-                padding: 0 16px;
-                border-radius: 4px;
-                font-size: 16px;
-                width: 100%;
-                background: none transparent;
-                -webkit-appearance: button;
+              @extend select;
+              @extend .fa-chevron-down;
+            }
+            .child-category{
+              margin-top: 8px;
+              #category-select{
+                @extend select;
+                @extend .fa-chevron-down;
               }
-              .fa-chevron-down{
-                position: absolute;
-                top: 32%;
-                right: 16px;
-                font-size: 17px;
-                color: #888;
-                pointer-events: none;
+            }
+            .grand-child-category{
+              #child-category-select{
+                @extend select;
+                @extend .fa-chevron-down;
               }
             }
             .brand-form{
@@ -313,6 +310,25 @@
 }
 
 .select-box-awesome{
+  position: absolute;
+  top: 32%;
+  right: 16px;
+  font-size: 17px;
+  color: #888;
+  pointer-events: none;
+}
+
+select{
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  background: none transparent;
+  -webkit-appearance: button;
+}
+
+.fa-chevron-down{
   position: absolute;
   top: 32%;
   right: 16px;
