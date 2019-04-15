@@ -91,19 +91,30 @@
 
 
   - if @item.buyer_id != nil
-    = link_to "", class: "item-buy-btn sold-out" do
-      売り切れました
+    .item-buy-btn.sold-out 売り切れました
   - elsif user_signed_in? && current_user.id != @item.user_id
     = link_to item_sold_index_path(@item), class: "item-buy-btn" do
       購入画面に進む
-    - if user_signed_in? && current_user.id == @item.user_id
-      = link_to edit_item_path(@item), class: "item-edit-btn" do
-        商品の編集
-      = link_to item_path(@item), method: :delete, class: "item-edit-btn" do
-        商品を削除する
+  - elsif user_signed_in? && current_user.id == @item.user_id
+    = link_to edit_item_path(@item), class: "item-edit-btn" do
+      商品の編集
+    .item-delete-btn 商品を削除する
+
   - else
     = link_to new_user_session_path, class: "item-buy-btn" do
       購入画面に進む
+
+  .modal
+    .modal__main
+      .modal__body
+        %p 確認
+        = "削除すると二度と復活できません。"
+        %br
+        %br
+        = "本当に削除しますか？"
+      .clearfix
+        .cancel-btn キャンセル
+        = button_to "削除する", item_path(@item), method: :delete, class: "delete-choice cancel-btn"
 
   .item-description.f14
     %p.item-description__inner
@@ -125,11 +136,20 @@
 
 .item-detail-message
   .message-container
-    .message-content
-      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      %textarea.textarea-default{name: "body", type: "text", value: ""}
-      %button.message-submit.btn-default.btn-gray{type: "submit"}
-        %span コメントする
+    - if @comments.present?
+      .message-content
+        %ul.message-items
+          = render partial: 'comments',locals: { item: @item, comments: @comments}
+    - if user_signed_in?
+      .message-content
+        %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form_for [@item, @comment] do |comment|
+          - if @item.buyer_id == nil
+            = comment.text_area :text, class: 'textarea-default', required: ""
+            = comment.submit "コメントする",class: 'message-submit btn-default btn-gray', style: "cursor: auto;"
+          - else
+            = comment.text_area :text, class: 'textarea-default disabled'
+            = comment.submit "売り切れのためコメントできません", class: 'message-submit btn-default btn-gray',disabled: true
 
 %ul.nav-item-link-prev-next.clearfix
   %li.nav-item-link-prev
@@ -172,32 +192,7 @@
             .items-box-content-likes
               =fa_icon "heart-o", class: "heart"
               %span 3
-    %section.items-box-content
-      = link_to root_path do
-        .items-box-content-photo
-          = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-        .items-box-content-body
-          %h3.items-box-content-name ビジュー ニット
-          .items-box-content-num.clearfix
-            .items-box-content-price
-              ¥ 999
-              %p.item-box-content-tax (税込)
-            .items-box-content-likes
-              =fa_icon "heart-o", class: "heart"
-              %span 3
-    %section.items-box-content
-      = link_to root_path do
-        .items-box-content-photo
-          = image_tag 'https://static.mercdn.net/thumb/photos/m42831845963_1.jpg?1551302208', width: '220px'
-        .items-box-content-body
-          %h3.items-box-content-name ビジュー ニット
-          .items-box-content-num.clearfix
-            .items-box-content-price
-              ¥ 999
-              %p.item-box-content-tax (税込)
-            .items-box-content-likes
-              =fa_icon "heart-o", class: "heart"
-              %span 3
+
 
 .items-in-user-profile
   %h2.items-box-head
@@ -247,3 +242,4 @@
 = render 'footer'
 
 =javascript_include_tag 'slick.js'
+=javascript_include_tag 'item_delete_confirm.js'

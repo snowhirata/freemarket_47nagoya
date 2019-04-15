@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :child_category, class_name: 'Category'
   belongs_to :grand_child_category, class_name: 'Category'
   accepts_nested_attributes_for :pictures
+  has_many :comments, dependent: :destroy
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 

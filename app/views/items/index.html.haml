@@ -1,22 +1,35 @@
 .main
 
   = render 'header'
+  .swiper-container
+    .swiper-wrapper
+      .swiper-slide
+        %img{src: "https://www.mercari.com/jp/assets/img/common/jp/top/banner-natsukashi.jpg", height: "390px", width: "100%" }
+      .swiper-slide
+        %img{src: "https://www.mercari.com/jp/assets/img/common/jp/top/banner-new-life.jpg", height: "390px", width: "100%"}
+      .swiper-slide
+        .top-main-visual
+          .top-main-visual-pc
+            .top-main-visual-pc-content
+              %h2
+                スマホでかんたん<br>フリマアプリ
+              %p
+                メルカリはスマホカメラからすぐに出品できる
+                <br>
+                購入時も安心な独自システムのアプリです
+              .top-main-visual-store-clearfix
+                =link_to "" do
+                  =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3112359103")
+                =link_to "" do
+                  =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3112359103")
+            %img.right{src: "https://www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3112359103"}
+      .swiper-slide
+        %img{src: "https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei.jpg", height: "390px", width: "100%"}
 
-  .top-main-visual
-    .top-main-visual-pc
-      .top-main-visual-pc-content
-        %h2
-          スマホでかんたん<br>フリマアプリ
-        %p
-          メルカリはスマホカメラからすぐに出品できる
-          <br>
-          購入時も安心な独自システムのアプリです
-        .top-main-visual-store-clearfix
-          =link_to "" do
-            =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?3112359103")
-          =link_to "" do
-            =image_tag("https://www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?3112359103")
-      %img.right{src: "https://www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?3112359103"}
+    .swiper-pagination
+    .swiper-button-prev.swiper-button-white
+    .swiper-button-next.swiper-button-white
+
 
   .pickup-container
     %h2.pickup-head
@@ -78,3 +91,4 @@
   = render 'app-banner'
   = render 'footer'
 
+=javascript_include_tag 'top_banner.js'
