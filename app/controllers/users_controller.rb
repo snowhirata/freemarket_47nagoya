@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def update
     @user.assign_attributes(user_params)
     if @user.save(validate: false)
+      flash[:notice] = '変更が完了しました' 
       redirect_to profile_user_path(@user)
     else
       render :profile

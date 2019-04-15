@@ -24,6 +24,7 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     @address.update(address_params)
     if @address.valid?
+      flash[:notice] = '変更が完了しました'
       redirect_to profile_user_path
     else
       @user = User.find(params[:user_id])
