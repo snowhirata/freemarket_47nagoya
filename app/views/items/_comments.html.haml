@@ -1,0 +1,56 @@
+- comments.each do |comment|
+  - if current_user&.id == comment.user_id
+    %li.clearfix
+      .message-right
+        = link_to "", class: 'message-user' do
+          %figure
+            %div
+              = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png"
+            %figcaption.bold
+              = comment.user.nickname
+          - if comment.user_id == item.user_id
+            .message-is-seller 出品者
+        .message-body
+          .message-body-text
+            = comment.text
+          .message-icons.clearfix
+            %time.message-icon-left
+              %i.fa.fa-clock-o
+              = time_ago_in_words(comment.created_at)+'前'
+            .message-icon-right
+              - if current_user&.id == item.user_id
+                .delete-comment
+                  / =link_to item_comment_path(@comments), method: :delete do
+                  %i.fa.fa-trash-o
+              - else
+                %form
+                  %button{ type: 'submit'}
+                    %i.fa.fa-flag-o
+
+  - else
+    %li.clearfix
+      .message-left
+        = link_to "", class: 'message-user' do
+          %figure
+            %div
+              = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png"
+            %figcaption.bold
+              = comment.user.nickname
+          - if comment.user_id == item.user_id
+            .message-is-seller 出品者
+        .message-body
+          .message-body-text
+            = comment.text
+          .message-icons.clearfix
+            %time.message-icon-left
+              %i.fa.fa-clock-o
+              = time_ago_in_words(comment.created_at)+'前'
+            .message-icon-right
+              - if current_user&.id == item.user_id
+                .delete-comment
+                  / =link_to item_comment_path(@comments), method: :delete do
+                  %i.fa.fa-trash-o
+              - else
+                %form
+                  %button{ type: 'submit'}
+                    %i.fa.fa-flag-o
