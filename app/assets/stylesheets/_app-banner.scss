@@ -1,3 +1,61 @@
+//上部のアプリバナー
+.swiper-container {
+  width: 100%;
+  height: 390px;
+}
+
+.swiper-wrapper {
+  width: 100%;
+  height: 390px;
+}
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .top-main-visual{
+    display: block;
+    background-image: url("https://www.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg");
+    background-size: cover;
+
+    &-pc{
+      display: block;
+      overflow: hidden;
+      width: 860px;
+      height: 390px;
+      position: relative;
+      margin: 0 auto;
+      &-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        h2 {
+          font-weight: bold;
+          display: inline-block;
+          font-size: 60px;
+        }
+        p {
+          margin: 16px 0 0;
+          font-size: 18px;
+        }
+        &-store {
+          margin: 24px 0 0;
+          line-height: 0;
+        }
+      }
+      img.right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+}
+
+//下部のアプリバナー
 .app-banner {
   background-image: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?32807650");
   background-position: center;

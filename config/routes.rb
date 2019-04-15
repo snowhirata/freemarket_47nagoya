@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:index,:new,:create,:destroy]
     resources :sold, only: [:index, :show, :update]
     resources :bought
+    resources :comments, only: [:create, :destroy]
   end
   get 'search' => 'items#search'
   get 'sort' => 'items#sort'
@@ -41,5 +42,4 @@ Rails.application.routes.draw do
   resources :uservalids, only:[:new,:create]
   resources :addressvalids, only:[:new,:create]
   resources :creditvalids, only:[:new,:create]
-
 end
