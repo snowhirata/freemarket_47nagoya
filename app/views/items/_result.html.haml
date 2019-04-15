@@ -1,21 +1,27 @@
-%h3 検索結果#{items.length}件
-.item-box-container
-  -items.each do |item|
-    .item-box
-      .item-photo
-        - if item.pictures.first
-          = image_tag item.pictures.first.image.url, size: "160x160"
-        -else
-          = image_tag 'member_photo.png', size: "160x160"
-      .item-body
-        .item-name
-          =item.name
-        .item-num
-          .item-price
-            ¥
-            =item.price
-          .item-likes
-            ♡
-            / =item.likes
-          .item-tax
-            (税込)
+-if items
+  %h3
+    検索結果#{items.length}件
+  .item-box-container
+    -items.each do |item|
+      =link_to item_path(item) do
+        .item-box
+          .item-photo
+            - if item.pictures.first
+              = image_tag item.pictures.first.image.url, size: "160x160"
+            -else
+              = image_tag 'member_photo.png', size: "160x160"
+          .item-body
+            .item-name
+              =item.name
+            .item-num
+              .item-price
+                ¥
+                =item.price
+              .item-likes
+                ♡
+                / =item.likes
+              .item-tax
+                (税込)
+-else
+  %h3
+    検索結果0件

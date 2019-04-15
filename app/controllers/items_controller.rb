@@ -7,23 +7,21 @@ class ItemsController < ApplicationController
   end
 
   def search
-      @categories = Category.all
-      @allitems = Item.all
-      @q = Item.ransack(params[:q])
-      @items = @q.result(distinct: true)
-      #キーワード検索
-      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+    #キーワード検索
+    @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
   end
 
   def sort
     if params[:sort] == 'new'
-      @items=Item.includes(:pictures).order('created_at ASC')
-    elsif params[:sort] == 'old'
       @items=Item.includes(:pictures).order('created_at DESC')
+    elsif params[:sort] == 'old'
+      @items=Item.includes(:pictures).order('created_at ASC')
     elsif params[:sort] == 'cheap'
-      @items=Item.includes(:pictures).order('price DESC')
-    else params[:sort] == 'high'
       @items=Item.includes(:pictures).order('price ASC')
+    else params[:sort] == 'high'
+      @items=Item.includes(:pictures).order('price DESC')
     end
     render partial: '/items/result', locals: { items: @items }
   end
