@@ -26,8 +26,7 @@ $(function() {
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
         alert('失敗しました');
-      }
-      else {
+      }else {
         var token = response.id;
         $(".l-single-inner").append($('<input type="hidden" name="creditvalid[payjp_token]" id="creditvalid_payjp_token" />').val(token));
         $(".l-single-inner").get(0).submit();

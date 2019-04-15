@@ -12,7 +12,6 @@ class SoldController < ApplicationController
   end
 
   def update
-    
     if current_user.credit
       customer = current_user.credit.cus_id
       @item.update(item_params)
