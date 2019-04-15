@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :destroy, :update]
-  before_action :set_category, only: [:new, :create, :search]
+  before_action :set_category, only: [:new, :edit, :update,:create, :search]
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
