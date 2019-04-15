@@ -25,7 +25,7 @@ $(function() {
      console.log(card)
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
-        alert('失敗しました');
+        alert('カード情報を登録できませんでした。正しいカード番号を入力してください');
       }else {
         var token = response.id;
         $(".l-single-inner").append($('<input type="hidden" name="creditvalid[payjp_token]" id="creditvalid_payjp_token" />').val(token));
