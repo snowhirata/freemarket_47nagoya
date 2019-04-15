@@ -1,29 +1,27 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :destroy, :update]
-  before_action :set_category, only: [:new, :create, :search]
+  before_action :set_category, only: [:new, :edit, :update,:create, :search]
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
   end
 
   def search
-      @categories = Category.all
-      @allitems = Item.all
-      @q = Item.ransack(params[:q])
-      @items = @q.result(distinct: true)
-      #キーワード検索
-      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+    #キーワード検索
+    @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
   end
 
   def sort
     if params[:sort] == 'new'
-      @items=Item.includes(:pictures).order('created_at ASC')
-    elsif params[:sort] == 'old'
       @items=Item.includes(:pictures).order('created_at DESC')
+    elsif params[:sort] == 'old'
+      @items=Item.includes(:pictures).order('created_at ASC')
     elsif params[:sort] == 'cheap'
-      @items=Item.includes(:pictures).order('price DESC')
-    else params[:sort] == 'high'
       @items=Item.includes(:pictures).order('price ASC')
+    else params[:sort] == 'high'
+      @items=Item.includes(:pictures).order('price DESC')
     end
     render partial: '/items/result', locals: { items: @items }
   end

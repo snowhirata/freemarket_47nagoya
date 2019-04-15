@@ -116,6 +116,16 @@ a{
   font-size: 12px;
   vertical-align: top;
 }
+
+@mixin form-require{
+  background-color: #ea352d;
+  border-radius: 2px;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  font-size: 12px;
+  color: #fff;
+}
+
 @mixin input-default{
   width: 100%;
   height: 50px;
@@ -333,6 +343,9 @@ a{
       input{
         -webkit-appearance: none;
       }
+      .form-require{
+        @include form-require
+      }
       .form-arbitrary{
         @include form-arbitrary
       }
@@ -347,6 +360,9 @@ a{
       }
       .submit_button{
         @include submit_button
+      }
+      .error_message{
+        color: red;
       }
     }
   }
@@ -474,6 +490,11 @@ a{
   }
 }
 //--------------------プロフィール編集ページ--------------------//
+.flash{
+  padding: 20px;
+  text-align: center;
+  background-color: #87ceeb;
+}
 .profile-container{
   @include right-container;
   .profile-container__head{
