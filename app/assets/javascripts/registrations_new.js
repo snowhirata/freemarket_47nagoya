@@ -28,29 +28,29 @@ $(function(){
   }
 
 
-  if (url == "http://mercari47nagoya.tk/uservalids/new") {
+  if (url == "https://mercari47nagoya.tk/uservalids/new") {
     $('#step1').addClass('active');
   }
-  if (url == "http://mercari47nagoya.tk/uservalids") {
+  if (url == "https://mercari47nagoya.tk/uservalids") {
     $('#step1').addClass('active');
   }
-  if (url == "http://mercari47nagoya.tk/addressvalids/new") {
+  if (url == "https://mercari47nagoya.tk/addressvalids/new") {
     $('#step1').removeClass('active');
     $('#step3').addClass('active');
   }
-  if (url == "http://mercari47nagoya.tk/addressvalids") {
+  if (url == "https://mercari47nagoya.tk/addressvalids") {
     $('#step1').removeClass('active');
     $('#step3').addClass('active');
   }
-  if (url == "http://mercari47nagoya.tk/creditvalids/new") {
+  if (url == "https://mercari47nagoya.tk/creditvalids/new") {
     $('#step3').removeClass('active');
     $('#step4').addClass('active');
   }
-  if (url == "http://mercari47nagoya.tk/creditvalids") {
+  if (url == "https://mercari47nagoya.tk/creditvalids") {
     $('#step3').removeClass('active');
     $('#step4').addClass('active');
   }
-  if (url == "http://mercari47nagoya.tk/complete") {
+  if (url == "https://mercari47nagoya.tk/complete") {
     $('#step4').removeClass('active');
     $('#step5').addClass('active');
   }
