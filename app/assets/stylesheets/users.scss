@@ -285,6 +285,7 @@ a{
     float: left;
     width: 280px;
     margin-right: 40px;
+    margin-bottom: 40px;
     &__list{
       &__element{
         a{
@@ -471,6 +472,9 @@ a{
         .submit_button{
           @include submit_button
         }
+        .error_message{
+          color: red;
+        }
       }
       .text-right{
         text-align: right;
@@ -491,7 +495,7 @@ a{
 }
 //--------------------プロフィール編集ページ--------------------//
 .flash{
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   background-color: #87ceeb;
 }

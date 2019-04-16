@@ -122,7 +122,13 @@
   z-index:2;
   position:fixed;
   p{
-    padding: 20px;
+    padding: 15px;
+  }
+  .top-link{
+    background-color: #ea352d;
+    a{
+      color: #fff;
+    }
   }
 }
 

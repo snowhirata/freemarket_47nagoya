@@ -1,8 +1,11 @@
 -if current_user.credit
-  - breadcrumb :credit_new
--else
   - breadcrumb :credit_index
+-else
+  - breadcrumb :credit_new
 = render 'items/header'
+-if flash[:notice]
+  %p.flash
+    = flash[:notice] 
 .container.clearfix
   .profile-container
     .card-index
@@ -17,6 +20,7 @@
                 =@num
               .card-exp-month
                 =@exp_month
+              .span /
               .card-exp-year
                 =@exp_year
               =link_to "削除する",user_credit_path(current_user,current_user.credit),method: :delete

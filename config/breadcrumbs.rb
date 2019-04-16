@@ -23,17 +23,17 @@ crumb :address_new do
 end
 
 crumb :credit_edit do
-  link "支払い方法編集", edit_user_credit_path(current_user,current_user.credit)
+  link "クレジットカード編集", edit_user_credit_path(current_user,current_user.credit)
   parent :mypage
 end
 
 crumb :credit_new do
-  link "支払い方法登録", new_user_credit_path(current_user)
+  link "クレジットカード登録", new_user_credit_path(current_user)
   parent :mypage
 end
 
 crumb :credit_index do
-  link "カード一覧", card_index_user_path(current_user)
+  link "クレジットカード一覧", card_index_user_path(current_user)
   parent :mypage
 end
 

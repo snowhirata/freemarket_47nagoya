@@ -1,5 +1,8 @@
 - breadcrumb :address_edit
 = render 'items/header'
+-if flash[:notice]
+  %p.flash
+    = flash[:notice] 
 .container.clearfix
   .identification
     %h2.identification-head 発送元・お届け先住所変更

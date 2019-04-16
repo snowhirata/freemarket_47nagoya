@@ -1,12 +1,12 @@
 class CreditsController < ApplicationController
+  before_action :set_user ,only: [:new, :create, :edit, :update]
+  before_action :set_credit ,only: [:show, :edit, :update]
 
   def new
-    @user = User.find(params[:user_id])
     @credit = Credit.new
   end
 
   def show
-    @credit = Credit.find(params[:id])
   end
 
   def create
@@ -15,6 +15,7 @@ class CreditsController < ApplicationController
     customer = Mypayjp.create_customer(token)
     @credit.cus_id = customer.id
     if @credit.save
+      flash[:notice] = 'クレジットカードの登録が完了しました'
       redirect_to card_index_user_path(current_user)
     else
       render :new
@@ -22,17 +23,14 @@ class CreditsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @credit = Credit.find(params[:id])
   end
 
   def update
-    @credit = Credit.find(params[:id])
     @credit.update(credit_params)
     if @credit.valid?
+      flash[:notice] = 'クレジットカードの変更が完了しました'
       redirect_to card_index_user_path(current_user)
     else
-      @user = User.find(params[:user_id])
       render :edit
     end
   end
@@ -44,6 +42,14 @@ class CreditsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_credit
+    @credit = Credit.find(params[:id])
+  end
 
   def credit_params
     params.require(:credit).permit(:card_number, :exp_year, :exp_month, :security_code).merge(user_id: params[:user_id])

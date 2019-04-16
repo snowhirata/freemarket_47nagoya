@@ -18,18 +18,26 @@
           =@user.nickname
       .form-group
         =f.label :お名前カナ
-        %p
-          =@user.last_name
-          =@user.first_name
+        -if @user.last_name
+          %p
+            =@user.last_name
+            =@user.first_name
+        -else
+          %p
+            登録されていません
       .form-group
         =f.label :生年月日
-        %p 
-          =@user.birth_year
-          年
-          =@user.birth_month
-          月
-          =@user.birth_day
-          日
+        -if @user.birth_year
+          %p 
+            =@user.birth_year
+            年
+            =@user.birth_month
+            月
+            =@user.birth_day
+            日
+        -else
+          %p
+            登録されていません
       = f.fields_for :address do |a|
         .form-group
           =a.label :郵便番号

@@ -10,6 +10,9 @@ $(function() {
     exp_year = ""+20+exp_year
     security_code = $('#security_code').val()
 
+    console.log(exp_month);
+    console.log(exp_year);
+
     card_number = Number(card_number);
     exp_month = Number(exp_month);
     exp_year = Number(exp_year);
@@ -21,11 +24,11 @@ $(function() {
         exp_year: exp_year,
         cvc: security_code
     };
+    console.log(card)
 
-     console.log(card)
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
-        alert('失敗しました');
+        alert('カードの登録に失敗しました。入力されたカード番号は使用できません。');
       }
       else {
         var token = response.id;
