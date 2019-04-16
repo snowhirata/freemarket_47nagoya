@@ -4,6 +4,10 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
+    @ladies = Item.where(category_id: 1).limit(4).order("updated_at DESC")
+    @mens = Item.where(category_id: 2).limit(4).order("updated_at DESC")
+    @kids = Item.where(category_id: 3).limit(4).order("updated_at DESC")
+    @cosmetics = Item.where(category_id: 7).limit(4).order("updated_at DESC")
   end
 
   def search
@@ -46,6 +50,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments
+    @user_other_items = Item.where(user_id: @item.user.id).where.not(id: params[:id]).limit(6)
+
   end
 
   def edit
