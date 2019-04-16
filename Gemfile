@@ -74,6 +74,7 @@ gem 'jquery-ui-rails'
 
 group :production do
   gem 'unicorn', '5.4.1'
+  gem 'listen', '>= 3.0.5', '< 3.2'
 end
 
 gem 'dotenv-rails' #環境変数の設定
@@ -104,3 +105,4 @@ gem 'gretel'
 gem 'mechanize'
 gem 'enum_help', '~> 0.0.15'
 gem 'payjp'
+gem 'fog-aws'

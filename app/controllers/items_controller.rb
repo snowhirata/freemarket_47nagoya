@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :destroy, :update]
-  before_action :set_category, only: [:new, :create]
+  before_action :set_category, only: [:new, :edit, :update,:create, :search]
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
@@ -14,23 +14,24 @@ class ItemsController < ApplicationController
   end
 
   def search
-      @categories = Category.all
-      @allitems = Item.all
-      @q = Item.ransack(params[:q])
-      @items = @q.result(distinct: true)
-      #キーワード検索
-      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+    if params[:keyword] == ""
+      @items = nil
+    else
+      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") 
+    end
   end
 
   def sort
     if params[:sort] == 'new'
-      @items=Item.includes(:pictures).order('created_at ASC')
-    elsif params[:sort] == 'old'
       @items=Item.includes(:pictures).order('created_at DESC')
+    elsif params[:sort] == 'old'
+      @items=Item.includes(:pictures).order('created_at ASC')
     elsif params[:sort] == 'cheap'
-      @items=Item.includes(:pictures).order('price DESC')
-    else params[:sort] == 'high'
       @items=Item.includes(:pictures).order('price ASC')
+    else params[:sort] == 'high'
+      @items=Item.includes(:pictures).order('price DESC')
     end
     render partial: '/items/result', locals: { items: @items }
   end
@@ -51,6 +52,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @comment = Comment.new
+    @comments = @item.comments
   end
 
   def edit
@@ -78,10 +81,21 @@ class ItemsController < ApplicationController
     @main_category_num = params[:item][:category_id]
   end
 
+  def category_select_search
+    @child_category = Category.where(main_category_id: params[:q][:category_id_eq]).where(sub_category_id: nil)
+    @main_category_num = params[:q][:category_id_eq]
+  end
+
   def child_category_select
     child_category = Category.find(params[:item][:child_category_id])
     @grand_child_category = Category.where(main_category_id: child_category.main_category_id).where(sub_category_id: child_category.id)
     @grand_child_category_num = params[:item][:child_category_id]
+  end
+
+  def child_category_select_search
+    child_category = Category.find(params[:q][:child_category_id_eq])
+    @grand_child_category = Category.where(main_category_id: child_category.main_category_id).where(sub_category_id: child_category.id)
+    @grand_child_category_num = params[:q][:child_category_id_eq]
   end
 
   private

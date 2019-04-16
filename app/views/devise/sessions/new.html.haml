@@ -12,6 +12,9 @@
         %i.fa.fa-google
         Googleでログイン
       .form
+        -if alert
+          %p.error-alert
+            = alert
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .form__group
             = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス"

@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :mypage do
-  link "マイページ", user_path
+  link "マイページ", user_path(current_user)
   parent :root
 end
 
@@ -12,13 +12,28 @@ crumb :profile do
   parent :mypage
 end
 
-crumb :address do
-  link "発送元・お届け先住所変更", edit_user_address_path
+crumb :address_edit do
+  link "発送元・お届け先住所変更", edit_user_address_path(current_user,current_user.address)
   parent :mypage
 end
 
-crumb :credit do
-  link "支払い方法", edit_user_credit_path
+crumb :address_new do
+  link "発送元・お届け先住所登録", new_user_address_path(current_user)
+  parent :mypage
+end
+
+crumb :credit_edit do
+  link "クレジットカード編集", edit_user_credit_path(current_user,current_user.credit)
+  parent :mypage
+end
+
+crumb :credit_new do
+  link "クレジットカード登録", new_user_credit_path(current_user)
+  parent :mypage
+end
+
+crumb :credit_index do
+  link "クレジットカード一覧", card_index_user_path(current_user)
   parent :mypage
 end
 

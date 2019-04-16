@@ -1,5 +1,8 @@
 - breadcrumb :profile
 = render 'items/header'
+-if flash[:notice]
+  %p.flash
+    = flash[:notice] 
 .container.clearfix
   .profile-container
     %h2.profile-container__head
@@ -9,6 +12,6 @@
         =image_tag"member_photo.png",width:60,height:60
         =f.text_field :nickname
       .setting-profile-content
-        =f.text_area :profile_detail
+        =f.text_area :profile_detail,placeholder: '例)こんにちは！ご覧いただきありがとうございます！かわいいものやオフィスカジュアル中心で出品しています。服のサイズは9号です。気持ちの良いお取引を心がけてます！'
         =f.submit :変更する,class: 'submit_button'
   = render partial:'sidebar'

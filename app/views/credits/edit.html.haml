@@ -1,8 +1,8 @@
-- breadcrumb :credit
+- breadcrumb :credit_edit
 = render 'items/header'
 .container.clearfix
   .card-container
-    %h2.card-container__head クレジットカード情報編集
+    %h2.card-container__head クレジットカード編集
     =form_for([@user,@credit],html:{class: 'l-single-inner'}) do |f|
       .l-single-content
         .form-group
@@ -34,19 +34,19 @@
           %span.form-arbitrary
             必須
           .select-wrap
-            =f.select :exp_month, User.exp_months.keys,{},class: "select-default",id: 'exp_month'
+            =f.select :exp_month, User.exp_months.keys,{prompt: "---"class: "select-default",id: 'exp_month'}
             =fa_icon "chevron-down"
-            - if @credit.errors.full_messages_for(:exp_month) != []
-              - @credit.errors.full_messages_for(:exp_month).each do |message|
-                .error_message
-                  = message
+          - if @credit.errors.full_messages_for(:exp_month) != []
+            - @credit.errors.full_messages_for(:exp_month).each do |message|
+              .error_message
+                = message
           .select-wrap
-            =f.select :exp_year, User.exp_years.keys,{},class: "select-default",id: 'exp_year'
+            =f.select :exp_year, User.exp_years.keys,{prompt: "---",class: "select-default",id: 'exp_year'}
             =fa_icon "chevron-down"
-            - if @credit.errors.full_messages_for(:exp_year) != []
-              - @credit.errors.full_messages_for(:exp_year).each do |message|
-                .error_message
-                  = message
+          - if @credit.errors.full_messages_for(:exp_year) != []
+            - @credit.errors.full_messages_for(:exp_year).each do |message|
+              .error_message
+                = message
         .form-group
           =f.label :セキュリティコード
           %span.form-arbitrary

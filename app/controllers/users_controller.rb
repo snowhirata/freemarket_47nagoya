@@ -5,11 +5,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @buyitems = Item.where(buyer_id: params[:id]) 
   end
 
   def update
     @user.assign_attributes(user_params)
     if @user.save(validate: false)
+      flash[:notice] = '変更が完了しました' 
       redirect_to profile_user_path(@user)
     else
       render :profile
@@ -19,7 +21,14 @@ class UsersController < ApplicationController
   def identification
   end
 
-  def register_card
+  def card_index
+    if current_user.credit
+      @num = current_user.credit.card_number
+      @num[0..9] = "**********"
+      @exp_month = current_user.credit.exp_month
+      @exp_year = current_user.credit.exp_year
+      @brand = current_user.credit.brand
+    end
   end
 
   def profile
@@ -29,6 +38,10 @@ class UsersController < ApplicationController
   end
 
   def list
+  end
+
+  def sold_item
+    @sold_item = @user.items
   end
 
   def setuser
@@ -64,7 +77,8 @@ class UsersController < ApplicationController
       exp_month: session[:exp_month],
       exp_year: session[:exp_year],
       security_code: session[:security_code],
-      cus_id: session[:cus_id]
+      cus_id: session[:cus_id],
+      brand: session[:brand]
     )
     @credit.save
 

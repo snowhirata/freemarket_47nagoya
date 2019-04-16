@@ -13,6 +13,18 @@ ja:
         birth_year: 生年月日(年)
         birth_month: 生年月日(月)
         birth_day: 生年月日(日)
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認パスワード
+        last_name: 姓(全角)
+        first_name: 名(全角)
+        last_name_kana: 姓(カナ)
+        first_name_kana: 名(カナ)
+        birth_year: 生年月日(年)
+        birth_month: 生年月日(月)
+        birth_day: 生年月日(日)
       addressvalid:
         postal_code: 郵便番号
         prefecture_id: 都道府県
@@ -20,7 +32,19 @@ ja:
         block: 番地
         building: 建物名
         phone_number: 電話番号
+      address:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市区町村
+        block: 番地
+        building: 建物名
+        phone_number: 電話番号
       creditvalid:
+        card_number: カード番号
+        exp_month: 有効期限(月)
+        exp_year: 有効期限(年)
+        security_code: セキュリティコード
+      credit:
         card_number: カード番号
         exp_month: 有効期限(月)
         exp_year: 有効期限(年)

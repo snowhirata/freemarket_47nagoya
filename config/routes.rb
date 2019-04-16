@@ -4,10 +4,15 @@ Rails.application.routes.draw do
 
   match 'category_select', to: 'items#category_select', via: [:get, :post]
   match 'child_category_select', to: 'items#child_category_select', via: [:get, :post]
+  #カテゴリ検索用
+  match 'category_select_search', to: 'items#category_select_search', via: [:get, :post]
+  match 'child_category_select_search', to: 'items#child_category_select_search', via: [:get, :post]
 
   resources :items  do
+    resources :messages, only: [:index,:new,:create,:destroy]
     resources :sold, only: [:index, :show, :update]
     resources :bought
+    resources :comments, only: [:create, :destroy]
   end
   get 'search' => 'items#search'
   get 'sort' => 'items#sort'
@@ -24,6 +29,7 @@ Rails.application.routes.draw do
     resources :addresses
     member do
       get 'profile'
+      get 'card_index'
       get 'identification'
       get 'logout'
     end
@@ -36,5 +42,4 @@ Rails.application.routes.draw do
   resources :uservalids, only:[:new,:create]
   resources :addressvalids, only:[:new,:create]
   resources :creditvalids, only:[:new,:create]
-
 end

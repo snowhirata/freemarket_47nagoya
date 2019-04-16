@@ -38,7 +38,7 @@
             %span.form-arbitrary
               任意
             .select-wrap
-              =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {},class: 'select-default'
+              =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: '---'},class: 'select-default'
               =fa_icon "chevron-down"
               - if @addressvalid.prefecture_id == 0
                 .error_message

@@ -82,14 +82,17 @@
           発送元・お届け先住所登録
           %i.fa.fa-chevron-right
     %li.sidebar__list__element
-      - if current_user.credit
-        = link_to edit_user_credit_path(current_user,current_user.credit) do
-          支払い方法
-          %i.fa.fa-chevron-right
-      - else
-        = link_to new_user_credit_path(current_user) do
-          支払い方法
-          %i.fa.fa-chevron-right
+      / - if current_user.credit
+      /   = link_to edit_user_credit_path(current_user,current_user.credit) do
+      /     支払い方法
+      /     %i.fa.fa-chevron-right
+      / - else
+      /   = link_to new_user_credit_path(current_user) do
+      /     支払い方法
+      /     %i.fa.fa-chevron-right
+      =link_to card_index_user_path(current_user) do
+        支払い方法
+        %i.fa.fa-chevron-right
     %li.sidebar__list__element
       = link_to "#" do
         メール/パスワード

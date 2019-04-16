@@ -52,6 +52,14 @@ a{
 @mixin tab-content-left{
   display: none;
   li{
+    img{
+      width: 70px;
+      padding: 5px;
+    p{
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
     height: 80px;
     background-color: #fff;
     border-bottom: solid 1px #eee;
@@ -73,6 +81,14 @@ a{
 @mixin tab-content-right{
   display: none;
   li{
+    img{
+      width: 70px;
+      padding: 5px;
+    }
+    p{
+      display: inline-block;
+      vertical-align: top;
+    }
     height: 80px;
     background-color: #fff;
     border-bottom: solid 1px #eee;
@@ -100,6 +116,16 @@ a{
   font-size: 12px;
   vertical-align: top;
 }
+
+@mixin form-require{
+  background-color: #ea352d;
+  border-radius: 2px;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  font-size: 12px;
+  color: #fff;
+}
+
 @mixin input-default{
   width: 100%;
   height: 50px;
@@ -259,6 +285,7 @@ a{
     float: left;
     width: 280px;
     margin-right: 40px;
+    margin-bottom: 40px;
     &__list{
       &__element{
         a{
@@ -317,6 +344,9 @@ a{
       input{
         -webkit-appearance: none;
       }
+      .form-require{
+        @include form-require
+      }
       .form-arbitrary{
         @include form-arbitrary
       }
@@ -331,6 +361,64 @@ a{
       }
       .submit_button{
         @include submit_button
+      }
+      .error_message{
+        color: red;
+      }
+    }
+  }
+}
+//--------------------カード一覧ページ--------------------//
+.container.clearfix{
+  .profile-container{
+    .card-index{
+      text-align: center;
+      .l-single-inner{
+        padding: 60px 200px;
+        text-align: center;
+        .add-card{
+          padding: 15px;
+          background-color: #ea352d;
+          a{
+            color: #fff;
+          }
+        }
+        .settings-add-card{
+          float: left;
+          text-align: left;
+          p{
+            font-weight: 600;
+          }
+          .card-brand{
+
+          }
+          .card-number{
+
+          }
+          .card-exp-month{
+            display: inline-block;
+          }
+          .span{
+            display: inline-block;
+          }
+          .card-exp-year{
+            display: inline-block;
+          }
+        }
+        .destroy{
+          float: right;;
+          display: inline-block;
+          position: relative;
+          top: 50px;
+          padding: 4px 6px;
+          background: #fff;
+          border-radius: 3px;
+          border: 1px solid #ea352d;
+          color: #ea352d;
+          a{
+            color: red;
+          }
+        }
       }
     }
   }
@@ -390,6 +478,9 @@ a{
         .submit_button{
           @include submit_button
         }
+        .error_message{
+          color: red;
+        }
       }
       .text-right{
         text-align: right;
@@ -409,6 +500,11 @@ a{
   }
 }
 //--------------------プロフィール編集ページ--------------------//
+.flash{
+  padding: 10px;
+  text-align: center;
+  background-color: #87ceeb;
+}
 .profile-container{
   @include right-container;
   .profile-container__head{
