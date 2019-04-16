@@ -4,7 +4,7 @@
     width: 3000px;
     .header-category-box{
       position: absolute;
-      z-index: 1;
+      z-index: 3;
       background-color: #fff;
       width: 224px;
       a{
@@ -19,7 +19,7 @@
     #header-child-category-box{
       position: absolute;
       left: 224px;
-      z-index: 1;
+      z-index: 3;
       height: 585px;
       background-color: #fff;
       width: 224px;
@@ -35,7 +35,7 @@
     #header-grand-child-category-box{
       position: absolute;
       left: 448px;
-      z-index: 1;
+      z-index: 3;
       height: 585px;
       background-color: #fff;
       width: 300px;
