@@ -9,8 +9,11 @@ class ItemsController < ApplicationController
   def search
     @q = Item.ransack(params[:q])
     @items = @q.result(distinct: true)
-    #キーワード検索
-    @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
+    if params[:keyword] == ""
+      @items = nil
+    else
+      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") 
+    end
   end
 
   def sort
