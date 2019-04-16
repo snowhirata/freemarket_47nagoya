@@ -25,6 +25,8 @@ $(function(){
   }
 
   $(".category_box").on("mouseover", function(){
+    child_category.show();
+    grand_child_category.hide();
     $(this).css({
       backgroundColor: "#ea352d"
     });
@@ -59,6 +61,7 @@ $(function(){
     });
   });
   $(document).on("mouseenter", ".child_category_box", function(){
+    grand_child_category.show();
     grand_child_category.empty();
     $(this).css({
       backgroundColor: "#ea352d"
