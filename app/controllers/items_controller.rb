@@ -4,6 +4,13 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
+    @categories = Category.where(depth: 1).order("id ASC")
+    @child_categories = Category.where(depth: 2).where(main_category_id: params[:id]).order("id ASC").limit(14)
+    @grand_child_categories = Category.where(depth: 3).where(sub_category_id: params[:g_id]).order("id ASC").limit(14)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def search

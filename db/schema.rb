@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_044258) do
     t.index ["main_category_id"], name: "index_categories_on_main_category_id"
     t.index ["sub_category_id"], name: "index_categories_on_sub_category_id"
   end
-
+  
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
