@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
     @comment = Comment.new
     @comments = @item.comments
     @user_other_items = Item.where(user_id: @item.user.id).where.not(id: params[:id]).limit(6)
+    @category_other_items = Item.where(category_id: @item.category.id).where.not(id: params[:id]).limit(6)
 
   end
 

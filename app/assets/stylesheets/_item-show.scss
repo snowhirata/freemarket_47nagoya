@@ -104,7 +104,7 @@
         border: 1px solid $gray;
         padding: 8px;
         a {
-          float: left;
+          display: table;
         }
       }
     }
@@ -586,10 +586,12 @@
     margin-bottom: 6px;
   }
   .items-box {
-    display: flex;
     color: $black;
-    width: 940px;
+    width: auto;
     margin: 0 auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
     a:link {
      color: $black;
     }
@@ -600,7 +602,8 @@
      color: $black;
      text-decoration: none;
     }
-    .items-box-content:first-child {
+    .items-box-content:first-child,
+    .items-box-content:nth-child(4) {
       margin: 0 0 20px 0;
     }
     .items-box-content {
