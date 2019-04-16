@@ -32,7 +32,10 @@ $(function() {
       }
       else {
         var token = response.id;
+        var brand = response.card.brand;
+        console.log(brand)
         $(".l-single-inner").append($('<input type="hidden" name="credit[payjp_token]" id="payjp_token" />').val(token));
+        $(".l-single-inner").append($('<input type="hidden" name="credit[payjp_brand]" id="payjp_brand" />').val(brand));
         $(".l-single-inner").get(0).submit();
       }
     });

@@ -27,6 +27,7 @@ class UsersController < ApplicationController
       @num[0..9] = "**********"
       @exp_month = current_user.credit.exp_month
       @exp_year = current_user.credit.exp_year
+      @brand = current_user.credit.brand
     end
   end
 
@@ -76,7 +77,8 @@ class UsersController < ApplicationController
       exp_month: session[:exp_month],
       exp_year: session[:exp_year],
       security_code: session[:security_code],
-      cus_id: session[:cus_id]
+      cus_id: session[:cus_id],
+      brand: session[:brand]
     )
     @credit.save
 

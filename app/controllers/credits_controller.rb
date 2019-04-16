@@ -11,9 +11,11 @@ class CreditsController < ApplicationController
 
   def create
     @credit = Credit.new(credit_params)
-    token = params[:credit][:payjp_token]
-    customer = Mypayjp.create_customer(token)
+    card_token = params[:credit][:payjp_token]
+    brand = params[:credit][:payjp_brand]
+    customer = Mypayjp.create_customer(card_token)
     @credit.cus_id = customer.id
+    @credit.brand = brand
     if @credit.save
       flash[:notice] = 'クレジットカードの登録が完了しました'
       redirect_to card_index_user_path(current_user)

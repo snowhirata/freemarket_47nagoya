@@ -10,22 +10,34 @@
   .profile-container
     .card-index
       %h2.profile-container__head 登録カード一覧
-      .l-single-inner
-        %p
-          クレジットカード一覧
+      .l-single-inner.clearfix
         -if @num
           %section.settings-add-card
-            .l-single-content
-              .card-number
-                =@num
-              .card-exp-month
-                =@exp_month
-              .span /
-              .card-exp-year
-                =@exp_year
-              =link_to "削除する",user_credit_path(current_user,current_user.credit),method: :delete
+            %p クレジットカード一覧
+            .card-brand
+              -if @brand == 'Visa'
+                =image_tag'visa.svg',size: '50x50'
+              -elsif @brand == 'MasterCard'
+                =image_tag 'master-card.svg',size: '50x50'
+              -elsif @brand == 'JCB'
+                =image_tag 'jcb.svg',size: '50x50'
+              -elsif @brand == 'American Express'
+                =image_tag 'american_express.svg',size: '50x50'
+              -elsif @brand == 'Diners Club'
+                =image_tag 'dinersclub.svg',size: '50x50'
+              -elsif @brand == 'Discover'
+                =image_tag 'discover.svg',size: '50x50'
+            .card-number
+              =@num
+            .card-exp-month
+              =@exp_month
+            .span /
+            .card-exp-year
+              =@exp_year
+          .destroy
+            =link_to "削除する",user_credit_path(current_user,current_user.credit),method: :delete
         -else
-          %section.settings-add-card
-            .l-single-content
-              =link_to "クレジットカードを追加する",new_user_credit_path(current_user)
+          %p.add-card
+            =link_to "クレジットカードを追加する",new_user_credit_path(current_user)
+
   = render partial:'sidebar'
