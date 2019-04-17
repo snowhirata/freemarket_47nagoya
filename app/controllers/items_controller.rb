@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     if params[:keyword] == ""
       @items = nil
     else
-      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") 
+      @items = Item.where("name LIKE?", "%#{params[:keyword]}%")
     end
   end
 
@@ -54,6 +54,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments
+    @categories = Category.where(depth: 1).order("id ASC")
   end
 
   def edit
