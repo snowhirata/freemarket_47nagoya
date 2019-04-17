@@ -51,21 +51,20 @@ crumb :show do |item|
   link item.name, root_path
 end
 
-#検索機能追加後実装 名称は適宜変更お願いします
-# crumb :search do |keyword|
-#   link params[:keyword], search_items_path
-#   parent :root
-# end
+crumb :search do |keyword|
+  link params[:keyword], search_path
+  parent :root
+end
 
 #カテゴリー追加後実装 名称は適宜変更お願いします
-# crumb :category do |category|
-#   link category.name, category_path
-#   parent :root
-# end
+crumb :category do |category|
+  link category.name, category_path
+  parent :root
+end
 
-# crumb :children_category do |children_category|
-#   link children_category.name, children_category_path
-#   parent :category,children_category.category
+# crumb :child_category do |child_category|
+#   link child_category.name, child_category_path
+#   parent :category,child_category.category
 # end
 
 # crumb :grandchildren_category do |grandchildren_category|

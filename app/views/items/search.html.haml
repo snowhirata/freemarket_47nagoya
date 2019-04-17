@@ -1,3 +1,4 @@
+- breadcrumb :search, @keyword
 = render 'header'
 .searchmain.clearfix
   .left-contents
@@ -50,27 +51,27 @@
             新品、未使用
         .checkbox-group
           .checkbox-left
-            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'未使用に近い',nil 
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'未使用に近い',nil
           .checkbox-right
             未使用に近い
         .checkbox-group
           .checkbox-left
-            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'目立った傷や汚れなし',nil 
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'目立った傷や汚れなし',nil
           .checkbox-right
             目立った傷や汚れなし
         .checkbox-group
           .checkbox-left
-            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'やや傷や汚れあり',nil 
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'やや傷や汚れあり',nil
           .checkbox-right
             やや傷や汚れあり
         .checkbox-group
           .checkbox-left
-            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'傷や汚れあり',nil 
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'傷や汚れあり',nil
           .checkbox-right
             傷や汚れあり
         .checkbox-group
           .checkbox-left
-            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'全体的に状態が悪い',nil 
+            =f.check_box :state_eq_any,{multiple: true,class: 'checkbox'},'全体的に状態が悪い',nil
           .checkbox-right
             全体的に状態が悪い
       .form-group
@@ -89,7 +90,7 @@
             着払い(購入者負担)
         .checkbox-group
           .checkbox-left
-            =f.check_box :ship_charge_eq_any,{multiple: true,class: 'ship-charge-checkbox'},'送料込み(出品者負担)',nil 
+            =f.check_box :ship_charge_eq_any,{multiple: true,class: 'ship-charge-checkbox'},'送料込み(出品者負担)',nil
           .checkbox-right
             送料込み(出品者負担)
       .button-group
@@ -100,7 +101,7 @@
         / =f.collection_check_boxes :state_eq, Sales_state.sales_states, :first, :first
         / =f.check_box :ship_charge_eq_any,{multiple: true},'販売中',nil
         / 販売中
-        / =f.check_box :ship_charge_eq_any,{multiple: true},'売り切れ',nil 
+        / =f.check_box :ship_charge_eq_any,{multiple: true},'売り切れ',nil
         / 売り切れ
   .right-contents
     =render 'result', items: @items

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'search' => 'items#search'
   get 'sort' => 'items#sort'
 
+  resources :categories, only: :show
+
   #ユーザー周りのルーティング
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  
+
   #会員登録で使うルーティング
   get 'list' => 'users#list'
   get 'setuser' => 'users#setuser'
