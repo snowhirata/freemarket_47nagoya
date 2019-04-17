@@ -25,11 +25,13 @@ $(function() {
      console.log(card)
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
-        alert('失敗しました');
-      }
-      else {
+        alert('カード情報を登録できませんでした。正しいカード番号を入力してください');
+      }else {
         var token = response.id;
+        var brand = response.card[brand];
+        console.log(brand)
         $(".l-single-inner").append($('<input type="hidden" name="creditvalid[payjp_token]" id="creditvalid_payjp_token" />').val(token));
+        $(".l-single-inner").append($('<input type="hidden" name="creditvalid[payjp_brand]" id="creditvalid_payjp_brand" />').val(brand));
         $(".l-single-inner").get(0).submit();
       }
     });

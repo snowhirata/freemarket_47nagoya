@@ -12,13 +12,12 @@ class SoldController < ApplicationController
   end
 
   def update
-
     if current_user.credit
       customer = current_user.credit.cus_id
       @item.update(item_params)
       Mypayjp.create_charge_by_customer(customer,params[:item][:item_price])
     else
-      flash[:credit] = '支払い情報を登録してください'
+      flash[:notice] = '支払い情報を登録してください'
       redirect_to new_user_credit_path(current_user)
     end
   end

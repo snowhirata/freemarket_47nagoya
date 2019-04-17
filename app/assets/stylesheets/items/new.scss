@@ -213,17 +213,22 @@
             }
             .charge-form{
               margin-left: 225px;
-              &__name{
+              width: 204px;
+              &--name{
                 font-size: 14px;
-              }
-              &__price{
-                padding: 10px 16px 8px;
-                height: 28px;
-                width: 126px;
-                border: 1px solid;
-                border-radius: 4px;
-                text-align: right;
-                border-color: rgb(166, 166, 166);
+                display: flex;
+                p{
+                  padding-top: 15px;
+                }
+                &__price{
+                  padding: 10px 16px 8px;
+                  height: 28px;
+                  width: 126px;
+                  border: 1px solid;
+                  border-radius: 4px;
+                  text-align: right;
+                  border-color: rgb(166, 166, 166);
+                }
               }
             }
           }
@@ -335,4 +340,8 @@ select{
   font-size: 17px;
   color: #888;
   pointer-events: none;
+}
+
+.error_message{
+  color: red;
 }

@@ -22,7 +22,7 @@
       background-color: #fff;
       .form-group{
         width: 100%;
-        margin: 10px 0 30px 0;
+        margin: 10px 0 10px 0;
         label{
           display: block;
         }
@@ -62,6 +62,23 @@
           }
         }
       }
+      .grand-child-category{
+        #child-category-select{
+          vertical-align: middle;
+          input[type="checkbox"] {
+            display: inline-block;
+            width: 10%;
+          }
+          input[type="checkbox"] + label {
+            display: inline-block;
+            margin-left: 5%;
+            margin-right: 5%;
+            width: 30%;
+            font-size: 12px;
+            vertical-align: middle;
+          }
+        }
+      }
       .button-group{
         margin-top: 10px;
         .search-btn{
@@ -94,6 +111,7 @@
     height: 500px;
     .item-box-container{
       .item-box{
+        color: black;
         margin-right: 10px;
         width: 160px;
         display: inline-block;

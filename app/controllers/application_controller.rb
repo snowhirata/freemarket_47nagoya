@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
+  before_action :categories
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
+  def categories
+    @categories = Category.where(depth: 1).order("id ASC")
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname,:first_name,:last_name,:first_name_kana,:last_name_kana,:birth_year,:birth_month,:birth_day,:postal_code,:prefecture_id,:city,:block,:building,:phone_number,:profit,:exp_month,:exp_year,:profile_detail])
   end

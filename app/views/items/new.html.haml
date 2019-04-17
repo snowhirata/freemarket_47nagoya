@@ -27,6 +27,10 @@
               %label.name-label__require
                 必須
             = f.text_field :name, class: 'name-form', placeholder: '商品名（必須40字まで）'
+            - if @item.errors.full_messages_for(:name) != []
+              - @item.errors.full_messages_for(:name).each do |message|
+                .error_message
+                  = "商品名を入力してください"
           .sell-form--item__description
             .name-label
               %label.name-label__name
@@ -34,6 +38,10 @@
               %label.name-label__require
                 必須
             = f.text_area :description, class: 'description-form', placeholder: '商品の説明（必須1000文字以内）　(色、素材、重さ、定価、注意点など）　例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+            - if @item.errors.full_messages_for(:description) != []
+              - @item.errors.full_messages_for(:description).each do |message|
+                .error_message
+                  = "商品の説明を入力してください"
         .sell-form--detail
           %label.sell-form--detail__name
             商品の詳細
@@ -47,6 +55,10 @@
               = f.select :category_id, options_from_collection_for_select( @category, :id, :name),
   {:include_blank => '---'},{data:{remote: true, url: url_for(action: :category_select)}}
               = fa_icon "chevron-down"
+            - if @item.errors.full_messages_for(:category_id) != []
+              - @item.errors.full_messages_for(:category_id).each do |message|
+                .error_message
+                  = "カテゴリーを選択してください"
             .child-category{style: 'position: relative; margin-top: 8px;'}
               #category-select
             .grand-child-category{style: 'position: relative; margin-top: 8px;'}
@@ -68,6 +80,10 @@
               .select-form
                 = f.select :state, State.states.keys, prompt: "---"
                 %i.fa.fa-chevron-down
+              - if @item.errors.full_messages_for(:state) != []
+                - @item.errors.full_messages_for(:state).each do |message|
+                  .error_message
+                    = "商品の状態を選択してください"
         .sell-form--ship
           %label.sell-form--ship__name
             配送について
@@ -80,6 +96,10 @@
             .select-form
               = f.select :ship_charge, Ship_charge.ship_charges.keys, prompt: "---"
               %i.fa.fa-chevron-down
+            - if @item.errors.full_messages_for(:ship_charge) != []
+              - @item.errors.full_messages_for(:ship_charge).each do |message|
+                .error_message
+                  = "配送料の負担を選択してください"
             .item-ship_method
               .name-label
                 %label.name-label__name
@@ -89,6 +109,10 @@
               .select-form
                 = f.select :ship_method, [["未定", "未定"],["らくらくメルカリ便", "らくらくメルカリ便"],["ゆうメール", "ゆうメール"],["レターパック", "レターパック"],["普通郵便(定型、定形外)", "普通郵便(定型、定形外)"],["クロネコヤマト", "クロネコヤマト"],["ゆうパック","ゆうパック"],["クリックポスト","クリックポスト"],["ゆうパケット","ゆうパケット"]], prompt: "---"
                 %i.fa.fa-chevron-down
+              - if @item.errors.full_messages_for(:ship_method) != []
+                - @item.errors.full_messages_for(:ship_method).each do |message|
+                  .error_message
+                    = "発送方法を選択してください"
             .item-charge
               .name-label
                 %label.name-label__name
@@ -98,6 +122,10 @@
               .select-form
                 = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---"
                 %i.fa.fa-chevron-down
+              - if @item.errors.full_messages_for(:prefecture_id) != []
+                - @item.errors.full_messages_for(:prefecture_id).each do |message|
+                  .error_message
+                    = "発送元の地域を選択してください"
             .item-date
               .name-label
                 %label.name-label__name
@@ -107,6 +135,10 @@
               .select-form
                 = f.select :ship_date, [["1~2日で発送", "1~2日で発送"],["2~3日で発送", "2~3日で発送"],["4~7日で発送","4~7日で発送"]], prompt: "---"
                 %i.fa.fa-chevron-down
+              - if @item.errors.full_messages_for(:ship_date) != []
+                - @item.errors.full_messages_for(:ship_date).each do |message|
+                  .error_message
+                    = "発送までの日数を選択してください"
         .sell-form--charge
           .sell-form--charge__name
             販売価格(300~9,999,999)
@@ -118,9 +150,14 @@
                 %label.name-label__require
                   必須
               .charge-form
-                %label.charge-form__name
-                  ¥
-                  = f.text_field :price, class: 'charge-form__price', placeholder: '例）300'
+                .charge-form--name
+                  %p
+                    ¥
+                  = f.text_field :price, class: 'charge-form--name__price', placeholder: '例）300'
+                - if @item.errors.full_messages_for(:price) != []
+                  - @item.errors.full_messages_for(:price).each do |message|
+                    .error_message
+                      = message
             .commission-label
               %label.commission-label--left
                 販売手数料（10%）
@@ -148,7 +185,7 @@
               %a{href: '#', id: 'text_link4'}
                 加盟店規約に同意したことになります。
           = f.button "出品する", class: "sell-form--submit__button"
-          = link_to "root_path", class: "sell-form--submit__return" do
+          = link_to root_path, class: "sell-form--submit__return" do
             もどる
   = render 'shared/second_footer'
 

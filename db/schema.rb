@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_053652) do
+ActiveRecord::Schema.define(version: 2019_04_16_044258) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "postal_code"
+    t.string "postal_code"
     t.integer "prefecture_id"
     t.string "city"
     t.string "block"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_053652) do
     t.index ["main_category_id"], name: "index_categories_on_main_category_id"
     t.index ["sub_category_id"], name: "index_categories_on_sub_category_id"
   end
-
+  
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_053652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "cus_id"
+    t.string "brand"
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
 

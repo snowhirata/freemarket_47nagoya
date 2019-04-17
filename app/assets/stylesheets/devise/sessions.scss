@@ -55,8 +55,16 @@
         }
       }
       .form{
+        .error-alert{
+          text-align: center;
+          background-color: #ffdab9;
+          padding: 10px;
+          margin-bottom: 10px;
+          color: red;
+        }
         &__group{
           input{
+            font-size: 16px;
             width: calc(100% - 6px);
             line-height: 40px;
             margin-bottom: 20px;

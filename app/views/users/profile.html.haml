@@ -1,5 +1,8 @@
 - breadcrumb :profile
 = render 'items/header'
+-if flash[:notice]
+  %p.flash
+    = flash[:notice] 
 .container.clearfix
   .profile-container
     %h2.profile-container__head

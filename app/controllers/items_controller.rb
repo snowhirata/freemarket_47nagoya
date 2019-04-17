@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :destroy, :update]
-  before_action :set_category, only: [:new, :create, :search]
+  before_action :set_category, only: [:new, :edit, :update,:create, :search]
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
@@ -8,26 +8,40 @@ class ItemsController < ApplicationController
     @mens = Item.where(category_id: 2).limit(4).order("updated_at DESC")
     @kids = Item.where(category_id: 3).limit(4).order("updated_at DESC")
     @cosmetics = Item.where(category_id: 7).limit(4).order("updated_at DESC")
+    @categories = Category.where(depth: 1).order("id ASC")
+    @child_categories = Category.where(depth: 2).where(main_category_id: params[:id]).order("id ASC").limit(14)
+    @grand_child_categories = Category.where(depth: 3).where(sub_category_id: params[:g_id]).order("id ASC").limit(14)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def search
-      @categories = Category.all
-      @allitems = Item.all
-      @q = Item.ransack(params[:q])
-      @items = @q.result(distinct: true)
-      #キーワード検索
-      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") if params[:keyword]
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+    if @items == []
+      @items = nil
+    else
+      @items
+    end
+
+    if params[:keyword] == ''
+      @items = nil
+    elsif params[:keyword]
+      @items = Item.where("name LIKE?", "%#{params[:keyword]}%") 
+    end
   end
 
   def sort
     if params[:sort] == 'new'
-      @items=Item.includes(:pictures).order('created_at ASC')
-    elsif params[:sort] == 'old'
       @items=Item.includes(:pictures).order('created_at DESC')
+    elsif params[:sort] == 'old'
+      @items=Item.includes(:pictures).order('created_at ASC')
     elsif params[:sort] == 'cheap'
-      @items=Item.includes(:pictures).order('price DESC')
-    else params[:sort] == 'high'
       @items=Item.includes(:pictures).order('price ASC')
+    else params[:sort] == 'high'
+      @items=Item.includes(:pictures).order('price DESC')
     end
     render partial: '/items/result', locals: { items: @items }
   end
@@ -53,6 +67,7 @@ class ItemsController < ApplicationController
     @user_other_items = Item.where(user_id: @item.user.id).where.not(id: params[:id]).limit(6)
     @category_other_items = Item.where(category_id: @item.category.id).where.not(id: params[:id]).limit(6)
 
+    @categories = Category.where(depth: 1).order("id ASC")
   end
 
   def edit
@@ -102,6 +117,10 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :user_id, :category_id, :child_category_id, :grand_child_category_id, :description,:state, :brand, :ship_charge, :prefecture_id, :ship_method, :ship_date, :buyer_id, :price, pictures_attributes: [:id, :image, :_destroy])
   end
+
+  # def search_params
+  #   params.require(:q).permit(:name_cont, :category_id_eq,:child_category_id_eq, {:grand_child_category_id_eq => []},:brand_cont,:price_gteq,:price_lteq)
+  # end
 
   def set_item
     @item = Item.find(params[:id])

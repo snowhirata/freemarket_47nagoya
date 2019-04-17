@@ -20,9 +20,10 @@
             = f.hidden_field :item_price, value: @item.price
             = button_to '購入する','', { class: :"sold-form--img__in__decide",id: "modal-open"}
           #modal-content
-            %p
+            =image_tag '20170217230625.png',size: '100x100'
+            %p.text
               購入が完了しました！
-            %p
+            %p.top-link
               =link_to 'トップへ戻る',root_path,class: "return-button"
       .sold-form--ship-region
         .sold-form--ship-region__in
