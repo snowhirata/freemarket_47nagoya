@@ -88,6 +88,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
+  gem 'rubocop', require: false
 end
 gem 'jquery-rails'
 
@@ -106,3 +107,5 @@ gem 'mechanize'
 gem 'enum_help', '~> 0.0.15'
 gem 'payjp'
 gem 'fog-aws'
+gem 'recaptcha', require: "recaptcha/rails"
+

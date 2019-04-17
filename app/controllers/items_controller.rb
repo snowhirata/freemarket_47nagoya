@@ -16,9 +16,15 @@ class ItemsController < ApplicationController
   def search
     @q = Item.ransack(params[:q])
     @items = @q.result(distinct: true)
-    if params[:keyword] == ""
+    if @items == []
       @items = nil
     else
+      @items
+    end
+
+    if params[:keyword] == ''
+      @items = nil
+    elsif params[:keyword]
       @items = Item.where("name LIKE?", "%#{params[:keyword]}%") 
     end
   end
@@ -103,6 +109,10 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :user_id, :category_id, :child_category_id, :grand_child_category_id, :description,:state, :brand, :ship_charge, :prefecture_id, :ship_method, :ship_date, :buyer_id, :price, pictures_attributes: [:id, :image, :_destroy])
   end
+
+  # def search_params
+  #   params.require(:q).permit(:name_cont, :category_id_eq,:child_category_id_eq, {:grand_child_category_id_eq => []},:brand_cont,:price_gteq,:price_lteq)
+  # end
 
   def set_item
     @item = Item.find(params[:id])
