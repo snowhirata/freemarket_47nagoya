@@ -35,8 +35,8 @@
                   = message
           .form-group
             =f.label :都道府県
-            %span.form-arbitrary
-              任意
+            %span.form-require
+              必須
             .select-wrap
               =f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: '---'},class: 'select-default'
               =fa_icon "chevron-down"
@@ -63,8 +63,8 @@
                   = message
           .form-group
             = f.label :建物名
-            %span.form-require
-              必須
+            %span.form-arbitrary
+              任意
             = f.text_field :building, placeholder: '例)柳ビル103'
             - if @addressvalid.errors.full_messages_for(:building) != []
               - @addressvalid.errors.full_messages_for(:building).each do |message|
