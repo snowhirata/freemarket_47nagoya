@@ -1,7 +1,6 @@
 var child_category = `<%= j(@grand_child_category_num) %>`
 if (child_category >= 1) {
-  var html = `<%= j(select :q, :grand_child_category_id_eq, options_from_collection_for_select(@grand_child_category, :id, :name),{:include_blank => '---'})%>
-              <%= fa_icon 'chevron-down' %>`
+  var html = `<%= j(collection_check_boxes(:q, :grand_child_category_id_in,@grand_child_category, :id, :name))%>`
   $('#child-category-select').html(html);
 }
 if (child_category == '') {
