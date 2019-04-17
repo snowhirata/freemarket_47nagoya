@@ -6,8 +6,8 @@ $(function(){
     }
   });
 
-  $('.charge-form__price').on("keyup", function(){
-    var input = $(".charge-form__price").val();
+  $('.charge-form--name__price').on("keyup", function(){
+    var input = $(".charge-form--name__price").val();
     var commission = input * 0.10
     var commission_fee = Math.floor(commission)
     var profit = input - commission_fee
