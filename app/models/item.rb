@@ -11,13 +11,17 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
-  validates :name, presence: true
-  validates :state, presence: true
-  validates :prefecture_id, presence: true
-  validates :ship_charge, presence: true
-  validates :ship_method, presence: true
-  validates :ship_date, presence: true
-  validates :price, presence: true
-  validates :category_id, presence: true
-  validates :user_id, presence: true
+  with_options presence: true do
+    validates :name, length: { maximum: 40 }
+    validates :description, length: { maximum: 1000 }
+    validates :state
+    validates :prefecture_id
+    validates :ship_charge
+    validates :ship_method
+    validates :ship_date
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+    validates :category_id
+    validates :user_id
+    validates_associated :pictures, length: {in: 1..10}
+  end
 end

@@ -60,6 +60,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments
+    @categories = Category.where(depth: 1).order("id ASC")
   end
 
   def edit
