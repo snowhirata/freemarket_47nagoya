@@ -1,4 +1,4 @@
 .category_box{id:"#{category.id}"}
-  = link_to "#" do
+  = link_to category_path(category.id) do
     %h3
       = category.name
