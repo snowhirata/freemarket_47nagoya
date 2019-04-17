@@ -31,11 +31,14 @@
             配送先
           .content
             %h5.content--place
-              〒573-1171
+              = "〒" + current_user.address.postal_code
             %h6.content--place
-              大阪府枚方市三栗1-1-30
+              = current_user.address.city
+              = current_user.address.block
+              = current_user.address.building
             %h7.content--place
-              大西哲平
+              = current_user.last_name
+              = current_user.first_name
           = link_to "#", class: "change-content" do
             変更する
             %i.fa.fa-chevron-right
@@ -45,7 +48,10 @@
             支払い方法
           .content
             %h6.content--place
-              \/
+              = "***********" + current_user.credit.card_number.last(4)
+            %span
+              = current_user.credit.exp_month + " /"
+              = current_user.credit.exp_year
           = link_to "#", class: "change-content" do
             変更する
             %i.fa.fa-chevron-right

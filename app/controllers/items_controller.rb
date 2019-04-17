@@ -4,6 +4,10 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:pictures).limit(4).order("updated_at DESC")
+    @ladies = Item.where(category_id: 1).limit(4).order("updated_at DESC")
+    @mens = Item.where(category_id: 2).limit(4).order("updated_at DESC")
+    @kids = Item.where(category_id: 3).limit(4).order("updated_at DESC")
+    @cosmetics = Item.where(category_id: 7).limit(4).order("updated_at DESC")
     @categories = Category.where(depth: 1).order("id ASC")
     @child_categories = Category.where(depth: 2).where(main_category_id: params[:id]).order("id ASC").limit(14)
     @grand_child_categories = Category.where(depth: 3).where(sub_category_id: params[:g_id]).order("id ASC").limit(14)
@@ -60,6 +64,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments
+    @user_other_items = Item.where(user_id: @item.user.id).where.not(id: params[:id]).limit(6)
+    @category_other_items = Item.where(category_id: @item.category.id).where.not(id: params[:id]).limit(6)
+
     @categories = Category.where(depth: 1).order("id ASC")
   end
 

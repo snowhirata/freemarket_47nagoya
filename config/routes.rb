@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'search' => 'items#search'
   get 'sort' => 'items#sort'
 
+  resources :categories, only: :show
+
   #ユーザー周りのルーティング
   devise_for :users, controllers: {
     registrations: 'users/registrations',

@@ -106,6 +106,6 @@ gem 'gretel'
 gem 'mechanize'
 gem 'enum_help', '~> 0.0.15'
 gem 'payjp'
+gem 'kaminari'
 gem 'fog-aws'
 gem 'recaptcha', require: "recaptcha/rails"
-

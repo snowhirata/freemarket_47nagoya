@@ -1,0 +1,128 @@
+.category-wrapper {
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0 0 40px;
+  display: block;
+  .category-main {
+    %ul.child-categories-nav {
+      li {
+        float: left;
+        margin: 16px 16px 0 0;
+        a:hover {
+          text-decoration: underline;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  .categories-box {
+    color: $black;
+    width: auto;
+    margin: 0 auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    a:link {
+     color: $black;
+    }
+    a:visited {
+     color: $black;
+    }
+    a:hover {
+     color: $black;
+     text-decoration: none;
+    }
+    h1 {
+
+    }
+    // .clearfix {
+    //   // position: relative;
+    //   // text-align: left;
+    //   // width: 220px;
+    //   // margin: 0 0 0 20px;
+    //   // float: left;
+    //   // background: $white;
+    //   // padding: 0;
+    //   }
+      &-content:first-child,
+      &-content:nth-child(5),
+      &-content:nth-child(9) {
+        margin: 0 0 20px 0;
+      }
+      &-content {
+        position: relative;
+        text-align: left;
+        width: 220px;
+        margin: 0 0 20px 20px;
+        float: left;
+        background: $white;
+        padding: 0;
+        &-photo {
+          width: 220px;
+          height: 220px;
+        }
+        &-body {
+          height: 110px;
+          padding: 16px;
+        }
+        &-name {
+          overflow: hidden;
+          font-weight: 400;
+          height: 3em;
+          line-height: 1.5;
+          word-break: break-word;
+          white-space: normal;
+          text-align: left;
+          font-size: 16px;
+        }
+        &-num {
+          margin: 8px 0 0;
+          display: flex;
+          justify-content: space-between;
+        }
+        &-price {
+          float: left;
+          font-size: 16px;
+          font-weight: 600;
+        }
+        &-likes {
+          float: right;
+          font-size: 16px;
+          font-weight: 400;
+          margin-left: auto;
+          i.fa.fa-heart {
+            color: lightgray;
+          }
+        }
+        &-tax {
+          font-size: 10px;
+        }
+      }
+
+  }
+
+  .special-description {
+    overflow: hidden;
+    border-radius: 4px;
+    width: 1020px;
+    margin: 30px auto;
+    &-title {
+      text-align: center;
+      background-color: $red;
+      h3 {
+        padding: 16px 8px;
+        color: $white;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
+    &-text {
+      padding: 30px;
+      background-color: $white;
+      p {
+        line-height: 1.6em;
+      }
+    }
+  }
+}
