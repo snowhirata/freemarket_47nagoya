@@ -44,7 +44,7 @@
               = message
       .form-group
         =f.label :建物
-        %span.form-require
+        %span.form-arbitrary
           必須
         =f.text_field :building,class: 'input-default', placeholder:'例)柳ビル103'
         - if @address.errors.full_messages_for(:building) != []
