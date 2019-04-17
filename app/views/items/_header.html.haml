@@ -14,10 +14,11 @@
         .header__inner__nav-box__left
           %ul.header__inner__nav-box__left__item-nav
             %li
-              %h2
+              %h2#category-search-icon.category-search-icon
                 =link_to "", class: "header-nav-root" do
                   %i.fa.fa-list-ul
                   %span カテゴリーから探す
+                = render 'items/category-pulldown'
             %li
               %h2
                 =link_to "", class: "header-nav-root" do
@@ -59,3 +60,4 @@
   %nav.bread-container
     = breadcrumbs separator: "#{content_tag(:i, '', :class=>'fa fa-angle-right')}"
 =javascript_include_tag 'mypage_pulldown.js'
+=javascript_include_tag 'category_pulldown.js'

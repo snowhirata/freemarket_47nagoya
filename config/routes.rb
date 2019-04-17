@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  
+
   #会員登録で使うルーティング
   get 'list' => 'users#list'
   get 'setuser' => 'users#setuser'
