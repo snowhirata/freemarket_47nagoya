@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
   def categories
     @categories = Category.where(depth: 1).order("id ASC")
-    @child_categories = Category.where(depth: 2).where(main_category_id: params[:id]).order("id ASC").limit(14)
+    @child_categories = Category.where(depth: 2).where(main_category_id: params[:c_id]).order("id ASC").limit(14)
     @grand_child_categories = Category.where(depth: 3).where(sub_category_id: params[:g_id]).order("id ASC").limit(14)
   end
 

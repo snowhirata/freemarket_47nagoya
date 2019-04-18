@@ -42,7 +42,7 @@ $(function(){
     $.ajax({
       type: 'GET',
       url: url,
-      data: {"id": id},
+      data: {"c_id": id},
       dataType: "json",
     })
     .done(function(child_category){
