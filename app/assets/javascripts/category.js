@@ -4,7 +4,7 @@ $(function(){
 
   function buildChilodHTML(child){
     var html = `<div class="child_category_box" id=${ child.id }>
-                  <a href="#">
+                  <a href= "/categories/${ child.id }">
                     <h3>
                       ${ child.name }
                     </h3>
@@ -15,7 +15,7 @@ $(function(){
 
   function buildGrandChildHTML(grand_child){
     var html = `<div class="grand_child_category_box" id=${ grand_child.id }>
-                  <a href="#">
+                  <a href= "/categories/${ grand_child.id }"">
                     <h3>
                       ${ grand_child.name }
                     </h3>
