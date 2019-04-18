@@ -14,5 +14,9 @@ class CategoriesController < ApplicationController
     else
       @items = Item.where(grand_child_category_id: @category.id).page(params[:page]).per(12).order(id: "DESC")
     end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 end

@@ -1,14 +1,14 @@
 #header-category-box{
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   top: 97px;
   .category-in{
     position: relative;
     width: 748px;
-    z-index: 3;
+    z-index: 5;
     .header-category-box{
       position: absolute;
-      z-index: 4;
+      z-index: 6;
       background-color: #fff;
       width: 224px;
       a{
@@ -23,7 +23,7 @@
     #header-child-category-box{
       position: absolute;
       left: 224px;
-      z-index: 4;
+      z-index: 6;
       height: 585px;
       background-color: #fff;
       width: 224px;
@@ -39,7 +39,7 @@
     #header-grand-child-category-box{
       position: absolute;
       left: 448px;
-      z-index: 4;
+      z-index: 6;
       height: 585px;
       background-color: #fff;
       width: 300px;
